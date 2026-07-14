@@ -7,7 +7,8 @@ import { faqs } from "../lib/faqs";
 
 export const metadata: Metadata = {
   title: "Website Care and Support",
-  description: "Reliable website care from a technical team.",
+  description:
+    "Keep your website current, monitored and working properly with ongoing maintenance and reliable technical support.",
 };
 
 const includedFeatures = [
@@ -25,14 +26,14 @@ const includedFeatures = [
 ];
 
 export default function WebsiteCarePage() {
-  const pageFaqs = faqs.filter(f => ["existing-website", "small-change", "turnaround", "access"].includes(f.id));
+  const pageFaqs = faqs.filter(f => ["website-support", "small-change", "existing-website", "turnaround", "access"].includes(f.id));
 
   return (
     <>
       <PageHero
-        eyebrow="Website Care"
+        eyebrow="Website Care and Support"
         headline="Reliable website care from a technical team."
-        subtext="Keep your website current, monitored and working properly with ongoing maintenance, content updates and technical support."
+        subtext="Keep your website current, monitored and working properly with ongoing maintenance and reliable technical support."
         primaryCta={{ label: "Request a Health Check", href: "/health-check" }}
         secondaryCta={{ label: "View Plans", href: "/plans" }}
       />
@@ -67,15 +68,18 @@ export default function WebsiteCarePage() {
           <div className="bg-[#EEF2FF] border border-[#C7D2FE] rounded-[12px] p-8">
             <h3 className="text-[#3730A3] font-bold text-[18px] mb-4">What counts as a small website change?</h3>
             <p className="text-[#4338CA] leading-relaxed">
-              A small website change is typically a text update, image swap, button edit or minor layout adjustment that takes under one hour. Larger scope work is quoted separately.
+              A small website change is a content, image or layout update that usually takes no more than 30 minutes and does not require new custom functionality. Larger or specialised work is scoped separately against your monthly website-support allowance.
             </p>
           </div>
           <div className="bg-[var(--color-dark-bg)] border border-white/10 rounded-[12px] p-8">
-            <h3 className="text-white font-bold text-[18px] mb-4">Quoted Separately (Not Included)</h3>
+            <h3 className="text-white font-bold text-[18px] mb-4">Additional and project work</h3>
+            <p className="text-gray-400 leading-relaxed mb-4">
+              Your monthly plan covers the website care and support deliverables listed in the selected package. Larger projects are scoped separately, including:
+            </p>
             <ul className="list-disc list-inside text-gray-400 space-y-2">
               <li>Major redesigns</li>
               <li>Complete website builds</li>
-              <li>Custom software development</li>
+              <li>Custom software solutions</li>
               <li>Large content migrations</li>
             </ul>
           </div>

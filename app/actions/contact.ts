@@ -13,16 +13,15 @@ function validateBase(
   const name = (formData.get("name") as string)?.trim();
   const email = (formData.get("email") as string)?.trim();
   const company = (formData.get("company") as string)?.trim();
-  const consent = formData.get("consent");
 
   // Honeypot check (bot trap — must remain empty)
   const honeypot = (formData.get("_hp") as string)?.trim();
   if (honeypot) return { status: "error", message: "Submission rejected." };
 
-  if (!name || !email || !company || !consent) {
+  if (!name || !email || !company) {
     return {
       status: "error",
-      message: "Please complete all required fields and accept the consent checkbox.",
+      message: "Please complete all required fields.",
     };
   }
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -76,6 +75,7 @@ export async function submitContact(
   try {
     await sendContactEmail({
       ...result,
+      service: optionalField(formData, "service"),
       message: optionalField(formData, "message"),
     });
   } catch (error) {

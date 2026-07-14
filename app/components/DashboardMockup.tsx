@@ -10,7 +10,9 @@ export default function DashboardMockup() {
             <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
             <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
           </div>
-          <div className="mx-auto text-[11px] sm:text-[12px] font-medium text-gray-400 truncate px-2">Peerprise Activity Dashboard</div>
+          <div className="mx-auto text-[11px] sm:text-[12px] font-medium text-gray-400 truncate px-2">
+            Example Peerprise activity dashboard
+          </div>
         </div>
 
         <div className="flex min-h-0 bg-[#0B1220]/70">
@@ -25,39 +27,39 @@ export default function DashboardMockup() {
 
           <div className="flex-1 min-w-0 p-3 sm:p-5 flex flex-col gap-3 overflow-hidden">
             <div className="flex items-center justify-between gap-2">
-              <h3 className="text-[14px] sm:text-[16px] font-bold text-white shrink-0">Monthly Summary</h3>
+              <h3 className="text-[14px] sm:text-[16px] font-bold text-white shrink-0">Operational overview</h3>
               <span className="inline-flex h-6 sm:h-7 px-2 sm:px-3 items-center whitespace-nowrap text-[10px] sm:text-[11px] font-bold bg-gradient-to-r from-[#FF58D5] to-[#4E6EFF] rounded-full text-white shrink-0">
-                All Systems Nominal
+                Example data
               </span>
             </div>
 
             <div className="grid grid-cols-2 gap-2 sm:gap-3">
               <div className="bg-white/10 border border-white/15 rounded-[10px] sm:rounded-[12px] p-3 sm:p-3.5">
-                <p className="text-[11px] sm:text-[12px] text-gray-300 mb-1.5 sm:mb-2">Social Posts</p>
+                <p className="text-[11px] sm:text-[12px] text-gray-300 mb-1.5 sm:mb-2">Scheduled social posts</p>
                 <div className="flex items-baseline gap-1.5">
                   <span className="text-[20px] sm:text-[22px] font-bold text-white leading-none">12</span>
                   <span className="text-[10px] sm:text-[11px] text-emerald-400 font-medium">Ready</span>
                 </div>
               </div>
               <div className="bg-white/10 border border-white/15 rounded-[10px] sm:rounded-[12px] p-3 sm:p-3.5">
-                <p className="text-[11px] sm:text-[12px] text-gray-300 mb-1.5 sm:mb-2">Website Uptime</p>
+                <p className="text-[11px] sm:text-[12px] text-gray-300 mb-1.5 sm:mb-2">Website uptime</p>
                 <div className="flex items-baseline gap-1.5">
                   <span className="text-[20px] sm:text-[22px] font-bold text-white leading-none">99.9%</span>
                   <span className="text-[10px] sm:text-[11px] text-emerald-400 font-medium">30d</span>
                 </div>
               </div>
               <div className="bg-white/10 border border-white/15 rounded-[10px] sm:rounded-[12px] p-3 sm:p-3.5">
-                <p className="text-[11px] sm:text-[12px] text-gray-300 mb-1.5 sm:mb-2">Website Updates</p>
+                <p className="text-[11px] sm:text-[12px] text-gray-300 mb-1.5 sm:mb-2">Completed website updates</p>
                 <div className="flex items-baseline gap-1.5">
                   <span className="text-[20px] sm:text-[22px] font-bold text-white leading-none">8</span>
                   <span className="text-[10px] sm:text-[11px] text-gray-400 font-medium">Done</span>
                 </div>
               </div>
               <div className="bg-white/10 border border-white/15 rounded-[10px] sm:rounded-[12px] p-3 sm:p-3.5">
-                <p className="text-[11px] sm:text-[12px] text-gray-300 mb-1.5 sm:mb-2">Support Requests</p>
+                <p className="text-[11px] sm:text-[12px] text-gray-300 mb-1.5 sm:mb-2">Open support requests</p>
                 <div className="flex items-baseline gap-1.5">
-                  <span className="text-[20px] sm:text-[22px] font-bold text-white leading-none">0</span>
-                  <span className="text-[10px] sm:text-[11px] text-emerald-400 font-medium">Resolved</span>
+                  <span className="text-[20px] sm:text-[22px] font-bold text-white leading-none">2</span>
+                  <span className="text-[10px] sm:text-[11px] text-amber-300 font-medium">In progress</span>
                 </div>
               </div>
             </div>
@@ -68,7 +70,7 @@ export default function DashboardMockup() {
                   <div className="w-2 h-2 rounded-full bg-emerald-400" />
                 </div>
                 <div>
-                  <p className="text-[12px] font-medium text-white">Form Status</p>
+                  <p className="text-[12px] font-medium text-white">Form status</p>
                   <p className="text-[11px] text-gray-400">Routing OK</p>
                 </div>
               </div>
@@ -77,7 +79,7 @@ export default function DashboardMockup() {
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#4E6EFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </div>
                 <div>
-                  <p className="text-[12px] font-medium text-white">Integrations</p>
+                  <p className="text-[12px] font-medium text-white">Connected integrations</p>
                   <p className="text-[11px] text-gray-400">5 connected</p>
                 </div>
               </div>

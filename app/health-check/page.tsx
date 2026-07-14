@@ -44,17 +44,17 @@ export default function HealthCheckPage() {
                 ))}
               </ul>
               
-              <div className="mt-8 bg-amber-500/10 border border-amber-400/30 rounded-[12px] p-6 text-[15px]">
-                <h3 className="font-bold text-amber-200 mb-2">What is NOT included</h3>
-                <p className="text-amber-100/80">
-                  The health check does not include keyword research, SEO ranking analysis, lead forecasts, conversion optimization, advertising recommendations or revenue projections.
+              <div className="mt-8 glass-card rounded-[12px] p-6 text-[15px]">
+                <h3 className="font-bold text-white mb-2">What you receive</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  A practical review focused on website care, social presence readiness and digital operations. Our focus is reliable technical and operational recommendations that help you prioritise next steps.
                 </p>
               </div>
             </div>
             
             <div className="glass-card gradient-border rounded-[24px] shadow-sm p-8 relative overflow-hidden">
               <div className="relative z-10">
-                <h2 className="text-[24px] font-bold text-white mb-6">Request your review</h2>
+                <h2 className="text-[24px] font-bold text-white mb-6">Request Your Free Health Check</h2>
                 <HealthCheckForm />
               </div>
             </div>

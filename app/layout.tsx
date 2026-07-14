@@ -19,13 +19,14 @@ export const metadata: Metadata = {
     template: "%s | Peerprise",
   },
   description:
-    "Peerprise provides website care, social presence management and digital operations support for companies, brands and professionals.",
+    "Peerprise provides social presence management, website care, digital operations support and custom software solutions for companies, brands and professionals.",
   keywords: [
     "digital presence management",
-    "social media management",
+    "social presence management",
     "website care",
     "website maintenance",
-    "digital operations",
+    "digital operations support",
+    "custom software solutions",
     "technical support",
     "Peerprise",
   ],
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Peerprise — Managed Digital Presence",
     description:
-      "One team managing your website, social channels and digital tools.",
+      "Peerprise keeps your website maintained, your social channels active and your digital tools working smoothly — plus custom software when standard tools are not enough.",
     type: "website",
     locale: "en_US",
     siteName: "Peerprise",
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Peerprise — Managed Digital Presence",
     description:
-      "One team managing your website, social channels and digital tools.",
+      "Peerprise keeps your website maintained, your social channels active and your digital tools working smoothly — plus custom software when standard tools are not enough.",
   },
   robots: { index: true, follow: true },
 };

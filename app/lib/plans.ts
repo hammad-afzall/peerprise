@@ -4,12 +4,14 @@ export const plans = [
     name: "Presence Care",
     price: "$900",
     period: "/month",
-    description: "For businesses that need their website maintained and forms working reliably.",
+    description:
+      "For companies that need their website maintained, monitored and updated reliably.",
     features: [
-      "Website updates & backups",
-      "Uptime & security monitoring",
-      "1 small website change/mo",
+      "Website updates and backups",
+      "Uptime and security monitoring",
+      "Up to two website-support hours per month",
       "Monthly activity summary",
+      "Response within two business days",
     ],
     highlight: false,
   },
@@ -18,13 +20,16 @@ export const plans = [
     name: "Managed Presence",
     price: "$1,650",
     period: "/month",
-    description: "For businesses and professionals that need a consistent social presence and reliable website care.",
+    description:
+      "For companies, brands and professionals that need a consistent social presence with reliable website care.",
     badge: "Most Popular",
     features: [
       "One primary social platform",
       "Eight posts per month",
-      "Website updates & backups",
-      "3 small website changes/mo",
+      "Content calendar and branded graphics",
+      "Website updates and backups",
+      "Up to four website-support hours per month",
+      "Monthly activity summary",
     ],
     highlight: true,
   },
@@ -33,21 +38,78 @@ export const plans = [
     name: "Digital Operations Partner",
     price: "From $2,750",
     period: "/month",
-    description: "Comprehensive support covering social presence, website care and digital tool configurations.",
+    description:
+      "Ongoing support covering social presence, website care, forms, integrations and digital operations.",
     features: [
       "Two social platforms",
       "Twelve posts per month",
-      "Unlimited small website changes",
-      "Priority technical support",
+      "Up to eight website-support hours per month",
+      "Forms, integrations and workflow automation",
+      "Monthly planning call",
+      "Response within one business day for time-sensitive issues",
     ],
     highlight: false,
   },
 ];
 
 export const comparisonRows = [
-  { category: "Social Presence", label: "Monthly content calendar", values: [false, true, true] },
-  { category: "Social Presence", label: "Branded post graphics", values: [false, true, true] },
-  { category: "Website Care", label: "Uptime & security monitoring", values: [true, true, true] },
-  { category: "Website Care", label: "Small website changes", values: ["1/mo", "3/mo", "Unlimited"] },
-  { category: "Digital Operations", label: "Priority support", values: [false, false, true] },
+  {
+    category: "Social Presence",
+    label: "Social platforms",
+    values: ["—", "1", "2"],
+  },
+  {
+    category: "Social Presence",
+    label: "Posts per month",
+    values: ["—", "8", "12"],
+  },
+  {
+    category: "Social Presence",
+    label: "Content calendar",
+    values: [false, true, true],
+  },
+  {
+    category: "Social Presence",
+    label: "Branded graphics",
+    values: [false, true, true],
+  },
+  {
+    category: "Website Care",
+    label: "Website-support allowance",
+    values: ["Up to 2 hrs/mo", "Up to 4 hrs/mo", "Up to 8 hrs/mo"],
+  },
+  {
+    category: "Website Care",
+    label: "Uptime monitoring",
+    values: [true, true, true],
+  },
+  {
+    category: "Digital Operations",
+    label: "Forms and integrations",
+    values: [false, false, true],
+  },
+  {
+    category: "Digital Operations",
+    label: "Workflow automation",
+    values: [false, false, true],
+  },
+  {
+    category: "Reporting",
+    label: "Reporting",
+    values: ["Monthly summary", "Monthly summary", "Monthly summary"],
+  },
+  {
+    category: "Support",
+    label: "Monthly planning call",
+    values: [false, false, true],
+  },
+  {
+    category: "Support",
+    label: "Support response time",
+    values: [
+      "Within 2 business days",
+      "Within 2 business days",
+      "Within 1 business day",
+    ],
+  },
 ];

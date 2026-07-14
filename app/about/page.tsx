@@ -3,48 +3,69 @@ import PageHero from "../components/PageHero";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Technical experience behind reliable digital support.",
+  description:
+    "Peerprise is supported by experienced software engineers who build, maintain and improve websites, digital platforms, integrations and custom software solutions.",
 };
+
+const howWeWork = [
+  "Clear project scope",
+  "Structured communication",
+  "Secure access management",
+  "Documented delivery",
+  "Reliable technical support",
+  "Long-term maintainability",
+];
 
 export default function AboutPage() {
   return (
     <>
-      <PageHero headline="Technical experience behind reliable digital support." />
+      <PageHero
+        eyebrow="About"
+        headline="Engineering-led digital support built around reliability."
+        subtext="Peerprise brings website care, social presence management, digital operations and custom software development together under one reliable team."
+      />
 
       <section className="section-padding bg-[var(--color-dark-bg)]">
+        <div className="site-container max-w-[840px]">
+          <h2 className="text-[28px] font-bold text-white mb-4">Why Peerprise Exists</h2>
+          <p className="text-[16px] text-gray-400 leading-relaxed">
+            Managing websites, social channels, integrations and software through separate providers
+            often creates delays and unclear ownership. Peerprise brings these responsibilities
+            together through a structured and technically capable team.
+          </p>
+        </div>
+      </section>
+
+      <section className="section-padding bg-[var(--color-dark-surface)] border-t border-white/5">
+        <div className="site-container max-w-[840px]">
+          <h2 className="text-[28px] font-bold text-white mb-4">Engineering-Led Delivery</h2>
+          <p className="text-[16px] text-gray-400 leading-relaxed">
+            Peerprise works with experienced software engineers who understand modern applications,
+            websites, APIs, integrations, cloud platforms and production systems.
+          </p>
+        </div>
+      </section>
+
+      <section className="section-padding bg-[var(--color-dark-bg)] border-t border-white/5">
         <div className="site-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <div className="flex flex-col gap-6">
-              <h2 className="text-[28px] font-bold text-white">Our Story</h2>
-              <p className="text-[16px] text-gray-400 leading-relaxed">
-                Peerprise was founded by a software engineer with more than nine years of experience building, maintaining and supporting digital products, websites and platforms for international clients.
-              </p>
-              <p className="text-[16px] text-gray-400 leading-relaxed">
-                The idea behind Peerprise is straightforward: too many companies and professionals end up managing multiple disconnected providers for their social presence, website and technical needs. This creates delays, inconsistent quality and no single point of accountability.
-              </p>
-              <p className="text-[16px] text-gray-400 leading-relaxed">
-                Peerprise brings those responsibilities together under one structured, technical team.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="glass-card p-6 rounded-[12px] hover:bg-white/10 transition-colors">
-                <h3 className="font-bold text-white mb-2">Technical Foundations</h3>
-                <p className="text-[14px] text-gray-400">We approach digital presence with engineering discipline.</p>
-              </div>
-              <div className="glass-card p-6 rounded-[12px] hover:bg-white/10 transition-colors">
-                <h3 className="font-bold text-white mb-2">Single Accountability</h3>
-                <p className="text-[14px] text-gray-400">One reliable team managing your interconnected tools.</p>
-              </div>
-              <div className="glass-card p-6 rounded-[12px] hover:bg-white/10 transition-colors">
-                <h3 className="font-bold text-white mb-2">No False Promises</h3>
-                <p className="text-[14px] text-gray-400">We focus on consistent operations, not vanity metrics.</p>
-              </div>
-              <div className="glass-card p-6 rounded-[12px] hover:bg-white/10 transition-colors">
-                <h3 className="font-bold text-white mb-2">Secure Management</h3>
-                <p className="text-[14px] text-gray-400">Strict access controls and secure credential handling.</p>
-              </div>
-            </div>
-          </div>
+          <h2 className="text-[28px] font-bold text-white mb-8">How We Work</h2>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {howWeWork.map((item) => (
+              <li key={item} className="glass-card rounded-[12px] p-5">
+                <p className="text-white font-medium leading-relaxed">{item}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="section-padding bg-[var(--color-dark-surface)] border-t border-white/5">
+        <div className="site-container max-w-[840px]">
+          <h2 className="text-[28px] font-bold text-white mb-4">What Clients Can Expect</h2>
+          <p className="text-[16px] text-gray-400 leading-relaxed">
+            Clients receive practical guidance, clear ownership and technical delivery focused on
+            their actual requirements.
+          </p>
         </div>
       </section>
     </>

@@ -7,7 +7,8 @@ import { faqs } from "../lib/faqs";
 
 export const metadata: Metadata = {
   title: "Social Presence Management",
-  description: "Consistent, professional social presence without the daily workload.",
+  description:
+    "Keep your business active, consistent and professional across its social channels through planned content, branded graphics, scheduling and publishing.",
 };
 
 const includedFeatures = [
@@ -28,24 +29,33 @@ const processSteps = [
   { step: "04", title: "Publish", desc: "Content is scheduled, published, and monitored across your active platforms." },
 ];
 
+const audiences = [
+  "Professional service companies",
+  "Technology and SaaS businesses",
+  "E-commerce and consumer brands",
+  "Agencies",
+  "Consultants and independent professionals",
+  "Creators and personal brands",
+];
+
 export default function SocialPresenceManagement() {
-  const pageFaqs = faqs.filter(f => ["platforms", "content-type", "seo", "contract"].includes(f.id));
+  const pageFaqs = faqs.filter(f => ["services", "platforms", "content-type", "focus", "contract"].includes(f.id));
 
   return (
     <>
       <PageHero
         eyebrow="Social Presence Management"
         headline="Consistent, professional social presence without the daily workload."
-        subtext="Peerprise helps companies, brands and professionals plan, prepare and publish social content consistently—without promising follower growth, leads or sales."
+        subtext="Keep your business active, consistent and professional across its social channels through planned content, branded graphics, scheduling and publishing."
         primaryCta={{ label: "Request a Health Check", href: "/health-check" }}
         secondaryCta={{ label: "View Plans", href: "/plans" }}
       />
 
       <section className="section-padding bg-[var(--color-dark-bg)]">
         <div className="site-container">
-          <SectionHeading eyebrow="Who this is for" headline="Built for professionals." />
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {["Professional Services", "E-commerce", "Consultants", "Creators"].map(audience => (
+          <SectionHeading eyebrow="Who this is for" headline="Built for companies, brands and professionals." />
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {audiences.map(audience => (
               <div key={audience} className="glass-card rounded-[14px] p-6 text-center font-bold text-white hover:bg-white/10 transition-colors">
                 {audience}
               </div>
@@ -87,10 +97,10 @@ export default function SocialPresenceManagement() {
 
       <section className="py-12 sm:py-16 bg-[var(--color-dark-surface)]">
         <div className="site-container max-w-[800px]">
-          <div className="bg-amber-500/10 border border-amber-400/30 rounded-[12px] p-5 sm:p-6">
-            <h3 className="text-amber-200 font-semibold mb-2">Important Notice</h3>
-            <p className="text-amber-100/80 leading-relaxed text-[14px] sm:text-[15px]">
-              Peerprise does not currently provide paid social advertising, influencer campaigns, follower-growth guarantees or lead-generation services.
+          <div className="glass-card rounded-[12px] p-5 sm:p-6">
+            <h3 className="text-white font-semibold mb-2">Our focus</h3>
+            <p className="text-gray-300 leading-relaxed text-[14px] sm:text-[15px]">
+              Our focus is reliable social presence management through planned content, branded graphics, scheduling and publishing. Your monthly plan covers the services and deliverables listed in the selected package. Additional work is scoped separately.
             </p>
           </div>
         </div>

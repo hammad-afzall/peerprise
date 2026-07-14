@@ -15,7 +15,7 @@ const steps = [
   { num: "04", title: "Monthly Planning", desc: "At the start of each month we confirm content direction, support priorities and any scope changes. Approval happens before publishing." },
   { num: "05", title: "Delivery", desc: "We execute agreed work: publishing, updates, maintenance, integrations and support requests. You are kept informed of progress." },
   { num: "06", title: "Reporting", desc: "At month end you receive a structured summary of completed work, pending items and anything that needs your attention." },
-  { num: "07", title: "Ongoing Support", desc: "Support requests are submitted through an agreed channel (email, shared inbox or project tool). Responses within 2-3 business days standard, faster on the top plan." },
+  { num: "07", title: "Ongoing Support", desc: "Support requests are submitted through an agreed channel (email, shared inbox or project tool). Routine requests receive a response within two business days. Time-sensitive issues receive a response within one business day. Critical website outages are acknowledged within four business hours during standard business hours. Emergency and 24/7 support require a separate support agreement." },
 ];
 
 const policies = [

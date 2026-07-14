@@ -23,6 +23,7 @@ type ContactPayload = {
   name: string;
   email: string;
   company: string;
+  service?: string;
   message?: string;
 };
 
@@ -50,7 +51,7 @@ function getMailConfig() {
 
 export async function sendContactEmail(payload: ContactPayload) {
   const { from, to } = getMailConfig();
-  const { name, email, company, message } = payload;
+  const { name, email, company, service, message } = payload;
 
   const { error } = await resend.emails.send({
     from,
@@ -63,6 +64,7 @@ export async function sendContactEmail(payload: ContactPayload) {
         ${row("Name", name)}
         ${row("Email", email)}
         ${row("Company", company)}
+        ${row("Service", service)}
         ${row("Message", message)}
       </table>
     `,

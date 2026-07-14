@@ -15,7 +15,7 @@ export default function PricingPreview() {
               Whether you need basic website maintenance or comprehensive digital operations support, our plans are straightforward, with no long-term contracts.
             </p>
             <Link href="/plans" className="inline-flex items-center gap-2 text-[15px] font-bold text-[#4E6EFF] hover:text-[#FF58D5] transition-colors group">
-              View all plans and features
+              View Plans
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="transition-transform group-hover:translate-x-1" aria-hidden="true"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </Link>
           </div>
@@ -33,7 +33,7 @@ export default function PricingPreview() {
                 <span className="text-[15px] text-gray-400 font-medium">{startingPlan.period}</span>
               </div>
 
-              <p className="text-[15px] text-gray-400 leading-relaxed">Choose the level of support that fits your business needs.</p>
+              <p className="text-[15px] text-gray-400 leading-relaxed">Choose the level of support that fits your company, brand or professional presence.</p>
 
               <div className="border-t border-white/10 my-5 sm:my-6" aria-hidden="true" />
 
@@ -49,7 +49,7 @@ export default function PricingPreview() {
               </ul>
 
               <Link href="/plans" className="btn-primary">
-                Compare all plans
+                View Plans
               </Link>
             </article>
           </div>

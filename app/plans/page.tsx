@@ -8,7 +8,8 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Plans",
-  description: "Straightforward monthly plans for social presence management, website care and digital operations support.",
+  description:
+    "Straightforward monthly plans for social presence management, website care and digital operations support.",
 };
 
 export default function PlansPage() {
@@ -17,7 +18,7 @@ export default function PlansPage() {
       <PageHero
         eyebrow="Plans"
         headline="Straightforward monthly support. No hidden fees."
-        subtext="Choose the level of support that fits your business. All plans include a monthly activity summary and direct access to your Peerprise team."
+        subtext="Choose the level of support that fits your company, brand or professional presence. All plans include a monthly activity summary and direct access to your Peerprise team."
       />
 
       <section className="section-padding bg-[var(--color-dark-surface)]">
@@ -52,7 +53,7 @@ export default function PlansPage() {
                   ))}
                 </ul>
                 <Link href="/health-check" className={`w-full h-12 flex items-center justify-center rounded-full text-[15px] font-bold transition-all ${plan.highlight ? 'bg-gradient-to-r from-[#FF58D5] to-[#4E6EFF] text-white hover:opacity-90 shadow-md' : 'bg-white/10 text-white hover:bg-white/20'}`}>
-                  Request Health Check
+                  Request a Health Check
                 </Link>
               </article>
             ))}
@@ -71,11 +72,13 @@ export default function PlansPage() {
 
       <section className="py-12 sm:py-16 bg-[var(--color-dark-bg)]">
         <div className="site-container max-w-[760px]">
-          <SectionHeading headline="Important Policies" center className="mb-10" />
+          <SectionHeading headline="Plan details" center className="mb-10" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="glass-card p-6 rounded-[12px] hover:bg-white/10 transition-colors">
-              <h4 className="font-bold text-white mb-2">Small website changes</h4>
-              <p className="text-gray-400 text-[14px]">Defined as text, image or button edits under one hour.</p>
+              <h4 className="font-bold text-white mb-2">Website-support allowance</h4>
+              <p className="text-gray-400 text-[14px]">
+                A small website change is a content, image or layout update that usually takes no more than 30 minutes and does not require new custom functionality. Work beyond your monthly allowance is scoped separately.
+              </p>
             </div>
             <div className="glass-card p-6 rounded-[12px] hover:bg-white/10 transition-colors">
               <h4 className="font-bold text-white mb-2">Setup</h4>
@@ -83,11 +86,15 @@ export default function PlansPage() {
             </div>
             <div className="glass-card p-6 rounded-[12px] hover:bg-white/10 transition-colors">
               <h4 className="font-bold text-white mb-2">Support response</h4>
-              <p className="text-gray-400 text-[14px]">Standard 2-3 business days, priority on top plan.</p>
+              <p className="text-gray-400 text-[14px]">
+                Routine request: response within two business days. Time-sensitive issue: response within one business day. Critical website outage: acknowledgement within four business hours during standard business hours. Emergency and 24/7 support require a separate support agreement.
+              </p>
             </div>
             <div className="glass-card p-6 rounded-[12px] hover:bg-white/10 transition-colors">
-              <h4 className="font-bold text-white mb-2">What is not included</h4>
-              <p className="text-gray-400 text-[14px]">Website builds, custom development, paid ads, SEO strategy.</p>
+              <h4 className="font-bold text-white mb-2">What your plan covers</h4>
+              <p className="text-gray-400 text-[14px]">
+                Your monthly plan covers the services and deliverables listed in the selected package. Additional work, including larger website projects and custom software, is scoped separately.
+              </p>
             </div>
           </div>
         </div>
@@ -98,8 +105,8 @@ export default function PlansPage() {
         eyebrow="Get Started"
         headline="Not sure which plan fits? Start with a health check."
         note="No long-term contract required."
-        primaryCta={{ label: "Request a Free Health Check", href: "/health-check" }}
-        secondaryCta={{ label: "Contact Us", href: "/contact" }}
+        primaryCta={{ label: "Request Your Free Health Check", href: "/health-check" }}
+        secondaryCta={{ label: "Contact Peerprise", href: "/contact" }}
       />
     </>
   );

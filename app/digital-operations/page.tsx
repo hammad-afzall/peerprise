@@ -7,7 +7,8 @@ import { faqs } from "../lib/faqs";
 
 export const metadata: Metadata = {
   title: "Digital Operations Support",
-  description: "Peerprise helps configure, connect and maintain the forms, integrations, analytics and workflows your business depends on.",
+  description:
+    "Keep your forms, integrations, analytics and digital tools configured, connected and operating correctly.",
 };
 
 const coveredItems = [
@@ -24,13 +25,6 @@ const coveredItems = [
   "Access and security management",
 ];
 
-const excludedItems = [
-  "Paid advertising setup",
-  "SEO strategy",
-  "Custom software development",
-  "Data science or BI reporting",
-];
-
 const processSteps = [
   { number: "01", title: "Audit", description: "We review existing tools and connections to understand your setup." },
   { number: "02", title: "Configure", description: "We set up and connect systems correctly." },
@@ -38,14 +32,14 @@ const processSteps = [
 ];
 
 export default function DigitalOperationsPage() {
-  const pageFaqs = faqs.filter(f => ["seo", "access", "turnaround", "contract"].includes(f.id));
+  const pageFaqs = faqs.filter(f => ["services", "focus", "access", "turnaround", "contract"].includes(f.id));
 
   return (
     <>
       <PageHero
         eyebrow="Digital Operations Support"
         headline="Technical support for the tools behind your digital presence."
-        subtext="Peerprise helps configure, connect and maintain the forms, integrations, analytics and workflows your business depends on."
+        subtext="Keep your forms, integrations, analytics and digital tools configured, connected and operating correctly."
         primaryCta={{ label: "Request a Health Check", href: "/health-check" }}
         secondaryCta={{ label: "View Plans", href: "/plans" }}
       />
@@ -67,20 +61,12 @@ export default function DigitalOperationsPage() {
       </section>
 
       <section className="section-padding bg-[var(--color-dark-surface)]">
-        <div className="site-container grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="bg-[#EEF2FF] border border-[#C7D2FE] rounded-[12px] p-6">
+        <div className="site-container">
+          <div className="bg-[#EEF2FF] border border-[#C7D2FE] rounded-[12px] p-6 max-w-[800px]">
             <h3 className="text-[#3730A3] font-bold text-[16px] mb-3">A note on analytics</h3>
             <p className="text-[#4338CA] leading-relaxed text-[15px]">
-              Analytics configuration means setting up tracking correctly. Peerprise does not provide marketing strategy, performance consulting or campaign management.
+              Analytics configuration means setting up tracking correctly so your tools report accurately. Your monthly plan covers the services and deliverables listed in the selected package. Additional work is scoped separately.
             </p>
-          </div>
-          <div className="bg-[var(--color-dark-bg)] border border-white/10 rounded-[12px] p-6">
-            <h3 className="text-white font-bold text-[16px] mb-3">Outside our scope</h3>
-            <ul className="space-y-2">
-              {excludedItems.map(item => (
-                <li key={item} className="text-gray-400 text-[15px]">• {item}</li>
-              ))}
-            </ul>
           </div>
         </div>
       </section>
