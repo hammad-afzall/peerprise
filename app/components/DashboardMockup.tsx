@@ -11,7 +11,7 @@ export default function DashboardMockup() {
             <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
           </div>
           <div className="mx-auto text-[11px] sm:text-[12px] font-medium text-gray-400 truncate px-2">
-            Example Peerprise activity dashboard
+            Peerprise Activity Dashboard
           </div>
         </div>
 
