@@ -27,6 +27,9 @@ export const metadata: Metadata = {
     "technical support",
     "Peerprise",
   ],
+  icons: {
+    icon: "/favicon.svg"
+  },
   metadataBase: new URL("https://peerprise.com"),
   openGraph: {
     title: "Peerprise — Managed Digital Presence",

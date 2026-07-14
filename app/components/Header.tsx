@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
+import Logo from "./Logo";
 import MobileNav from "./MobileNav";
 import { serviceLinks, mainNavLinks } from "../lib/nav";
 
@@ -18,9 +18,8 @@ export default function Header() {
     <>
       <header className="fixed top-0 inset-x-0 h-[72px] md:h-[88px] bg-[#0B1220]/90 backdrop-blur-md border-b border-white/10 z-30">
         <div className="site-container h-full flex items-center justify-between gap-4">
-          <Link href="/" className="flex items-center gap-2 sm:gap-3 group min-w-0">
-            <Image src="/logo.svg" alt="Peerprise Logo" width={40} height={40} className="w-8 h-8 sm:w-10 sm:h-10 shrink-0 group-hover:opacity-80 transition-opacity" />
-            <span className="text-[18px] sm:text-[22px] font-bold text-white tracking-tight truncate">Peerprise</span>
+          <Link href="/" className="flex items-center group min-w-0">
+            <Logo className="h-16 w-auto shrink-0 group-hover:opacity-80 transition-opacity" />
           </Link>
 
           <nav className="hidden md:flex items-center gap-1 bg-[#131A2D]/50 border border-white/10 rounded-full px-2 py-1.5" aria-label="Main Navigation">
@@ -50,9 +49,6 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-3 sm:gap-6 shrink-0">
-            <Link href="/contact" className="hidden lg:block text-[15px] font-medium text-gray-300 hover:text-white transition-colors">
-              Sign In
-            </Link>
             <Link href="/health-check" className="hidden md:flex h-10 lg:h-11 px-5 lg:px-7 rounded-full bg-gradient-to-r from-[#FF58D5] to-[#4E6EFF] text-white text-[14px] lg:text-[15px] font-bold hover:opacity-90 transition-opacity shadow-[0_0_20px_rgba(255,88,213,0.3)] items-center justify-center whitespace-nowrap">
               Request Health Check
             </Link>

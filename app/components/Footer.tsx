@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import Logo from "./Logo";
 import { footerLinks, serviceLinks, mainNavLinks } from "../lib/nav";
 
 export default function Footer() {
@@ -8,9 +8,8 @@ export default function Footer() {
       <div className="site-container">
         <div className="grid grid-cols-2 md:grid-cols-12 gap-8 sm:gap-10 mb-12 sm:mb-16">
           <div className="col-span-2 md:col-span-4 lg:col-span-3">
-            <Link href="/" className="flex items-center gap-2.5 mb-5 group w-fit">
-              <Image src="/logo.svg" alt="Peerprise Logo" width={32} height={32} className="w-8 h-8 group-hover:opacity-80 transition-opacity" />
-              <span className="text-[20px] font-bold text-white tracking-tight">Peerprise</span>
+            <Link href="/" className="flex items-center mb-5 group w-fit">
+              <Logo className="h-16 w-auto group-hover:opacity-80 transition-opacity" />
             </Link>
             <p className="text-[14px] text-gray-400 max-w-[280px] leading-relaxed mb-6">
               A software-engineering-led digital presence management company. We help brands build, deploy, and scale their digital operations.
