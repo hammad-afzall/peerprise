@@ -9,7 +9,7 @@ import DeliverablesExamples from "./components/DeliverablesExamples";
 import ClientReviews from "./components/ClientReviews";
 import CTABanner from "./components/CTABanner";
 import FAQ from "./components/FAQ";
-import { services } from "./lib/services";
+import { homepageServices } from "./lib/services";
 
 const serviceIcons: Record<string, ReactNode> = {
   "/social-presence-management": (
@@ -98,7 +98,7 @@ export default function Home() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-            {services.map((service) => (
+            {homepageServices.map((service) => (
               <ServiceOverviewCard
                 key={service.href}
                 title={service.label}

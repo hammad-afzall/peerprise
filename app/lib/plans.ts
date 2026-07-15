@@ -1,4 +1,22 @@
-export const plans = [
+/**
+ * Managed plan pricing and comparison data — master spec Section 12.
+ * Keep prices and features in one place for PricingCard / PlanComparison.
+ */
+
+export type Plan = {
+  id: string;
+  name: string;
+  price: string;
+  period: string;
+  description: string;
+  features: string[];
+  highlight: boolean;
+  badge?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+};
+
+export const plans: Plan[] = [
   {
     id: "presence-care",
     name: "Presence Care",
@@ -22,6 +40,7 @@ export const plans = [
     period: "/month",
     description:
       "For companies, brands and professionals that need a consistent social presence with reliable website care.",
+    // Prompt 11 will align badge copy to approved “Most selected”.
     badge: "Most Popular",
     features: [
       "One primary social platform",
@@ -52,7 +71,15 @@ export const plans = [
   },
 ];
 
-export const comparisonRows = [
+export type ComparisonValue = string | boolean;
+
+export type ComparisonRow = {
+  category: string;
+  label: string;
+  values: ComparisonValue[];
+};
+
+export const comparisonRows: ComparisonRow[] = [
   {
     category: "Social Presence",
     label: "Social platforms",

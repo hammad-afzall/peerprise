@@ -1,17 +1,16 @@
 import Link from "next/link";
+import { surfaceClasses, type LinkCTA, type SurfaceVariant } from "../lib/surface";
 
-interface CTAProps {
-  label: string;
-  href: string;
-}
-
-interface Props {
+type Props = {
   eyebrow?: string;
   headline: string;
   subtext?: string;
-  primaryCta?: CTAProps;
-  secondaryCta?: CTAProps;
-}
+  primaryCta?: LinkCTA;
+  secondaryCta?: LinkCTA;
+  /** Dark matches approved hero / page-hero treatment. */
+  variant?: SurfaceVariant;
+  className?: string;
+};
 
 export default function PageHero({
   eyebrow,
@@ -19,24 +18,30 @@ export default function PageHero({
   subtext,
   primaryCta,
   secondaryCta,
+  variant = "dark",
+  className = "",
 }: Props) {
+  const s = surfaceClasses(variant);
+  const isDark = variant === "dark";
+
   return (
-    <section aria-label="Page Hero" className="relative pt-[120px] pb-12 sm:pt-[140px] sm:pb-20 lg:pb-[96px] bg-[var(--color-dark-bg)] border-b border-white/5 overflow-hidden">
-      <div className="hero-glow-pink" style={{ top: "-400px", opacity: 0.5 }} />
+    <section
+      aria-label="Page hero"
+      className={[
+        "relative pt-[120px] pb-12 sm:pt-[140px] sm:pb-20 lg:pb-[96px] overflow-hidden border-b",
+        isDark ? "bg-dark-bg border-white/5" : "bg-canvas border-border",
+        className,
+      ].join(" ")}
+    >
+      {isDark && <div className="hero-glow-pink" style={{ top: "-400px", opacity: 0.5 }} />}
       <div className="site-container relative z-10">
         <div className="max-w-[800px]">
           {eyebrow && (
-            <p className="text-[11px] sm:text-[12px] font-bold tracking-[0.1em] sm:tracking-[0.12em] uppercase text-gray-400 mb-4 sm:mb-6">
-              {eyebrow}
-            </p>
+            <p className={`type-eyebrow mb-4 sm:mb-6 ${s.eyebrow}`}>{eyebrow}</p>
           )}
-          <h1 className="text-[32px] sm:text-[44px] md:text-[52px] lg:text-[60px] font-bold leading-[1.1] tracking-tight text-white mb-4 sm:mb-6">
-            {headline}
-          </h1>
+          <h1 className={`type-h1 mb-4 sm:mb-6 ${s.heading}`}>{headline}</h1>
           {subtext && (
-            <p className="text-[16px] sm:text-[18px] leading-relaxed text-gray-400 max-w-[640px] mb-6 sm:mb-8">
-              {subtext}
-            </p>
+            <p className={`type-body-lg max-w-[640px] mb-6 sm:mb-8 ${s.body}`}>{subtext}</p>
           )}
           {(primaryCta || secondaryCta) && (
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -46,7 +51,7 @@ export default function PageHero({
                 </Link>
               )}
               {secondaryCta && (
-                <Link href={secondaryCta.href} className="btn-secondary">
+                <Link href={secondaryCta.href} className={s.secondaryBtn}>
                   {secondaryCta.label}
                 </Link>
               )}

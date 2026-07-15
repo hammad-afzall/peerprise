@@ -56,9 +56,14 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={manrope.variable}>
-      <body className={`${manrope.className} bg-[#0B1220] text-white/90 selection:bg-indigo-500/30 min-h-screen flex flex-col overflow-x-hidden w-full`}>
+      <body className={`${manrope.className} bg-dark-bg text-on-dark min-h-screen flex flex-col overflow-x-hidden w-full`}>
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <Header />
-        <main id="main-content" className="w-full overflow-x-hidden">{children}</main>
+        <main id="main-content" className="w-full overflow-x-hidden" tabIndex={-1}>
+          {children}
+        </main>
         <Footer />
         <Analytics />
         <SpeedInsights />
