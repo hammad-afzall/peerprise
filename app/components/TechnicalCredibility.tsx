@@ -1,86 +1,83 @@
-import SectionHeading from "./SectionHeading";
+import SectionLabel from "./SectionLabel";
+import ArrowButton from "./ArrowButton";
+import Reveal from "./Reveal";
+import { homepageEngineering } from "../lib/homepage";
+import { ctas } from "../lib/ctas";
 
-const credibilityPoints = [
-  {
-    title: "Experienced software engineering team",
-    description:
-      "Technical delivery led by engineers who build and maintain production systems.",
-  },
-  {
-    title: "International project experience",
-    description:
-      "Work spanning websites, platforms and digital products for clients across markets.",
-  },
-  {
-    title: "Modern web and backend development",
-    description:
-      "Practical experience across modern applications, interfaces and server-side systems.",
-  },
-  {
-    title: "APIs, integrations and automation",
-    description:
-      "Connecting tools, workflows and data so everyday operations stay reliable.",
-  },
-  {
-    title: "Secure and structured delivery",
-    description:
-      "Clear scope, careful access handling and documented technical work.",
-  },
-  {
-    title: "Production-focused engineering",
-    description:
-      "Solutions designed to stay maintainable after launch, not only to ship once.",
-  },
-];
-
+/**
+ * Engineering credibility — Studiova about/why-us mosaic with Peerprise copy.
+ */
 export default function TechnicalCredibility() {
   return (
     <section
       aria-labelledby="credibility-heading"
-      className="section-padding bg-[var(--color-dark-bg)] border-t border-white/5 relative overflow-hidden"
+      className="section-padding bg-[#f4f8fa] text-[#1f2a2e]"
     >
-      <div className="hero-glow-blue" style={{ top: "-400px", opacity: 0.3 }} />
-      <div className="site-container relative z-10">
-        <SectionHeading
-          eyebrow="Engineering approach"
-          headline="Experienced software engineers behind every technical solution."
-          center
-          id="credibility-heading"
-        />
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {credibilityPoints.map((point) => (
-            <div
-              key={point.title}
-              className="glass-card rounded-[16px] p-8 hover:bg-white/10 transition-colors"
-            >
-              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center mb-6 text-[#4E6EFF]">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+      <div className="site-container">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
+          <div className="lg:col-span-5">
+            <Reveal>
+              <SectionLabel number="05" badge={homepageEngineering.eyebrow} />
+            </Reveal>
+            <Reveal delayMs={80} className="mt-8 flex flex-col gap-5 2xl:gap-7">
+              <h2
+                id="credibility-heading"
+                className="m-0 max-w-3xl text-4xl font-bold leading-tight tracking-tight md:text-5xl"
+              >
+                {homepageEngineering.headline}
+              </h2>
+              {homepageEngineering.copy.map((paragraph) => (
+                <p
+                  key={paragraph.slice(0, 48)}
+                  className="m-0 max-w-sm text-lg text-[#1f2a2e]/70 2xl:max-w-none"
                 >
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </svg>
+                  {paragraph}
+                </p>
+              ))}
+              <div className="mt-2 flex flex-col gap-3 sm:flex-row">
+                <ArrowButton href={ctas.discussSoftware.href}>
+                  {ctas.discussSoftware.label}
+                </ArrowButton>
               </div>
-              <h3 className="text-white font-bold text-[18px] mb-3">{point.title}</h3>
-              <p className="text-[15px] text-gray-400 leading-relaxed">{point.description}</p>
-            </div>
-          ))}
-        </div>
-        <div className="mt-16 text-center">
-          <p className="text-[14px] sm:text-[15px] text-gray-400 max-w-[720px] mx-auto bg-white/5 border border-white/10 rounded-2xl px-5 sm:px-6 py-4 inline-block text-center leading-relaxed">
-            The engineering team behind Peerprise brings more than seven years of software
-            development experience across web applications, backend systems, integrations,
-            automation and production platforms. Our engineers have contributed to digital products
-            and technical projects connected to globally recognised organisations and major
-            international brands.
-          </p>
+            </Reveal>
+          </div>
+
+          <div className="lg:col-span-7">
+            <ul
+              className="m-0 grid list-none grid-cols-1 gap-5 p-0 sm:grid-cols-2 md:gap-7"
+              role="list"
+            >
+              {homepageEngineering.capabilities.map((capability, index) => (
+                <Reveal key={capability} as="li" delayMs={60 + index * 60}>
+                  <article
+                    className={[
+                      "flex h-full min-h-[140px] flex-col justify-end gap-4 p-6",
+                      index === 0 ? "bg-accent sm:col-span-2" : "bg-white",
+                    ].join(" ")}
+                  >
+                    <div className="flex items-start gap-3">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="/icons/right-check.svg"
+                        alt=""
+                        width={20}
+                        height={20}
+                        className="mt-1 shrink-0"
+                      />
+                      <p className="m-0 text-lg font-semibold leading-snug text-[#1f2a2e]">
+                        {capability}
+                      </p>
+                    </div>
+                  </article>
+                </Reveal>
+              ))}
+            </ul>
+            <Reveal delayMs={200}>
+              <p className="mt-6 m-0 text-base text-[#1f2a2e]/70">
+                {homepageEngineering.supportingLine}
+              </p>
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>

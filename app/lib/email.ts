@@ -23,18 +23,21 @@ type ContactPayload = {
   name: string;
   email: string;
   company: string;
-  service?: string;
+  website?: string;
+  enquiryType?: string;
   message?: string;
+  startPeriod?: string;
+  budget?: string;
 };
 
-type HealthCheckPayload = {
+type DigitalReviewPayload = {
   name: string;
   email: string;
   company: string;
-  website?: string;
+  website: string;
   socials?: string;
   service?: string;
-  concern?: string;
+  concern: string;
 };
 
 function getMailConfig() {
@@ -51,21 +54,24 @@ function getMailConfig() {
 
 export async function sendContactEmail(payload: ContactPayload) {
   const { from, to } = getMailConfig();
-  const { name, email, company, service, message } = payload;
+  const { name, email, company, website, enquiryType, message, startPeriod, budget } = payload;
 
   const { error } = await resend.emails.send({
     from,
     to,
     replyTo: email,
-    subject: `New contact message from ${name}`,
+    subject: `New enquiry from ${name}`,
     html: `
-      <h2 style="font-family:sans-serif;color:#111827;">New Contact Message</h2>
+      <h2 style="font-family:sans-serif;color:#111827;">New Contact Enquiry</h2>
       <table style="font-family:sans-serif;font-size:14px;border-collapse:collapse;">
         ${row("Name", name)}
         ${row("Email", email)}
         ${row("Company", company)}
-        ${row("Service", service)}
-        ${row("Message", message)}
+        ${row("Website", website)}
+        ${row("Enquiry type", enquiryType)}
+        ${row("What they need help with", message)}
+        ${row("Preferred start period", startPeriod)}
+        ${row("Budget range", budget)}
       </table>
     `,
   });
@@ -75,7 +81,7 @@ export async function sendContactEmail(payload: ContactPayload) {
   }
 }
 
-export async function sendHealthCheckEmail(payload: HealthCheckPayload) {
+export async function sendDigitalReviewEmail(payload: DigitalReviewPayload) {
   const { from, to } = getMailConfig();
   const { name, email, company, website, socials, service, concern } = payload;
 
@@ -83,16 +89,16 @@ export async function sendHealthCheckEmail(payload: HealthCheckPayload) {
     from,
     to,
     replyTo: email,
-    subject: `Health check request from ${name}`,
+    subject: `Digital Presence Review request from ${name}`,
     html: `
-      <h2 style="font-family:sans-serif;color:#111827;">New Health Check Request</h2>
+      <h2 style="font-family:sans-serif;color:#111827;">New Digital Presence Review Request</h2>
       <table style="font-family:sans-serif;font-size:14px;border-collapse:collapse;">
         ${row("Name", name)}
         ${row("Email", email)}
         ${row("Company", company)}
         ${row("Website", website)}
-        ${row("Socials", socials)}
-        ${row("Service", service)}
+        ${row("Social profiles", socials)}
+        ${row("Need help with", service)}
         ${row("Main concern", concern)}
       </table>
     `,

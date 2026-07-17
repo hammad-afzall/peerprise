@@ -35,7 +35,7 @@ export default function FAQAccordion({
   }
 
   return (
-    <div className={`max-w-[760px] mx-auto divide-y ${s.divide} ${className}`}>
+    <div className={`divide-y ${s.divide} ${className || "max-w-[760px] mx-auto"}`}>
       {items.map((faq) => {
         const open = isOpen(faq.id);
         const buttonId = `${baseId}-btn-${faq.id}`;
@@ -54,28 +54,28 @@ export default function FAQAccordion({
               >
                 <span
                   className={[
-                    "text-[16px] sm:text-[18px] md:text-[20px] font-bold pr-2 transition-colors",
+                    "text-[17px] sm:text-[18px] md:text-[20px] font-bold pr-2 leading-snug transition-colors duration-[var(--duration-base)]",
                     s.heading,
-                    isDark ? "group-hover:text-accent" : "group-hover:text-accent-hover",
+                    isDark ? "group-hover:text-accent" : "group-hover:text-[#1f2a2e]",
                   ].join(" ")}
                 >
                   {faq.question}
                 </span>
                 <span
                   className={[
-                    "flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full border flex items-center justify-center transition-transform duration-[var(--duration-base)] mt-0.5",
+                    "faq-icon flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full border flex items-center justify-center mt-0.5",
                     open
-                      ? "bg-accent border-accent rotate-45"
+                      ? "bg-accent border-accent text-[#1f2a2e] faq-icon-open"
                       : isDark
-                        ? "bg-white/10 border-white/20"
-                        : "bg-canvas border-border",
+                        ? "bg-white/10 border-white/20 text-white"
+                        : "bg-[#f4f8fa] border-black/10 text-[#1f2a2e]",
                   ].join(" ")}
                   aria-hidden="true"
                 >
                   <svg width="12" height="12" viewBox="0 0 10 10" fill="none">
                     <path
                       d="M5 2v6M2 5h6"
-                      stroke={isDark || open ? "#fff" : "currentColor"}
+                      stroke="currentColor"
                       strokeWidth="1.4"
                       strokeLinecap="round"
                     />
@@ -87,12 +87,16 @@ export default function FAQAccordion({
               id={panelId}
               role="region"
               aria-labelledby={buttonId}
-              hidden={!open}
-              className={open ? "pb-6 sm:pb-8" : undefined}
+              aria-hidden={!open}
+              className={["faq-panel", open ? "faq-panel-open" : ""].filter(Boolean).join(" ")}
             >
-              <p className={`type-body leading-relaxed pr-2 sm:pr-12 ${isDark ? "text-on-dark-subtle" : "text-ink-secondary"}`}>
-                {faq.answer}
-              </p>
+              <div className="faq-panel-inner">
+                <p
+                  className={`type-body leading-relaxed pr-2 sm:pr-12 pb-6 sm:pb-8 ${isDark ? "text-on-dark-subtle" : "text-ink-secondary"}`}
+                >
+                  {faq.answer}
+                </p>
+              </div>
             </div>
           </div>
         );

@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         destination: "/custom-software-solutions",
         permanent: true,
       },
+      {
+        source: "/health-check",
+        destination: "/digital-review",
+        permanent: true,
+      },
     ];
   },
 };

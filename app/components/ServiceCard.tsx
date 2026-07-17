@@ -29,8 +29,7 @@ export default function ServiceCard({
     <Link href={href} className={`group block h-full focus-visible:rounded-[var(--radius-card)] ${className}`}>
       <article
         className={[
-          "h-full flex flex-col rounded-[var(--radius-card)] p-6 sm:p-8 transition-colors",
-          "duration-[var(--duration-base)]",
+          "card-motion h-full flex flex-col rounded-[var(--radius-card)] p-6 sm:p-8",
           s.card,
           s.cardHover,
         ].join(" ")}

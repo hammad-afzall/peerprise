@@ -1,8 +1,5 @@
 /**
  * Global navigation and footer data — master spec Sections 3 & 4.
- *
- * Pending routes (linked intentionally; pages land in later stages):
- * /services, /engineering-partnerships, /work, /privacy, /terms
  */
 
 export type NavLink = {
@@ -88,18 +85,7 @@ export const footerCompanyLinks: NavLink[] = [
   { href: "/about", label: "About" },
   { href: "/blog", label: "Insights" },
   { href: "/contact", label: "Contact" },
-  { href: "/privacy", label: "Privacy" },
-  { href: "/terms", label: "Terms" },
 ];
-
-/** Routes referenced in nav/footer that do not yet have pages. */
-export const pendingNavRoutes = [
-  "/services",
-  "/engineering-partnerships",
-  "/work",
-  "/privacy",
-  "/terms",
-] as const;
 
 export function isActivePath(pathname: string, href: string): boolean {
   if (href === "/") return pathname === "/";

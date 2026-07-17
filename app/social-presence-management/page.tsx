@@ -1,119 +1,184 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageHero from "../components/PageHero";
-import SectionHeading from "../components/SectionHeading";
-import CTABanner from "../components/CTABanner";
+import PageSection from "../components/PageSection";
+import Reveal from "../components/Reveal";
 import FAQ from "../components/FAQ";
-import { faqs } from "../lib/faqs";
+import CTASection from "../components/CTASection";
+import { services } from "../lib/services";
+import {
+  socialPresenceBoundaries,
+  socialPresenceClientResponsibilities,
+  socialPresenceFinalCta,
+  socialPresenceFaqs,
+  socialPresenceHero,
+  socialPresenceIncluded,
+  socialPresenceProcess,
+  socialPresenceRelatedIds,
+} from "../lib/social-presence";
 
 export const metadata: Metadata = {
-  title: "Social Presence Management",
+  title: "Social Presence Support",
   description:
-    "Keep your business active, consistent and professional across its social channels through planned content, branded graphics, scheduling and publishing.",
+    "Peerprise helps businesses organise, prepare, approve and publish regular social content while keeping profiles current and on-brand.",
 };
 
-const includedFeatures = [
-  "Monthly content calendar",
-  "Caption preparation",
-  "Branded post graphics",
-  "Scheduling and publishing",
-  "Profile information updates",
-  "Content repurposing (Managed Presence and above)",
-  "Basic comments and message monitoring",
-  "Monthly activity summary",
-];
-
-const processSteps = [
-  { step: "01", title: "Brief", desc: "We gather key themes, company updates, and insights for the upcoming month." },
-  { step: "02", title: "Plan", desc: "A structured content calendar is prepared and submitted for your review." },
-  { step: "03", title: "Create", desc: "We draft captions and create on-brand graphics aligned with the approved calendar." },
-  { step: "04", title: "Publish", desc: "Content is scheduled, published, and monitored across your active platforms." },
-];
-
-const audiences = [
-  "Professional service companies",
-  "Technology and SaaS businesses",
-  "E-commerce and consumer brands",
-  "Agencies",
-  "Consultants and independent professionals",
-  "Creators and personal brands",
-];
-
-export default function SocialPresenceManagement() {
-  const pageFaqs = faqs.filter(f => ["services", "platforms", "content-type", "focus", "contract"].includes(f.id));
+export default function SocialPresenceSupportPage() {
+  const relatedServices = socialPresenceRelatedIds
+    .map((id) => services.find((service) => service.id === id))
+    .filter((service): service is (typeof services)[number] => Boolean(service));
 
   return (
     <>
       <PageHero
-        eyebrow="Social Presence Management"
-        headline="Consistent, professional social presence without the daily workload."
-        subtext="Keep your business active, consistent and professional across its social channels through planned content, branded graphics, scheduling and publishing."
-        primaryCta={{ label: "Request a Health Check", href: "/health-check" }}
-        secondaryCta={{ label: "View Plans", href: "/plans" }}
+        supporting="A structured publishing workflow so your channels stay current without adding another daily task."
+        highlight="structured publishing workflow"
+        headline="Social Presence"
+        subtext={socialPresenceHero.supporting}
+        primaryCta={socialPresenceHero.primaryCta}
+        secondaryCta={socialPresenceHero.secondaryCta}
+        size="standard"
       />
 
-      <section className="section-padding bg-[var(--color-dark-bg)]">
-        <div className="site-container">
-          <SectionHeading eyebrow="Who this is for" headline="Built for companies, brands and professionals." />
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {audiences.map(audience => (
-              <div key={audience} className="glass-card rounded-[14px] p-6 text-center font-bold text-white hover:bg-white/10 transition-colors">
-                {audience}
+      <PageSection
+        number="01"
+        badge={socialPresenceIncluded.eyebrow}
+        headline={socialPresenceIncluded.headline}
+        intro={socialPresenceIncluded.platformsNote}
+        id="social-included-heading"
+        tone="gray"
+      >
+        <ul
+          className="m-0 grid list-none grid-cols-1 gap-4 p-0 sm:grid-cols-2 md:gap-5"
+          role="list"
+        >
+          {socialPresenceIncluded.items.map((item, index) => (
+            <Reveal key={item} as="li" delayMs={30 + index * 30}>
+              <div className="flex items-start gap-3 bg-white p-5">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/icons/right-check.svg" alt="" width={18} height={18} className="mt-1 shrink-0" />
+                <span className="text-base font-medium text-[#1f2a2e]">{item}</span>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </Reveal>
+          ))}
+        </ul>
+      </PageSection>
 
-      <section className="section-padding bg-[var(--color-dark-surface)]">
-        <div className="site-container">
-          <SectionHeading eyebrow="What's included" headline="Everything needed for consistency." />
-          <ul className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {includedFeatures.map(feat => (
-              <li key={feat} className="flex items-center gap-3 glass-card p-4 rounded-[12px]">
-                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[#4E6EFF]">
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5.5l2.5 2.5 4.5-4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+      <PageSection
+        number="02"
+        badge={socialPresenceBoundaries.eyebrow}
+        headline={socialPresenceBoundaries.headline}
+        intro={socialPresenceBoundaries.intro}
+        id="social-boundaries-heading"
+        tone="studio"
+      >
+        <Reveal>
+          <article className="border border-white/12 p-6 lg:p-10">
+            <h3 className="m-0 mb-5 text-xl font-bold tracking-tight text-white md:text-2xl">
+              {socialPresenceBoundaries.exclusionsIntro}
+            </h3>
+            <ul className="m-0 grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2" role="list">
+              {socialPresenceBoundaries.exclusions.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-base text-white/70">
+                  <span
+                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                    aria-hidden="true"
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </article>
+        </Reveal>
+      </PageSection>
+
+      <PageSection
+        number="03"
+        badge={socialPresenceClientResponsibilities.eyebrow}
+        headline={socialPresenceClientResponsibilities.headline}
+        id="social-client-heading"
+        tone="white"
+      >
+        <Reveal>
+          <p className="m-0 max-w-[820px] text-xl leading-relaxed text-[#1f2a2e]/80 md:text-2xl">
+            {socialPresenceClientResponsibilities.copy}
+          </p>
+        </Reveal>
+      </PageSection>
+
+      <PageSection
+        number="04"
+        badge={socialPresenceProcess.eyebrow}
+        headline={socialPresenceProcess.headline}
+        id="social-process-heading"
+        tone="gray"
+      >
+        <ul
+          className="m-0 grid list-none grid-cols-1 gap-5 p-0 sm:grid-cols-2 lg:grid-cols-5 md:gap-6"
+          role="list"
+        >
+          {socialPresenceProcess.steps.map((step, index) => (
+            <Reveal key={step.number} as="li" delayMs={50 + index * 60}>
+              <article className="flex h-full flex-col gap-3 bg-white p-5 lg:p-6">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-accent text-sm font-bold text-[#1f2a2e]">
+                  {step.number}
                 </span>
-                <span className="text-white font-medium">{feat}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+                <h3 className="m-0 text-lg font-bold tracking-tight">{step.title}</h3>
+                <p className="m-0 text-sm leading-relaxed text-[#1f2a2e]/70">{step.description}</p>
+              </article>
+            </Reveal>
+          ))}
+        </ul>
+      </PageSection>
 
-      <section className="section-padding bg-[var(--color-dark-bg)]">
-        <div className="site-container">
-          <SectionHeading eyebrow="Process" headline="How we work together." />
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-4 gap-6">
-            {processSteps.map(step => (
-              <div key={step.step} className="glass-card rounded-[14px] p-6 hover:bg-white/10 transition-colors">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF58D5] to-[#4E6EFF] font-bold text-[13px] tracking-widest uppercase block mb-2">{step.step}</span>
-                <h3 className="text-white font-bold text-[18px] mb-2">{step.title}</h3>
-                <p className="text-gray-400 text-[15px] leading-relaxed">{step.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PageSection
+        number="05"
+        badge="Related services"
+        headline="Often combined with website care and digital operations."
+        id="social-related-heading"
+        tone="white"
+      >
+        <ul
+          className="m-0 grid list-none grid-cols-1 gap-5 p-0 md:grid-cols-2 md:gap-7"
+          role="list"
+        >
+          {relatedServices.map((service, index) => (
+            <Reveal key={service.id} as="li" delayMs={60 + index * 70}>
+              <Link href={service.href} className="group flex h-full flex-col justify-between gap-6 bg-[#f4f8fa] p-6 lg:p-8">
+                <div className="flex flex-col gap-3">
+                  <h3 className="m-0 text-xl font-bold tracking-tight md:text-2xl">
+                    {service.approvedLabel}
+                  </h3>
+                  <p className="m-0 text-base text-[#1f2a2e]/70">{service.navDescription}</p>
+                </div>
+                <span className="inline-flex items-center text-[15px] font-bold text-[#1f2a2e]">
+                  {service.linkLabel}
+                  <span className="ml-2 transition-transform group-hover:translate-x-1" aria-hidden="true">
+                    →
+                  </span>
+                </span>
+              </Link>
+            </Reveal>
+          ))}
+        </ul>
+      </PageSection>
 
-      <section className="py-12 sm:py-16 bg-[var(--color-dark-surface)]">
-        <div className="site-container max-w-[800px]">
-          <div className="glass-card rounded-[12px] p-5 sm:p-6">
-            <h3 className="text-white font-semibold mb-2">Our focus</h3>
-            <p className="text-gray-300 leading-relaxed text-[14px] sm:text-[15px]">
-              Our focus is reliable social presence management through planned content, branded graphics, scheduling and publishing. Your monthly plan covers the services and deliverables listed in the selected package. Additional work is scoped separately.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <CTABanner
-        dark
-        headline="Ready to maintain a consistent social presence?"
-        primaryCta={{ label: "Request a Health Check", href: "/health-check" }}
-        secondaryCta={{ label: "View Plans", href: "/plans" }}
+      <FAQ
+        items={socialPresenceFaqs}
+        eyebrow="Common questions"
+        headline="Social presence questions"
+        variant="light"
+        number="06"
       />
 
-      <FAQ items={pageFaqs} />
+      <CTASection
+        headline={socialPresenceFinalCta.headline}
+        primaryCta={socialPresenceFinalCta.primaryCta}
+        secondaryCta={socialPresenceFinalCta.secondaryCta}
+        variant="dark"
+        id="social-presence-final-cta"
+        number="07"
+      />
     </>
   );
 }

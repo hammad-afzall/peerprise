@@ -103,7 +103,9 @@ export default function TableOfContents({
     return (
       <nav
         aria-label="Table of contents"
-        className="hidden lg:block rounded-[14px] border border-white/10 bg-[#111A2B]/80 p-5"
+        className={`hidden lg:block p-5 ${
+          isDark ? "border border-white/10 bg-[#111A2B]/80" : "bg-[#f4f8fa]"
+        }`}
       >
         <p
           className={`text-[12px] font-semibold uppercase tracking-[0.1em] mb-4 ${

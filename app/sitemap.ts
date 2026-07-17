@@ -9,17 +9,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...services.map((service) => service.href),
     "/plans",
     "/how-it-works",
-    "/health-check",
+    "/digital-review",
     "/about",
     "/blog",
     "/contact",
+    "/work",
   ];
 
   const pages = staticRoutes.map((route) => ({
     url: `${base}${route}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
-    priority: route === "/" ? 1 : route === "/health-check" || route === "/blog" ? 0.9 : 0.8,
+    priority: route === "/" ? 1 : route === "/digital-review" || route === "/blog" ? 0.9 : 0.8,
   }));
 
   const posts = getAllPosts().map((post) => ({

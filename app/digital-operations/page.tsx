@@ -1,99 +1,206 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageHero from "../components/PageHero";
-import SectionHeading from "../components/SectionHeading";
-import CTABanner from "../components/CTABanner";
+import PageSection from "../components/PageSection";
+import Reveal from "../components/Reveal";
+import ArrowButton from "../components/ArrowButton";
 import FAQ from "../components/FAQ";
-import { faqs } from "../lib/faqs";
+import CTASection from "../components/CTASection";
+import { services } from "../lib/services";
+import {
+  digitalOperationsBoundaries,
+  digitalOperationsFaqs,
+  digitalOperationsFinalCta,
+  digitalOperationsHero,
+  digitalOperationsProcess,
+  digitalOperationsRelatedIds,
+  digitalOperationsSituations,
+  digitalOperationsSupport,
+} from "../lib/digital-operations";
 
 export const metadata: Metadata = {
-  title: "Digital Operations Support",
+  title: "Digital Operations",
   description:
-    "Keep your forms, integrations, analytics and digital tools configured, connected and operating correctly.",
+    "Peerprise supports the practical technical work between your website, inboxes, forms, accounts and third-party platforms so everyday digital operations remain reliable.",
 };
 
-const coveredItems = [
-  "Contact forms",
-  "Email integrations",
-  "CRM connections",
-  "Analytics configuration",
-  "Third-party tool setup",
-  "API connections",
-  "Workflow automation",
-  "Technical account setup",
-  "Troubleshooting",
-  "Documentation",
-  "Access and security management",
-];
-
-const processSteps = [
-  { number: "01", title: "Audit", description: "We review existing tools and connections to understand your setup." },
-  { number: "02", title: "Configure", description: "We set up and connect systems correctly." },
-  { number: "03", title: "Document", description: "We provide a clear record of all configurations." },
-];
-
 export default function DigitalOperationsPage() {
-  const pageFaqs = faqs.filter(f => ["services", "focus", "access", "turnaround", "contract"].includes(f.id));
+  const relatedServices = digitalOperationsRelatedIds
+    .map((id) => services.find((service) => service.id === id))
+    .filter((service): service is (typeof services)[number] => Boolean(service));
 
   return (
     <>
       <PageHero
-        eyebrow="Digital Operations Support"
-        headline="Technical support for the tools behind your digital presence."
-        subtext="Keep your forms, integrations, analytics and digital tools configured, connected and operating correctly."
-        primaryCta={{ label: "Request a Health Check", href: "/health-check" }}
-        secondaryCta={{ label: "View Plans", href: "/plans" }}
+        supporting="Keep the tools behind your business connected, documented and under control."
+        highlight="connected, documented and under control"
+        headline="Digital Operations"
+        subtext={digitalOperationsHero.supporting}
+        primaryCta={digitalOperationsHero.primaryCta}
+        secondaryCta={digitalOperationsHero.secondaryCta}
+        size="standard"
       />
 
-      <section className="section-padding bg-[var(--color-dark-bg)]">
-        <div className="site-container">
-          <SectionHeading eyebrow="What's covered" headline="Technical configuration and support." />
-          <ul className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {coveredItems.map(item => (
-              <li key={item} className="flex items-center gap-3 glass-card p-4 rounded-[12px]">
-                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[#4E6EFF]">
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5.5l2.5 2.5 4.5-4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+      <PageSection
+        number="01"
+        badge={digitalOperationsSupport.eyebrow}
+        headline={digitalOperationsSupport.headline}
+        id="digital-ops-support-heading"
+        tone="studio"
+      >
+        <ul
+          className="m-0 grid list-none grid-cols-1 gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3 md:gap-5"
+          role="list"
+        >
+          {digitalOperationsSupport.items.map((item, index) => (
+            <Reveal key={item} as="li" delayMs={30 + index * 30}>
+              <div className="flex items-start gap-3 border border-white/12 p-5">
+                <span
+                  className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                  aria-hidden="true"
+                />
+                <span className="text-base text-white/80">{item}</span>
+              </div>
+            </Reveal>
+          ))}
+        </ul>
+      </PageSection>
+
+      <PageSection
+        number="02"
+        badge={digitalOperationsSituations.eyebrow}
+        headline={digitalOperationsSituations.headline}
+        id="digital-ops-situations-heading"
+        tone="white"
+      >
+        <ul
+          className="m-0 grid list-none grid-cols-1 gap-5 p-0 md:grid-cols-2 md:gap-7"
+          role="list"
+        >
+          {digitalOperationsSituations.items.map((item, index) => (
+            <Reveal key={item.title} as="li" delayMs={60 + index * 70}>
+              <article
+                className={[
+                  "flex h-full flex-col gap-4 p-6 lg:p-8",
+                  index % 2 === 0 ? "bg-accent" : "bg-[#f4f8fa]",
+                ].join(" ")}
+              >
+                <h3 className="m-0 text-xl font-bold md:text-2xl">{item.title}</h3>
+                <p className="m-0 text-base leading-relaxed text-[#1f2a2e]/80 md:text-lg">
+                  {item.description}
+                </p>
+              </article>
+            </Reveal>
+          ))}
+        </ul>
+      </PageSection>
+
+      <PageSection
+        number="03"
+        badge={digitalOperationsBoundaries.eyebrow}
+        headline={digitalOperationsBoundaries.headline}
+        intro={digitalOperationsBoundaries.copy}
+        id="digital-ops-boundaries-heading"
+        tone="gray"
+      >
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+          <Reveal>
+            <article className="flex h-full flex-col gap-3 bg-white p-6 lg:p-8">
+              <h3 className="m-0 text-xl font-bold tracking-tight md:text-2xl">
+                Not included in Digital Operations
+              </h3>
+              <p className="m-0 text-base leading-relaxed text-[#1f2a2e]/70 md:text-lg">
+                {digitalOperationsBoundaries.exclusion}
+              </p>
+            </article>
+          </Reveal>
+          <Reveal delayMs={80}>
+            <div className="flex h-full flex-col justify-between gap-5 bg-[#1f2a2e] p-6 lg:p-8">
+              <p className="m-0 text-base leading-relaxed text-white/70 md:text-lg">
+                If an operational problem cannot be solved reliably through configuration or a
+                contained integration, Peerprise can scope a custom software solution.
+              </p>
+              <ArrowButton href={digitalOperationsBoundaries.engineeringCta.href} variant="on-dark">
+                {digitalOperationsBoundaries.engineeringCta.label}
+              </ArrowButton>
+            </div>
+          </Reveal>
+        </div>
+      </PageSection>
+
+      <PageSection
+        number="04"
+        badge={digitalOperationsProcess.eyebrow}
+        headline={digitalOperationsProcess.headline}
+        id="digital-ops-process-heading"
+        tone="studio"
+      >
+        <ul
+          className="m-0 grid list-none grid-cols-1 gap-5 p-0 sm:grid-cols-2 lg:grid-cols-4 md:gap-7"
+          role="list"
+        >
+          {digitalOperationsProcess.steps.map((step, index) => (
+            <Reveal key={step.number} as="li" delayMs={60 + index * 70}>
+              <article className="flex h-full flex-col gap-4 border border-white/12 p-6 lg:p-8">
+                <span className="text-3xl font-bold text-accent">{step.number}</span>
+                <h3 className="m-0 text-xl font-bold tracking-tight text-white md:text-2xl">
+                  {step.title}
+                </h3>
+                <p className="m-0 text-base leading-relaxed text-white/70">{step.description}</p>
+              </article>
+            </Reveal>
+          ))}
+        </ul>
+      </PageSection>
+
+      <PageSection
+        number="05"
+        badge="Related services"
+        headline="Digital operations sits between managed support and custom engineering."
+        id="digital-ops-related-heading"
+        tone="white"
+      >
+        <ul
+          className="m-0 grid list-none grid-cols-1 gap-5 p-0 md:grid-cols-3 md:gap-7"
+          role="list"
+        >
+          {relatedServices.map((service, index) => (
+            <Reveal key={service.id} as="li" delayMs={60 + index * 70}>
+              <Link href={service.href} className="group flex h-full flex-col justify-between gap-6 bg-[#f4f8fa] p-6 lg:p-8">
+                <div className="flex flex-col gap-3">
+                  <h3 className="m-0 text-xl font-bold tracking-tight md:text-2xl">
+                    {service.approvedLabel}
+                  </h3>
+                  <p className="m-0 text-base text-[#1f2a2e]/70">{service.navDescription}</p>
+                </div>
+                <span className="inline-flex items-center text-[15px] font-bold text-[#1f2a2e]">
+                  {service.linkLabel}
+                  <span className="ml-2 transition-transform group-hover:translate-x-1" aria-hidden="true">
+                    →
+                  </span>
                 </span>
-                <span className="text-white font-medium">{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+              </Link>
+            </Reveal>
+          ))}
+        </ul>
+      </PageSection>
 
-      <section className="section-padding bg-[var(--color-dark-surface)]">
-        <div className="site-container">
-          <div className="bg-[#EEF2FF] border border-[#C7D2FE] rounded-[12px] p-6 max-w-[800px]">
-            <h3 className="text-[#3730A3] font-bold text-[16px] mb-3">A note on analytics</h3>
-            <p className="text-[#4338CA] leading-relaxed text-[15px]">
-              Analytics configuration means setting up tracking correctly so your tools report accurately. Your monthly plan covers the services and deliverables listed in the selected package. Additional work is scoped separately.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-padding bg-[var(--color-dark-bg)]">
-        <div className="site-container">
-          <SectionHeading eyebrow="How it works" headline="A structured approach." />
-          <ol className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {processSteps.map(step => (
-              <li key={step.number} className="glass-card rounded-[14px] p-6 hover:bg-white/10 transition-colors">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF58D5] to-[#4E6EFF] font-bold text-[13px] tracking-widest uppercase block mb-3">{step.number}</span>
-                <h3 className="text-white font-bold text-[18px] mb-2">{step.title}</h3>
-                <p className="text-gray-400 leading-relaxed text-[15px]">{step.description}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      <CTABanner
-        dark
-        headline="One team to keep your digital tools connected."
-        primaryCta={{ label: "Request a Health Check", href: "/health-check" }}
-        secondaryCta={{ label: "View Plans", href: "/plans" }}
+      <FAQ
+        items={digitalOperationsFaqs}
+        eyebrow="Common questions"
+        headline="Digital operations questions"
+        variant="light"
+        number="06"
       />
 
-      <FAQ items={pageFaqs} />
+      <CTASection
+        headline={digitalOperationsFinalCta.headline}
+        primaryCta={digitalOperationsFinalCta.primaryCta}
+        secondaryCta={digitalOperationsFinalCta.secondaryCta}
+        variant="dark"
+        id="digital-ops-final-cta"
+        number="07"
+      />
     </>
   );
 }

@@ -5,7 +5,7 @@ export const faqs: FAQ[] = [
     id: "services",
     question: "What services does Peerprise provide?",
     answer:
-      "Peerprise provides social presence management, website care, digital operations support and custom software solutions. Services can be combined into an ongoing monthly plan or scoped as a separate project.",
+      "Peerprise provides Social Presence Support, Website Care and Support, Digital Operations support and Custom Software solutions. Services can be combined into an ongoing monthly plan or scoped as a separate project.",
   },
   {
     id: "platforms",
@@ -22,7 +22,7 @@ export const faqs: FAQ[] = [
     id: "focus",
     question: "What is Peerprise focused on?",
     answer:
-      "Our focus is reliable social presence management, website support, digital operations and custom software development.",
+      "Our focus is reliable Social Presence Support, website care, Digital Operations and custom software development.",
   },
   {
     id: "website-support",
@@ -44,8 +44,9 @@ export const faqs: FAQ[] = [
   },
   {
     id: "contract",
-    question: "Is there a long-term contract?",
-    answer: "No. Our monthly plans are month-to-month and you can cancel anytime.",
+    question: "Are plan contract terms fixed on this website?",
+    answer:
+      "Billing frequency, minimum term, cancellation notice and any service-specific conditions are stated in the written proposal for each engagement.",
   },
   {
     id: "existing-website",

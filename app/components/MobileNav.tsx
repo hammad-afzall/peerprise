@@ -173,13 +173,13 @@ export default function MobileNav({
                     className={`flex flex-col px-3 py-3 min-h-11 rounded-[8px] ${
                       active
                         ? "bg-white/10 text-white"
-                        : "hover:bg-white/5 text-on-dark-subtle"
+                        : "hover:bg-white/5 text-on-dark"
                     }`}
                     aria-current={active ? "page" : undefined}
                   >
-                    <span className="text-[14px] font-semibold">{svc.label}</span>
+                    <span className="text-[15px] font-semibold">{svc.label}</span>
                     {svc.description && (
-                      <span className="text-[12px] text-on-dark-muted">{svc.description}</span>
+                      <span className="type-small text-on-dark-muted">{svc.description}</span>
                     )}
                   </Link>
                 );
@@ -194,10 +194,10 @@ export default function MobileNav({
                 key={link.href}
                 href={link.href}
                 onClick={handleClose}
-                className={`px-3 py-3 min-h-11 rounded-[8px] text-[16px] font-medium inline-flex items-center ${
+                className={`px-3 py-3 min-h-11 rounded-[8px] text-[16px] font-semibold inline-flex items-center ${
                   active
                     ? "text-white bg-white/10"
-                    : "text-on-dark-subtle hover:bg-white/5"
+                    : "text-on-dark hover:bg-white/5"
                 }`}
                 aria-current={active ? "page" : undefined}
               >
@@ -211,10 +211,12 @@ export default function MobileNav({
           <Link
             href={headerCta.href}
             onClick={handleClose}
-            className="h-12 min-h-11 w-full flex items-center justify-center rounded-full text-white text-[15px] font-bold shadow-accent"
-            style={{ backgroundImage: "var(--gradient-brand)" }}
+            className="btn-primary btn-primary-motion h-12 min-h-11 w-full shadow-accent"
           >
             {headerCta.label}
+            <span className="btn-arrow" aria-hidden="true">
+              →
+            </span>
           </Link>
         </div>
       </nav>

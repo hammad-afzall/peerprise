@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import ArticleCard from "../components/blog/ArticleCard";
 import { blogCategories } from "../lib/blog-categories";
 import type { BlogPostMeta } from "../lib/blog-types";
+import { insightsPage } from "../lib/insights";
 
 type Props = {
   posts: BlogPostMeta[];
@@ -14,12 +15,15 @@ export default function BlogIndexClient({ posts, featured }: Props) {
   const [category, setCategory] = useState<string>("All");
   const [query, setQuery] = useState("");
 
+  const ordered = useMemo(() => {
+    if (!featured) return posts;
+    const rest = posts.filter((post) => post.slug !== featured.slug);
+    return posts.some((post) => post.slug === featured.slug) ? [featured, ...rest] : posts;
+  }, [posts, featured]);
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return posts.filter((post) => {
-      if (featured && post.slug === featured.slug && category === "All" && !q) {
-        return false;
-      }
+    return ordered.filter((post) => {
       const categoryMatch = category === "All" || post.category === category;
       const queryMatch =
         !q ||
@@ -28,14 +32,15 @@ export default function BlogIndexClient({ posts, featured }: Props) {
         post.category.toLowerCase().includes(q);
       return categoryMatch && queryMatch;
     });
-  }, [posts, featured, category, query]);
+  }, [ordered, category, query]);
 
-  const showFeatured = Boolean(featured && category === "All" && !query.trim());
+  const emptyMessage =
+    category !== "All" && !query.trim() ? insightsPage.emptyCategory : insightsPage.emptyFilters;
 
   return (
     <div>
-      <div className="flex flex-col gap-4 mb-10">
-        <div className="flex flex-wrap gap-2">
+      <div className="mb-10 flex flex-col gap-4">
+        <div role="group" aria-label="Filter articles by category" className="flex flex-wrap gap-2">
           {["All", ...blogCategories].map((item) => {
             const active = category === item;
             return (
@@ -43,11 +48,13 @@ export default function BlogIndexClient({ posts, featured }: Props) {
                 key={item}
                 type="button"
                 onClick={() => setCategory(item)}
-                className={`h-9 px-4 rounded-full text-[13px] font-semibold transition-colors duration-200 ${
+                aria-pressed={active}
+                className={[
+                  "h-10 min-h-10 px-4 text-[13px] font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus",
                   active
-                    ? "bg-white text-[#0B1220]"
-                    : "bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10 hover:text-white"
-                }`}
+                    ? "bg-[#1f2a2e] text-white"
+                    : "border border-black/10 bg-white text-[#1f2a2e]/70 hover:border-black/30",
+                ].join(" ")}
               >
                 {item}
               </button>
@@ -61,34 +68,20 @@ export default function BlogIndexClient({ posts, featured }: Props) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search articles"
-            className="w-full h-11 rounded-[10px] border border-white/10 bg-white/5 px-4 text-white placeholder:text-gray-500 focus:border-[#4E6EFF] focus:ring-1 focus:ring-[#4E6EFF] outline-none transition-colors"
+            className="h-11 w-full border border-black/10 bg-white px-4 text-[#1f2a2e] placeholder:text-[#1f2a2e]/40 outline-none transition-colors focus:border-accent"
           />
         </label>
       </div>
 
-      {showFeatured && featured && (
-        <div className="mb-10">
-          <p className="text-[12px] font-semibold tracking-[0.1em] uppercase text-gray-400 mb-4">
-            Featured
-          </p>
-          <ArticleCard post={featured} featured />
+      {filtered.length === 0 ? (
+        <p className="text-base text-[#1f2a2e]/60">{emptyMessage}</p>
+      ) : (
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3 md:gap-7">
+          {filtered.map((post, index) => (
+            <ArticleCard key={post.slug} post={post} featured={index === 0} />
+          ))}
         </div>
       )}
-
-      <div>
-        <p className="text-[12px] font-semibold tracking-[0.1em] uppercase text-gray-400 mb-4">
-          {category === "All" && !query.trim() ? "Recent articles" : "Articles"}
-        </p>
-        {filtered.length === 0 ? (
-          <p className="text-gray-400 text-[16px]">No articles match your filters.</p>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            {filtered.map((post) => (
-              <ArticleCard key={post.slug} post={post} />
-            ))}
-          </div>
-        )}
-      </div>
     </div>
   );
 }

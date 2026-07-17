@@ -1,36 +1,24 @@
 /**
- * Shared service catalogue.
- * Homepage card labels/descriptions stay unchanged in Stage 3 (Prompt 4 will align copy).
- * `approvedLabel` matches master-spec / nav naming for later pages.
+ * Shared service catalogue — master spec Sections 2 & 5.
  */
 
 export type Service = {
   id: string;
   href: string;
-  /** Current homepage / legacy display name */
+  /** Current / legacy display name used on unfinished service pages */
   label: string;
-  /** Master-spec approved name (nav + future pages) */
+  /** Master-spec approved name (nav + homepage) */
   approvedLabel: string;
   description: string;
   navDescription: string;
   homepageDescription: string;
+  /** Services Overview page — master spec Section 6 */
+  overviewDescription: string;
   linkLabel: string;
   category: "managed" | "engineering";
 };
 
 export const services: Service[] = [
-  {
-    id: "social-presence",
-    href: "/social-presence-management",
-    label: "Social Presence Management",
-    approvedLabel: "Social Presence Support",
-    description: "Planned content and publishing",
-    navDescription: "Planning, content and publishing",
-    homepageDescription:
-      "Keep your business active, consistent and professional across its social channels through planned content, branded graphics, scheduling and publishing.",
-    linkLabel: "Learn more",
-    category: "managed",
-  },
   {
     id: "website-care",
     href: "/website-care",
@@ -39,8 +27,24 @@ export const services: Service[] = [
     description: "Maintenance and updates",
     navDescription: "Maintenance, updates and technical support",
     homepageDescription:
-      "Keep your website current, monitored and working properly with ongoing maintenance and reliable technical support.",
-    linkLabel: "Learn more",
+      "Keep your website maintained, current and working properly through ongoing updates, monitoring, troubleshooting and technical support.",
+    overviewDescription:
+      "Maintenance, updates, troubleshooting, monitoring, content changes and practical technical support for existing websites.",
+    linkLabel: "Explore Website Care",
+    category: "managed",
+  },
+  {
+    id: "social-presence",
+    href: "/social-presence-management",
+    label: "Social Presence Management",
+    approvedLabel: "Social Presence Support",
+    description: "Planned content and publishing",
+    navDescription: "Planning, content and publishing",
+    homepageDescription:
+      "Maintain a consistent and professional presence through planned content, branded graphics, approvals, scheduling and publishing.",
+    overviewDescription:
+      "Content planning, captions, branded post graphics, approvals, scheduling, publishing and profile upkeep.",
+    linkLabel: "Explore Social Support",
     category: "managed",
   },
   {
@@ -51,8 +55,10 @@ export const services: Service[] = [
     description: "Forms, CRM and integrations",
     navDescription: "Forms, tools and integrations",
     homepageDescription:
-      "Keep your forms, integrations, analytics and digital tools configured, connected and operating correctly.",
-    linkLabel: "Learn more",
+      "Keep forms, accounts, integrations, email routing and third-party tools connected, documented and under control.",
+    overviewDescription:
+      "Support for forms, email routing, third-party platforms, integrations, account access, workflow automation and technical documentation.",
+    linkLabel: "Explore Digital Operations",
     category: "managed",
   },
   {
@@ -63,8 +69,10 @@ export const services: Service[] = [
     description: "Platforms, apps and tools",
     navDescription: "Applications, portals and automation",
     homepageDescription:
-      "Design and develop websites, platforms, integrations and digital tools built around your business requirements.",
-    linkLabel: "Explore Custom Solutions",
+      "Build portals, internal tools, web applications, integrations and automation around the way your business actually works.",
+    overviewDescription:
+      "Web applications, customer portals, internal tools, automation, APIs, payments, subscriptions and platform modernisation.",
+    linkLabel: "Explore Custom Software",
     category: "engineering",
   },
   {
@@ -75,13 +83,19 @@ export const services: Service[] = [
     description: "Dedicated or white-label delivery",
     navDescription: "Dedicated or white-label delivery",
     homepageDescription:
-      "Dedicated, project-based or white-label engineering delivery for agencies, software companies and larger organisations.",
-    linkLabel: "Discuss a Partnership",
+      "Add dependable development capacity to your agency or product team through project delivery, dedicated engineers or white-label support.",
+    overviewDescription:
+      "Project delivery, dedicated capacity and white-label development for agencies, product teams and larger organisations.",
+    linkLabel: "Explore Engineering Partnerships",
     category: "engineering",
   },
 ];
 
-/** Four cards currently shown on the homepage (Prompt 4 may add the fifth). */
+/**
+ * Primary homepage service cards.
+ * Engineering Partnerships is presented in a dedicated homepage section
+ * rather than as an ordinary service card.
+ */
 export const homepageServices = services.filter(
   (service) => service.id !== "engineering-partnerships",
 );
@@ -89,8 +103,11 @@ export const homepageServices = services.filter(
 export const managedServices = services.filter((s) => s.category === "managed");
 export const engineeringServices = services.filter((s) => s.category === "engineering");
 
+import { planEnquiryOptions } from "./plans";
+
 export const serviceInterestOptions = [
   ...services.map((service) => service.label),
+  ...planEnquiryOptions,
   "All services",
   "Not sure yet",
 ] as const;

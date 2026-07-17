@@ -20,8 +20,8 @@ export default function PricingCard({
 }: Props) {
   const s = surfaceClasses(variant);
   const isDark = variant === "dark";
-  const label = ctaLabel ?? plan.ctaLabel ?? ctas.requestDigitalReviewLegacy.label;
-  const href = ctaHref ?? plan.ctaHref ?? ctas.requestDigitalReviewLegacy.href;
+  const label = ctaLabel ?? plan.ctaLabel ?? ctas.requestDigitalReview.label;
+  const href = ctaHref ?? plan.ctaHref ?? ctas.requestDigitalReview.href;
 
   return (
     <article
@@ -30,7 +30,7 @@ export default function PricingCard({
         s.card,
         plan.highlight
           ? isDark
-            ? "border-accent ring-1 ring-accent/50 shadow-[0_0_30px_rgba(78,110,255,0.15)]"
+            ? "border-accent/40 ring-1 ring-accent/25"
             : "border-accent ring-1 ring-accent/30"
           : "",
         !plan.highlight ? s.cardHover : "",
@@ -39,7 +39,7 @@ export default function PricingCard({
     >
       {plan.highlight && plan.badge && (
         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <span className="inline-flex min-h-8 items-center bg-gradient-to-r from-accent-secondary to-accent text-white text-[12px] font-bold uppercase tracking-wider py-1 px-4 rounded-full">
+          <span className="inline-flex min-h-8 items-center border border-white/15 bg-dark-elevated text-accent text-[12px] font-bold uppercase tracking-wider py-1 px-4 rounded-full">
             {plan.badge}
           </span>
         </div>
@@ -47,8 +47,8 @@ export default function PricingCard({
 
       <div className={plan.highlight ? "mt-2" : undefined}>
         <h3 className={`type-h4 mb-2 ${s.heading}`}>{plan.name}</h3>
-        <div className="flex items-baseline gap-1 flex-wrap">
-          <span className={`text-[36px] sm:text-[40px] font-bold leading-none tracking-tight ${s.heading}`}>
+        <div className="flex items-baseline gap-1.5 flex-wrap">
+          <span className={`text-[32px] sm:text-[36px] font-bold leading-none tracking-tight ${s.heading}`}>
             {plan.price}
           </span>
           <span className={`text-[15px] font-medium ${s.muted}`}>{plan.period}</span>

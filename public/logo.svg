@@ -14,24 +14,24 @@
 <path d="M692 189C825.427 189 825.427 189 850 212C865.226 227.824 870.642 247.004 870.398 268.511C869.919 286.442 864.73 302.175 853 316L851.164 318.434C840.043 331.623 819.79 340.584 803 343C797.164 343.274 791.337 343.234 785.496 343.195C783.996 343.192 782.496 343.191 780.996 343.189C775.477 343.179 769.957 343.151 764.438 343.125L727 343V423H692V189ZM781.074 217.008C779.698 217.023 778.322 217.034 776.946 217.038C774.939 217.041 774.939 217.041 770.677 217.055C767.132 217.083 763.691 217.11 760.25 217.138L727 217.325V306.324L759.5 306.387C764.291 306.4 769.083 306.414 773.874 306.419C775.847 306.42 775.847 306.42 777.781 306.422C793.177 306.48 807.479 306.078 819.875 295.637C829.455 286.253 834.88 277.174 835.398 263.765C835.625 250.083 831.778 239.69 822.344 229.544C810.904 218.967 796.059 216.849 781.074 217.008Z" fill="white"/>
 <defs>
 <linearGradient id="paint0_linear_1_653" x1="1692.59" y1="209.732" x2="1736.39" y2="209.732" gradientUnits="userSpaceOnUse">
-<stop stop-color="#FF58D5"/>
-<stop offset="1" stop-color="#4E6EFF"/>
+<stop stop-color="#c1ff72"/>
+<stop offset="1" stop-color="#9ae64a"/>
 </linearGradient>
 <linearGradient id="paint1_linear_1_653" x1="470.563" y1="280.404" x2="470.563" y2="505.655" gradientUnits="userSpaceOnUse">
-<stop stop-color="#FF58D5"/>
-<stop offset="1" stop-color="#4E6EFF"/>
+<stop stop-color="#c1ff72"/>
+<stop offset="1" stop-color="#9ae64a"/>
 </linearGradient>
 <linearGradient id="paint2_linear_1_653" x1="1064.06" y1="256.222" x2="1064.06" y2="365.375" gradientUnits="userSpaceOnUse">
-<stop stop-color="#FF58D5"/>
-<stop offset="1" stop-color="#4E6EFF"/>
+<stop stop-color="#c1ff72"/>
+<stop offset="1" stop-color="#9ae64a"/>
 </linearGradient>
 <linearGradient id="paint3_linear_1_653" x1="950.596" y1="256.011" x2="950.596" y2="426.411" gradientUnits="userSpaceOnUse">
-<stop stop-color="#FF58D5"/>
-<stop offset="1" stop-color="#4E6EFF"/>
+<stop stop-color="#c1ff72"/>
+<stop offset="1" stop-color="#9ae64a"/>
 </linearGradient>
 <linearGradient id="paint4_linear_1_653" x1="1111" y1="338" x2="1111" y2="427.431" gradientUnits="userSpaceOnUse">
-<stop stop-color="#FF58D5"/>
-<stop offset="1" stop-color="#4E6EFF"/>
+<stop stop-color="#c1ff72"/>
+<stop offset="1" stop-color="#9ae64a"/>
 </linearGradient>
 </defs>
 </svg>

@@ -1,99 +1,129 @@
 import Link from "next/link";
-import Logo from "./Logo";
 import {
+  CONTACT_EMAIL,
   footerBrand,
   footerCompanyLinks,
   footerEngineeringLinks,
   footerManagedLinks,
 } from "../lib/nav";
 
+const primaryFooterNav = [
+  { href: "/", label: "Home" },
+  { href: "/services", label: "Services" },
+  { href: "/plans", label: "Plans" },
+  { href: "/work", label: "Work" },
+  { href: "/about", label: "About" },
+  { href: "/blog", label: "Insights" },
+  { href: "/contact", label: "Contact" },
+];
+
+const exploreLinks = [
+  ...footerManagedLinks.slice(0, 3),
+  ...footerEngineeringLinks.slice(0, 2),
+];
+
+/**
+ * Studiova footer structure — big headline + contacts | nav | explore | copyright.
+ * Peerprise content only (no Privacy/Terms).
+ */
 export default function Footer() {
+  const extraCompany = footerCompanyLinks.filter(
+    (l) => !primaryFooterNav.some((p) => p.href === l.href),
+  );
+
   return (
-    <footer
-      className="section-dark pt-14 pb-8 sm:pt-20 sm:pb-10 border-t border-dark-border"
-      aria-labelledby="footer-heading"
-    >
+    <footer aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
-      <div className="site-container">
-        <div className="grid grid-cols-2 md:grid-cols-12 gap-9 sm:gap-12 mb-14 sm:mb-16">
-          <div className="col-span-2 md:col-span-4 lg:col-span-4">
-            <Link
-              href="/"
-              className="flex items-center mb-6 group w-fit rounded-sm"
-              aria-label="Peerprise home"
-            >
-              <Logo className="h-[66px] w-auto group-hover:opacity-80 transition-opacity duration-200" />
-            </Link>
-            <p className="text-[15px] font-semibold text-white mb-3">{footerBrand.name}</p>
-            <p className="text-[15px] text-on-dark-muted max-w-[320px] leading-relaxed mb-7">
-              {footerBrand.text}
-            </p>
-            <a
-              href={`mailto:${footerBrand.email}`}
-              className="inline-flex min-h-11 items-center text-[15px] text-on-dark-muted hover:text-white transition-colors duration-200"
-            >
-              {footerBrand.email}
-            </a>
-          </div>
+      <div className="bg-[#1f2a2e] py-10 md:py-20 xl:py-40">
+        <div className="site-container">
+          <div className="flex flex-col gap-10 xl:flex-row xl:gap-0">
+            <div className="flex w-full flex-col gap-10 xl:max-w-2xl">
+              <p className="m-0 text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl xl:max-w-xl">
+                Build something dependable together?
+              </p>
+              <div className="flex flex-col gap-2">
+                <a href={`mailto:${CONTACT_EMAIL}`} className="group flex gap-4">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/icons/email-arrow.svg"
+                    alt=""
+                    width={24}
+                    height={24}
+                    className="shrink-0"
+                  />
+                  <span className="text-lg text-white transition-colors group-hover:text-accent">
+                    {CONTACT_EMAIL}
+                  </span>
+                </a>
+                <Link href="/contact" className="group flex gap-4">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/icons/Location.svg"
+                    alt=""
+                    width={24}
+                    height={24}
+                    className="shrink-0"
+                  />
+                  <span className="text-lg text-white transition-colors group-hover:text-accent">
+                    Start a conversation
+                  </span>
+                </Link>
+              </div>
+            </div>
 
-          <div className="col-span-1 md:col-span-2 lg:col-span-2">
-            <h3 className="text-[15px] font-medium text-on-dark-subtle mb-7">
-              Managed Services
-            </h3>
-            <ul className="flex flex-col gap-4">
-              {footerManagedLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="inline-flex min-h-11 items-center text-[15px] text-on-dark-muted hover:text-white transition-colors duration-200"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+            <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-3 md:gap-0 xl:grid-cols-4">
+              <div>
+                <ul className="m-0 flex list-none flex-col gap-1.5 p-0">
+                  {primaryFooterNav.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="text-lg text-white transition-colors hover:text-accent"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-          <div className="col-span-1 md:col-span-2 lg:col-span-3">
-            <h3 className="text-[15px] font-medium text-on-dark-subtle mb-7">Engineering</h3>
-            <ul className="flex flex-col gap-4">
-              {footerEngineeringLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="inline-flex min-h-11 items-center text-[15px] text-on-dark-muted hover:text-white transition-colors duration-200"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+              <div>
+                <ul className="m-0 flex list-none flex-col gap-1.5 p-0">
+                  {exploreLinks.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="text-lg text-white transition-colors hover:text-accent"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                  {extraCompany.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="text-lg text-white transition-colors hover:text-accent"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-          <div className="col-span-2 md:col-span-4 lg:col-span-3">
-            <h3 className="text-[15px] font-medium text-on-dark-subtle mb-7">Company</h3>
-            <ul className="flex flex-col gap-4">
-              {footerCompanyLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="inline-flex min-h-11 items-center text-[15px] text-on-dark-muted hover:text-white transition-colors duration-200"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+              <div className="md:col-span-1 xl:col-span-2 md:flex md:justify-end">
+                <div className="max-w-96">
+                  <p className="m-0 text-base leading-relaxed text-white/70">
+                    {footerBrand.text}
+                  </p>
+                  <p className="mt-4 m-0 text-base text-white/70">{footerBrand.copyright}</p>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div className="pt-6 border-t border-dark-border flex flex-col gap-3 sm:gap-4 text-center">
-          <p className="text-[15px] text-on-dark-subtle leading-relaxed max-w-[640px] mx-auto">
-            {footerBrand.closingLine}
-          </p>
-          <p className="text-[14px] text-on-dark-muted">{footerBrand.copyright}</p>
         </div>
       </div>
     </footer>

@@ -19,10 +19,10 @@ export const metadata: Metadata = {
     template: "%s | Peerprise",
   },
   description:
-    "Peerprise provides social presence management, website care, digital operations support and custom software solutions for companies, brands and professionals.",
+    "Peerprise provides Social Presence Support, website care, digital operations support and custom software solutions for companies, brands and professionals.",
   keywords: [
     "digital presence management",
-    "social presence management",
+    "Social Presence Support",
     "website care",
     "website maintenance",
     "digital operations support",
@@ -56,7 +56,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={manrope.variable}>
-      <body className={`${manrope.className} bg-dark-bg text-on-dark min-h-screen flex flex-col overflow-x-hidden w-full`}>
+      <body className={`${manrope.className} bg-white text-[#1f2a2e] min-h-screen flex flex-col overflow-x-hidden w-full`}>
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>

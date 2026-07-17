@@ -8,8 +8,19 @@ export type Review = {
   source: ReviewSource;
 };
 
-/** Homepage featured reviews. */
+/**
+ * Homepage featured reviews — master spec Section 5 recommended order.
+ * Existing verified testimonials retained; attribution preserved.
+ */
 export const featuredHomepageReviews: Review[] = [
+  {
+    id: "verified-united-kingdom-api",
+    name: "Alicia Sykes",
+    role: "Principal Engineer and Open Source Maintainer",
+    quote:
+      "Peerprise rewrote a large Node.js API in Go and delivered clean, structured and well-tested code. The team worked independently, followed good engineering practices and produced a high-quality solution.",
+    source: "Verified marketplace review",
+  },
   {
     id: "neri-carcasci",
     name: "Neri Carcasci",
@@ -24,14 +35,6 @@ export const featuredHomepageReviews: Review[] = [
     role: "Digital Marketer",
     quote:
       "Peerprise helped us build a system from the ground up. The architectural knowledge was impressive, and the team remained actively involved until the final product met the expected quality.",
-    source: "Verified marketplace review",
-  },
-  {
-    id: "verified-united-kingdom-api",
-    name: "Alicia Sykes",
-    role: "Principal Engineer and Open Source Maintainer",
-    quote:
-      "Peerprise rewrote a large Node.js API in Go and delivered clean, structured and well-tested code. The team worked independently, followed good engineering practices and produced a high-quality solution.",
     source: "Verified marketplace review",
   },
 ];

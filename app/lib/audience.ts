@@ -2,7 +2,7 @@ import { ctas } from "./ctas";
 
 /**
  * Homepage audience routes — master spec Section 5.
- * Content is data-only for AudienceCard; homepage wiring deferred to Prompt 4.
+ * Content is data-only for AudienceCard.
  */
 
 export type AudienceItem = {

@@ -1,59 +1,96 @@
-import Link from "next/link";
-import SectionHeading from "./SectionHeading";
+import SectionLabel from "./SectionLabel";
+import ArrowButton from "./ArrowButton";
+import Reveal from "./Reveal";
+import { homepagePlansTeaser } from "../lib/homepage";
 import { plans } from "../lib/plans";
 
+/**
+ * Pricing — Studiova square plan cards with lime check rows + arrow CTAs.
+ */
 export default function PricingPreview() {
-  const startingPlan = plans[0];
-
   return (
-    <section aria-labelledby="pricing-preview-heading" className="section-padding bg-[var(--color-dark-bg)] border-t border-white/5">
+    <section
+      aria-labelledby="plans-teaser-heading"
+      className="section-padding bg-[#f4f8fa] text-[#1f2a2e]"
+    >
       <div className="site-container">
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 lg:gap-12">
-          <div className="lg:max-w-[480px]">
-            <SectionHeading eyebrow="Simple Pricing" headline="Clear monthly plans. No surprises." />
-            <p className="mt-5 text-[16px] text-gray-400 leading-relaxed mb-8">
-              Whether you need basic website maintenance or comprehensive digital operations support, our plans are straightforward, with no long-term contracts.
+        <div className="mb-14 flex flex-col items-start gap-8 xl:mb-24 xl:flex-row">
+          <Reveal>
+            <SectionLabel number="08" badge={homepagePlansTeaser.eyebrow} />
+          </Reveal>
+          <Reveal delayMs={80} className="flex flex-col gap-5">
+            <h2
+              id="plans-teaser-heading"
+              className="m-0 max-w-3xl text-4xl font-bold leading-tight tracking-tight md:text-5xl"
+            >
+              {homepagePlansTeaser.headline}
+            </h2>
+            <p className="m-0 max-w-2xl text-lg text-[#1f2a2e]/70">
+              {homepagePlansTeaser.copy}
             </p>
-            <Link href="/plans" className="inline-flex items-center gap-2 text-[15px] font-bold text-[#4E6EFF] hover:text-[#FF58D5] transition-colors group">
-              View Plans
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="transition-transform group-hover:translate-x-1" aria-hidden="true"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-            </Link>
-          </div>
-          <div className="w-full lg:w-[420px]">
-            <article className="glass-card gradient-border rounded-[20px] sm:rounded-[24px] p-5 sm:p-8 sm:pt-10 relative flex flex-col">
-              <span className="inline-flex w-fit mb-5 sm:absolute sm:-top-4 sm:left-8 sm:mb-0 bg-gradient-to-r from-[#FF58D5] to-[#4E6EFF] text-white text-[11px] sm:text-[12px] font-bold tracking-widest px-3 sm:px-4 py-1.5 rounded-full uppercase shadow-md">
-                Flexible Support
-              </span>
-
-              <h3 className="text-[17px] sm:text-[18px] font-bold text-white mb-3">All plans include:</h3>
-
-              <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 mb-3">
-                <span className="text-[15px] text-gray-400 font-medium">Plans starting from</span>
-                <span className="text-[32px] sm:text-[36px] font-bold text-white tracking-tight">{startingPlan.price}</span>
-                <span className="text-[15px] text-gray-400 font-medium">{startingPlan.period}</span>
-              </div>
-
-              <p className="text-[15px] text-gray-400 leading-relaxed">Choose the level of support that fits your company, brand or professional presence.</p>
-
-              <div className="border-t border-white/10 my-5 sm:my-6" aria-hidden="true" />
-
-              <ul className="space-y-3.5 mb-6">
-                {["Monthly activity summary", "Direct access to support", "No long-term contracts"].map((f) => (
-                  <li key={f} className="flex items-start gap-3">
-                    <span className="flex-shrink-0 mt-0.5 w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[#4E6EFF]">
-                      <svg width="12" height="12" viewBox="0 0 10 10" fill="none"><path d="M1.5 5.5l2.5 2.5 4.5-4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                    </span>
-                    <span className="text-[15px] text-white font-medium">{f}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <Link href="/plans" className="btn-primary">
-                View Plans
-              </Link>
-            </article>
-          </div>
+          </Reveal>
         </div>
+
+        <ul
+          className="m-0 grid list-none grid-cols-1 gap-7 p-0 md:grid-cols-2 xl:grid-cols-3"
+          role="list"
+        >
+          {plans.map((plan, index) => (
+            <Reveal key={plan.id} as="li" delayMs={80 + index * 90}>
+              <article className="flex h-full flex-col gap-10 bg-white p-5 sm:p-8 xl:p-12">
+                <div className="flex flex-col gap-4">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <h3 className="m-0 text-xl font-bold md:text-2xl">{plan.name}</h3>
+                    {plan.badge && (
+                      <span className="rounded-full bg-[#1f2a2e] px-3 py-1 text-sm font-medium text-white">
+                        {plan.badge}
+                      </span>
+                    )}
+                  </div>
+                  <p className="m-0 text-3xl font-bold tracking-tight md:text-4xl">
+                    {plan.price}
+                    <span className="ml-2 text-base font-medium text-[#1f2a2e]/60">
+                      {plan.period}
+                    </span>
+                  </p>
+                  <p className="m-0 text-base text-[#1f2a2e]/70 md:text-lg">
+                    {plan.description}
+                  </p>
+                </div>
+
+                <div className="border-t border-black/10 pt-8">
+                  <p className="mb-4 text-base font-bold">What&apos;s included</p>
+                  <ul className="m-0 flex list-none flex-col gap-3 p-0">
+                    {plan.features.slice(0, 6).map((feature) => (
+                      <li key={feature} className="flex items-start gap-3">
+                        <span className="mt-0.5 flex shrink-0 rounded-full bg-accent p-1.5">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src="/icons/right-check.svg"
+                            alt=""
+                            width={14}
+                            height={14}
+                          />
+                        </span>
+                        <span className="text-base text-[#1f2a2e]/80">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <ArrowButton href={plan.ctaHref} fullWidth>
+                  {plan.ctaLabel}
+                </ArrowButton>
+              </article>
+            </Reveal>
+          ))}
+        </ul>
+
+        <Reveal delayMs={120} className="mt-10">
+          <ArrowButton href={homepagePlansTeaser.cta.href}>
+            {homepagePlansTeaser.cta.label}
+          </ArrowButton>
+        </Reveal>
       </div>
     </section>
   );

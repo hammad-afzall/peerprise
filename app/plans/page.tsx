@@ -1,88 +1,178 @@
 import type { Metadata } from "next";
 import PageHero from "../components/PageHero";
-import SectionHeading from "../components/SectionHeading";
-import CTABanner from "../components/CTABanner";
+import PageSection from "../components/PageSection";
+import ArrowButton from "../components/ArrowButton";
+import Reveal from "../components/Reveal";
+import FAQ from "../components/FAQ";
+import CTASection from "../components/CTASection";
 import PlanComparison from "../components/PlanComparison";
-import PricingCard from "../components/PricingCard";
-import { plans } from "../lib/plans";
+import { ctas } from "../lib/ctas";
+import {
+  plans,
+  plansFaqs,
+  plansImportantDetails,
+  plansNotIncluded,
+  plansPageHero,
+} from "../lib/plans";
 
 export const metadata: Metadata = {
-  title: "Plans",
+  title: "Managed Plans",
   description:
-    "Straightforward monthly plans for social presence management, website care and digital operations support.",
+    "Clear monthly support for website care, social publishing and digital operations, with defined capacity and responsibilities.",
 };
 
+/**
+ * Plans — Studiova pricing cards with Peerprise plan content.
+ */
 export default function PlansPage() {
   return (
     <>
       <PageHero
-        eyebrow="Plans"
-        headline="Straightforward monthly support. No hidden fees."
-        subtext="Choose the level of support that fits your company, brand or professional presence. All plans include a monthly activity summary and direct access to your Peerprise team."
+        supporting="Clear monthly support, matched to the level of ownership you need."
+        highlight="monthly support"
+        headline="Plans"
+        subtext={plansPageHero.supporting}
+        primaryCta={ctas.requestDigitalReview}
+        size="display"
       />
 
-      <section className="section-padding bg-dark-surface">
-        <div className="site-container">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {plans.map((plan) => (
-              <PricingCard
-                key={plan.id}
-                plan={plan}
-                variant="dark"
-                ctaLabel="Request a Health Check"
-                ctaHref="/health-check"
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+      <PageSection
+        number="01"
+        badge="Pricing"
+        headline="Managed plan options"
+        intro="Each engagement has a documented scope, defined capacity and clear boundaries for additional work."
+        id="plans-cards-heading"
+        tone="gray"
+      >
+        <ul
+          className="m-0 grid list-none grid-cols-1 gap-7 p-0 md:grid-cols-2 xl:grid-cols-3"
+          role="list"
+        >
+          {plans.map((plan, index) => (
+            <Reveal key={plan.id} as="li" delayMs={80 + index * 90}>
+              <article className="flex h-full flex-col gap-10 bg-white p-5 sm:p-8 xl:p-12">
+                <div className="flex flex-col gap-4">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <h3 className="m-0 text-xl font-bold md:text-2xl">{plan.name}</h3>
+                    {plan.badge && (
+                      <span className="rounded-full bg-[#1f2a2e] px-3 py-1 text-sm font-medium text-white">
+                        {plan.badge}
+                      </span>
+                    )}
+                  </div>
+                  <p className="m-0 text-3xl font-bold tracking-tight md:text-4xl">
+                    {plan.price}
+                    <span className="ml-2 text-base font-medium text-[#1f2a2e]/60">
+                      {plan.period}
+                    </span>
+                  </p>
+                  <p className="m-0 text-base text-[#1f2a2e]/70 md:text-lg">
+                    {plan.description}
+                  </p>
+                </div>
 
-      <section className="section-padding bg-dark-bg">
-        <div className="site-container">
-          <SectionHeading headline="Compare Features" center />
-          <div className="mt-12">
-            <PlanComparison variant="dark" />
-          </div>
-        </div>
-      </section>
+                <div className="border-t border-black/10 pt-8">
+                  <p className="mb-4 text-base font-bold">What&apos;s included</p>
+                  <ul className="m-0 flex list-none flex-col gap-3 p-0">
+                    {plan.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-3">
+                        <span className="mt-0.5 flex shrink-0 rounded-full bg-accent p-1.5">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src="/icons/right-check.svg" alt="" width={14} height={14} />
+                        </span>
+                        <span className="text-base text-[#1f2a2e]/80">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-      <section className="py-12 sm:py-16 bg-dark-bg">
-        <div className="site-container max-w-[760px]">
-          <SectionHeading headline="Plan details" center className="mb-10" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="glass-card p-6 rounded-[12px] hover:bg-white/10 transition-colors">
-              <h4 className="font-bold text-white mb-2">Website-support allowance</h4>
-              <p className="text-gray-400 text-[14px]">
-                A small website change is a content, image or layout update that usually takes no more than 30 minutes and does not require new custom functionality. Work beyond your monthly allowance is scoped separately.
-              </p>
-            </div>
-            <div className="glass-card p-6 rounded-[12px] hover:bg-white/10 transition-colors">
-              <h4 className="font-bold text-white mb-2">Setup</h4>
-              <p className="text-gray-400 text-[14px]">A one-time onboarding scope is discussed before work begins.</p>
-            </div>
-            <div className="glass-card p-6 rounded-[12px] hover:bg-white/10 transition-colors">
-              <h4 className="font-bold text-white mb-2">Support response</h4>
-              <p className="text-gray-400 text-[14px]">
-                Routine request: response within two business days. Time-sensitive issue: response within one business day. Critical website outage: acknowledgement within four business hours during standard business hours. Emergency and 24/7 support require a separate support agreement.
-              </p>
-            </div>
-            <div className="glass-card p-6 rounded-[12px] hover:bg-white/10 transition-colors">
-              <h4 className="font-bold text-white mb-2">What your plan covers</h4>
-              <p className="text-gray-400 text-[14px]">
-                Your monthly plan covers the services and deliverables listed in the selected package. Additional work, including larger website projects and custom software, is scoped separately.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+                <ArrowButton href={plan.ctaHref} fullWidth>
+                  {plan.ctaLabel}
+                </ArrowButton>
+              </article>
+            </Reveal>
+          ))}
+        </ul>
+      </PageSection>
 
-      <CTABanner
-        dark
-        eyebrow="Get Started"
-        headline="Not sure which plan fits? Start with a health check."
-        note="No long-term contract required."
-        primaryCta={{ label: "Request Your Free Health Check", href: "/health-check" }}
-        secondaryCta={{ label: "Contact Peerprise", href: "/contact" }}
+      <PageSection
+        number="02"
+        badge="Compare"
+        headline="Compare managed plan coverage."
+        id="plans-compare-heading"
+        tone="white"
+      >
+        <div className="overflow-hidden bg-[#f4f8fa]">
+          <PlanComparison variant="light" />
+        </div>
+      </PageSection>
+
+      <PageSection
+        number="03"
+        badge={plansImportantDetails.eyebrow}
+        headline={plansImportantDetails.headline}
+        id="plans-details-heading"
+        tone="gray"
+      >
+        <ul
+          className="m-0 grid list-none grid-cols-1 gap-5 p-0 md:grid-cols-2 md:gap-7"
+          role="list"
+        >
+          {plansImportantDetails.items.map((item, index) => (
+            <Reveal key={item.title} as="li" delayMs={60 + index * 70}>
+              <article
+                className={[
+                  "flex h-full flex-col gap-4 p-6 lg:p-8",
+                  index % 2 === 0 ? "bg-accent" : "bg-white",
+                ].join(" ")}
+              >
+                <h3 className="m-0 text-xl font-bold md:text-2xl">{item.title}</h3>
+                <p className="m-0 text-base leading-relaxed text-[#1f2a2e]/80 md:text-lg">
+                  {item.description}
+                </p>
+              </article>
+            </Reveal>
+          ))}
+        </ul>
+      </PageSection>
+
+      <PageSection
+        number="04"
+        badge={plansNotIncluded.eyebrow}
+        headline={plansNotIncluded.headline}
+        id="plans-excluded-heading"
+        tone="studio"
+      >
+        <ul
+          className="m-0 grid list-none grid-cols-1 gap-4 p-0 sm:grid-cols-2"
+          role="list"
+        >
+          {plansNotIncluded.items.map((item, index) => (
+            <Reveal key={item} as="li" delayMs={40 + index * 40}>
+              <div className="flex items-start gap-3 border border-white/12 p-5">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+                <span className="text-base text-white/80">{item}</span>
+              </div>
+            </Reveal>
+          ))}
+        </ul>
+      </PageSection>
+
+      <FAQ
+        items={[...plansFaqs]}
+        eyebrow="FAQs"
+        headline="Plans questions"
+        variant="light"
+        number="05"
+      />
+
+      <CTASection
+        headline="Start with the level of ownership your business needs now."
+        primaryCta={ctas.requestDigitalReview}
+        secondaryCta={ctas.startConversation}
+        variant="dark"
+        id="plans-final-cta"
+        number="06"
       />
     </>
   );

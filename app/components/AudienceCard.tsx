@@ -13,7 +13,7 @@ export default function AudienceCard({
   title,
   description,
   cta,
-  variant = "light",
+  variant = "dark",
   className = "",
 }: AudienceCardProps) {
   const s = surfaceClasses(variant);
@@ -21,7 +21,7 @@ export default function AudienceCard({
   return (
     <article
       className={[
-        "h-full flex flex-col rounded-[var(--radius-card)] p-6 sm:p-8",
+        "card-motion group h-full flex flex-col rounded-[var(--radius-card)] p-6 sm:p-8",
         s.card,
         className,
       ].join(" ")}
@@ -34,7 +34,7 @@ export default function AudienceCard({
       >
         {cta.label}
         <svg
-          className="w-4 h-4 ml-1.5"
+          className="w-4 h-4 ml-1.5 transition-transform duration-[var(--duration-base)] group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"

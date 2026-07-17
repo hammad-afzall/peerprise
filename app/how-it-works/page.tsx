@@ -1,89 +1,197 @@
 import type { Metadata } from "next";
 import PageHero from "../components/PageHero";
-import CTABanner from "../components/CTABanner";
-import SectionHeading from "../components/SectionHeading";
+import PageSection from "../components/PageSection";
+import Reveal from "../components/Reveal";
+import CTASection from "../components/CTASection";
+import { ctas } from "../lib/ctas";
+import {
+  howWeWorkEngagementRoutes,
+  howWeWorkFinalCta,
+  howWeWorkHero,
+  howWeWorkManagedProcess,
+  howWeWorkPartnershipProcess,
+  howWeWorkSoftwareProcess,
+  howWeWorkStandards,
+} from "../lib/how-we-work";
 
 export const metadata: Metadata = {
-  title: "How It Works",
-  description: "A clear, structured process from initial review to ongoing monthly support.",
+  title: "How We Work",
+  description: howWeWorkHero.supporting,
 };
 
-const steps = [
-  { num: "01", title: "Review", desc: "We assess your website, social profiles, analytics setup and current digital tools. You receive initial observations before any work begins." },
-  { num: "02", title: "Scope", desc: "We define responsibilities, platforms, monthly deliverables and support boundaries clearly. Everything is documented before the engagement starts." },
-  { num: "03", title: "Onboarding", desc: "We request the minimum access needed to begin work. Credentials are handled via a shared password manager with 2FA where required." },
-  { num: "04", title: "Monthly Planning", desc: "At the start of each month we confirm content direction, support priorities and any scope changes. Approval happens before publishing." },
-  { num: "05", title: "Delivery", desc: "We execute agreed work: publishing, updates, maintenance, integrations and support requests. You are kept informed of progress." },
-  { num: "06", title: "Reporting", desc: "At month end you receive a structured summary of completed work, pending items and anything that needs your attention." },
-  { num: "07", title: "Ongoing Support", desc: "Support requests are submitted through an agreed channel (email, shared inbox or project tool). Routine requests receive a response within two business days. Time-sensitive issues receive a response within one business day. Critical website outages are acknowledged within four business hours during standard business hours. Emergency and 24/7 support require a separate support agreement." },
-];
-
-const policies = [
-  { title: "Communication channels", desc: "Email and shared project management tool by default." },
-  { title: "Access handling", desc: "Minimum required access, documented and formally recorded." },
-  { title: "Approval process", desc: "Content reviewed before publishing, changes confirmed before deployment." },
-  { title: "Offboarding", desc: "All access revoked, assets returned, final status report provided." },
-];
-
-export default function HowItWorksPage() {
+/**
+ * How We Work — Studiova numbered process sections with Peerprise content.
+ */
+export default function HowWeWorkPage() {
   return (
     <>
       <PageHero
-        eyebrow="How It Works"
-        headline="From review to reliable ongoing support."
-        subtext="A structured process designed to give you clarity on what is being done, when and why."
+        supporting="A delivery process that adapts to the engagement, while keeping scope, access and decisions explicit."
+        highlight="scope, access and decisions"
+        headline="How We Work"
+        subtext={howWeWorkHero.supporting}
+        primaryCta={ctas.startConversation}
+        size="standard"
       />
 
-      <section className="section-padding bg-[var(--color-dark-surface)] border-t border-white/5">
-        <div className="site-container">
-          <SectionHeading
-            eyebrow="Process"
-            headline="Seven steps from first review to ongoing delivery."
-            subheadline="Each stage has a clear purpose, documented outcomes and no ambiguity about what happens next."
-          />
-          <div className="mt-10 sm:mt-14 max-w-[900px] relative">
-            <div className="absolute left-[27px] top-2 bottom-2 w-px bg-white/10 z-0 hidden sm:block" aria-hidden="true" />
-            <div className="flex flex-col gap-8 sm:gap-10">
-              {steps.map((step) => (
-                <div key={step.num} className="relative z-10 flex gap-4 sm:gap-8">
-                  <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-full glass-card gradient-border flex items-center justify-center font-bold text-[14px] sm:text-[16px] bg-[#111827]">
-                    <span className="text-gradient">{step.num}</span>
-                  </div>
-                  <div className="pt-1 sm:pt-3 min-w-0">
-                    <h2 className="text-[20px] sm:text-[22px] font-bold text-white mb-2 sm:mb-3">{step.title}</h2>
-                    <p className="text-[15px] sm:text-[16px] text-gray-400 leading-relaxed">{step.desc}</p>
-                  </div>
+      <PageSection
+        number="01"
+        badge="Engagement types"
+        headline="Choose the process relevant to your engagement."
+        id="engagement-overview-heading"
+        tone="gray"
+      >
+        <ul
+          className="m-0 grid list-none grid-cols-1 gap-5 p-0 md:grid-cols-3 md:gap-7"
+          role="list"
+        >
+          {howWeWorkEngagementRoutes.map((route, index) => (
+            <Reveal key={route.id} as="li" delayMs={60 + index * 70}>
+              <a
+                href={route.href}
+                className="group flex h-full flex-col justify-between gap-6 bg-white p-6 lg:p-8"
+              >
+                <div className="flex flex-col gap-3">
+                  <h3 className="m-0 text-2xl font-bold tracking-tight md:text-3xl">
+                    {route.title}
+                  </h3>
+                  <p className="m-0 text-base leading-relaxed text-[#1f2a2e]/70 md:text-lg">
+                    {route.description}
+                  </p>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+                <span
+                  className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent text-[#1f2a2e] transition-transform duration-500 group-hover:rotate-45"
+                  aria-hidden="true"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M7 7h10v10" />
+                    <path d="M7 17 17 7" />
+                  </svg>
+                </span>
+              </a>
+            </Reveal>
+          ))}
+        </ul>
+      </PageSection>
 
-      <section className="section-padding bg-[var(--color-dark-bg)] border-t border-white/5">
-        <div className="site-container">
-          <SectionHeading
-            eyebrow="Working agreement"
-            headline="How we communicate, access and hand off work."
-            center
-          />
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-            {policies.map((policy) => (
-              <div key={policy.title} className="glass-card p-6 rounded-[16px] hover:bg-white/10 transition-colors">
-                <h3 className="font-bold text-white mb-2">{policy.title}</h3>
-                <p className="text-gray-400 text-[15px] leading-relaxed">{policy.desc}</p>
+      <PageSection
+        number="02"
+        badge={howWeWorkManagedProcess.eyebrow}
+        headline={howWeWorkManagedProcess.headline}
+        id="managed-process-heading"
+        tone="studio"
+      >
+        <ul className="m-0 list-none p-0" role="list">
+          {howWeWorkManagedProcess.steps.map((step, index) => (
+            <Reveal key={step.number} as="li" delayMs={40 + index * 40}>
+              <div className="flex flex-col gap-3 border-t border-white/12 py-6 sm:flex-row sm:items-baseline sm:gap-8 xl:py-7">
+                <span className="shrink-0 text-2xl font-bold text-accent sm:w-16">
+                  {step.number}
+                </span>
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">
+                  <h3 className="m-0 shrink-0 text-xl font-bold text-white sm:w-56 md:text-2xl">
+                    {step.title}
+                  </h3>
+                  <p className="m-0 max-w-xl text-base text-white/70 md:text-lg">
+                    {step.description}
+                  </p>
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </Reveal>
+          ))}
+        </ul>
+      </PageSection>
 
-      <CTABanner
-        dark
-        headline="Ready to get started?"
-        subtext="Begin with a free digital presence health check."
-        primaryCta={{ label: "Request a Health Check", href: "/health-check" }}
-        secondaryCta={{ label: "View Plans", href: "/plans" }}
+      <PageSection
+        number="03"
+        badge={howWeWorkSoftwareProcess.eyebrow}
+        headline={howWeWorkSoftwareProcess.headline}
+        intro={howWeWorkSoftwareProcess.note}
+        id="software-process-heading"
+        tone="gray"
+      >
+        <ul
+          className="m-0 grid list-none grid-cols-1 gap-5 p-0 sm:grid-cols-2 lg:grid-cols-3 md:gap-7"
+          role="list"
+        >
+          {howWeWorkSoftwareProcess.steps.map((step, index) => (
+            <Reveal key={step.number} as="li" delayMs={60 + index * 60}>
+              <article className="flex h-full flex-col gap-4 bg-white p-6 lg:p-8">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent text-sm font-bold text-[#1f2a2e]">
+                  {step.number}
+                </span>
+                <h3 className="m-0 text-xl font-bold tracking-tight md:text-2xl">
+                  {step.title}
+                </h3>
+                <p className="m-0 text-base leading-relaxed text-[#1f2a2e]/70 md:text-lg">
+                  {step.description}
+                </p>
+              </article>
+            </Reveal>
+          ))}
+        </ul>
+      </PageSection>
+
+      <PageSection
+        number="04"
+        badge={howWeWorkPartnershipProcess.eyebrow}
+        headline={howWeWorkPartnershipProcess.headline}
+        id="partnership-process-heading"
+        tone="studio"
+      >
+        <ul
+          className="m-0 grid list-none grid-cols-1 gap-4 p-0 sm:grid-cols-2 xl:grid-cols-5"
+          role="list"
+        >
+          {howWeWorkPartnershipProcess.steps.map((step, index) => (
+            <Reveal key={step.title} as="li" delayMs={40 + index * 50}>
+              <div className="flex h-full flex-col gap-3 border border-white/12 p-5 lg:p-6">
+                <span className="text-2xl font-bold text-accent">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className="m-0 text-lg font-bold text-white">{step.title}</h3>
+                <p className="m-0 text-sm leading-relaxed text-white/70">{step.description}</p>
+              </div>
+            </Reveal>
+          ))}
+        </ul>
+      </PageSection>
+
+      <PageSection
+        number="05"
+        badge={howWeWorkStandards.eyebrow}
+        headline={howWeWorkStandards.headline}
+        id="working-standards-heading"
+        tone="white"
+      >
+        <ul
+          className="m-0 grid list-none grid-cols-1 gap-5 p-0 md:grid-cols-2 md:gap-7"
+          role="list"
+        >
+          {howWeWorkStandards.items.map((item, index) => (
+            <Reveal key={item.title} as="li" delayMs={60 + index * 60}>
+              <article
+                className={[
+                  "flex h-full flex-col gap-3 p-6 lg:p-8",
+                  index % 2 === 0 ? "bg-accent" : "bg-[#f4f8fa]",
+                ].join(" ")}
+              >
+                <h3 className="m-0 text-xl font-bold md:text-2xl">{item.title}</h3>
+                <p className="m-0 text-base leading-relaxed text-[#1f2a2e]/80 md:text-lg">
+                  {item.description}
+                </p>
+              </article>
+            </Reveal>
+          ))}
+        </ul>
+      </PageSection>
+
+      <CTASection
+        headline={howWeWorkFinalCta.headline}
+        primaryCta={ctas.startConversation}
+        variant="dark"
+        id="how-we-work-final-cta"
+        number="06"
       />
     </>
   );

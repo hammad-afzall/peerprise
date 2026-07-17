@@ -1,122 +1,219 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageHero from "../components/PageHero";
-import SectionHeading from "../components/SectionHeading";
-import CTABanner from "../components/CTABanner";
+import PageSection from "../components/PageSection";
+import Reveal from "../components/Reveal";
 import FAQ from "../components/FAQ";
-import { faqs } from "../lib/faqs";
+import CTASection from "../components/CTASection";
+import { services } from "../lib/services";
+import {
+  websiteCareBenefits,
+  websiteCareFinalCta,
+  websiteCareFaqs,
+  websiteCareHandle,
+  websiteCareHero,
+  websiteCarePlatforms,
+  websiteCareProcess,
+  websiteCareRelatedIds,
+  websiteCareScope,
+} from "../lib/website-care";
 
 export const metadata: Metadata = {
   title: "Website Care and Support",
   description:
-    "Keep your website current, monitored and working properly with ongoing maintenance and reliable technical support.",
+    "Keep your website maintained, current and working properly without relying on ad hoc freelancers or waiting weeks for routine updates.",
 };
 
-const includedFeatures = [
-  "Software and plugin updates",
-  "Backups",
-  "Uptime monitoring",
-  "Security checks",
-  "Bug fixes",
-  "Text and image changes",
-  "New pages and sections (higher plans)",
-  "Form testing",
-  "Performance checks",
-  "Mobile compatibility",
-  "Technical troubleshooting",
-];
-
 export default function WebsiteCarePage() {
-  const pageFaqs = faqs.filter(f => ["website-support", "small-change", "existing-website", "turnaround", "access"].includes(f.id));
+  const relatedServices = websiteCareRelatedIds
+    .map((id) => services.find((service) => service.id === id))
+    .filter((service): service is (typeof services)[number] => Boolean(service));
 
   return (
     <>
       <PageHero
-        eyebrow="Website Care and Support"
-        headline="Reliable website care from a technical team."
-        subtext="Keep your website current, monitored and working properly with ongoing maintenance and reliable technical support."
-        primaryCta={{ label: "Request a Health Check", href: "/health-check" }}
-        secondaryCta={{ label: "View Plans", href: "/plans" }}
+        supporting="Ongoing maintenance and support from a technical team, not an ad hoc freelancer."
+        highlight="technical team"
+        headline="Website Care"
+        subtext={websiteCareHero.supporting}
+        primaryCta={websiteCareHero.primaryCta}
+        secondaryCta={websiteCareHero.secondaryCta}
+        size="standard"
       />
 
-      <section className="section-padding bg-[var(--color-dark-bg)]">
-        <div className="site-container">
-          <SectionHeading eyebrow="What's included" headline="Comprehensive technical maintenance." />
-          <ul className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {includedFeatures.map(feat => (
-              <li key={feat} className="flex items-center gap-3 glass-card p-4 rounded-[12px]">
-                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[#4E6EFF]">
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5.5l2.5 2.5 4.5-4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                </span>
-                <span className="text-white font-medium">{feat}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <PageSection
+        number="01"
+        badge={websiteCareHandle.eyebrow}
+        headline={websiteCareHandle.headline}
+        id="website-care-handle-heading"
+        tone="studio"
+      >
+        <ul
+          className="m-0 grid list-none grid-cols-1 gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3 md:gap-5"
+          role="list"
+        >
+          {websiteCareHandle.items.map((item, index) => (
+            <Reveal key={item} as="li" delayMs={30 + index * 30}>
+              <div className="flex items-start gap-3 border border-white/12 p-5">
+                <span
+                  className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                  aria-hidden="true"
+                />
+                <span className="text-base text-white/80">{item}</span>
+              </div>
+            </Reveal>
+          ))}
+        </ul>
+      </PageSection>
 
-      <section className="section-padding bg-[var(--color-dark-surface)]">
-        <div className="site-container">
-          <SectionHeading eyebrow="Platforms" headline="Supported platforms." />
-          <p className="mt-6 text-gray-400 text-[18px]">
-            We support WordPress, Webflow, Squarespace, Wix, Shopify, and custom-built sites.
+      <PageSection
+        number="02"
+        badge={websiteCareBenefits.eyebrow}
+        headline={websiteCareBenefits.headline}
+        id="website-care-benefits-heading"
+        tone="white"
+      >
+        <ul
+          className="m-0 grid list-none grid-cols-1 gap-5 p-0 md:grid-cols-2 md:gap-7"
+          role="list"
+        >
+          {websiteCareBenefits.items.map((item, index) => (
+            <Reveal key={item.title} as="li" delayMs={60 + index * 70}>
+              <article
+                className={[
+                  "flex h-full flex-col gap-4 p-6 lg:p-8",
+                  index % 2 === 0 ? "bg-accent" : "bg-[#f4f8fa]",
+                ].join(" ")}
+              >
+                <h3 className="m-0 text-xl font-bold md:text-2xl">{item.title}</h3>
+                <p className="m-0 text-base leading-relaxed text-[#1f2a2e]/80 md:text-lg">
+                  {item.description}
+                </p>
+              </article>
+            </Reveal>
+          ))}
+        </ul>
+      </PageSection>
+
+      <PageSection
+        number="03"
+        badge={websiteCarePlatforms.eyebrow}
+        headline={websiteCarePlatforms.headline}
+        id="website-care-platforms-heading"
+        tone="gray"
+      >
+        <Reveal>
+          <p className="m-0 max-w-[820px] text-xl leading-relaxed text-[#1f2a2e]/80 md:text-2xl">
+            {websiteCarePlatforms.copy}
           </p>
-        </div>
-      </section>
+        </Reveal>
+      </PageSection>
 
-      <section className="section-padding bg-[var(--color-dark-bg)]">
-        <div className="site-container grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="bg-[#EEF2FF] border border-[#C7D2FE] rounded-[12px] p-8">
-            <h3 className="text-[#3730A3] font-bold text-[18px] mb-4">What counts as a small website change?</h3>
-            <p className="text-[#4338CA] leading-relaxed">
-              A small website change is a content, image or layout update that usually takes no more than 30 minutes and does not require new custom functionality. Larger or specialised work is scoped separately against your monthly website-support allowance.
-            </p>
-          </div>
-          <div className="bg-[var(--color-dark-bg)] border border-white/10 rounded-[12px] p-8">
-            <h3 className="text-white font-bold text-[18px] mb-4">Additional and project work</h3>
-            <p className="text-gray-400 leading-relaxed mb-4">
-              Your monthly plan covers the website care and support deliverables listed in the selected package. Larger projects are scoped separately, including:
-            </p>
-            <ul className="list-disc list-inside text-gray-400 space-y-2">
-              <li>Major redesigns</li>
-              <li>Complete website builds</li>
-              <li>Custom software solutions</li>
-              <li>Large content migrations</li>
+      <PageSection
+        number="04"
+        badge={websiteCareScope.eyebrow}
+        headline={websiteCareScope.headline}
+        intro={websiteCareScope.intro}
+        id="website-care-scope-heading"
+        tone="white"
+      >
+        <Reveal delayMs={100}>
+          <article className="bg-[#f4f8fa] p-6 lg:p-10">
+            <h3 className="m-0 mb-5 text-xl font-bold tracking-tight md:text-2xl">
+              {websiteCareScope.separatelyHeadline}
+            </h3>
+            <ul
+              className="m-0 grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2"
+              role="list"
+            >
+              {websiteCareScope.exclusions.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-base text-[#1f2a2e]/70">
+                  <span
+                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                    aria-hidden="true"
+                  />
+                  {item}
+                </li>
+              ))}
             </ul>
-          </div>
-        </div>
-      </section>
+          </article>
+        </Reveal>
+      </PageSection>
 
-      <section className="section-padding bg-[var(--color-dark-surface)]">
-        <div className="site-container">
-          <SectionHeading eyebrow="Process" headline="How updates happen." />
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="glass-card rounded-[14px] p-6 hover:bg-white/10 transition-colors">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF58D5] to-[#4E6EFF] font-bold text-[13px] tracking-widest uppercase block mb-2">01</span>
-              <h3 className="text-white font-bold text-[18px] mb-2">Submit</h3>
-              <p className="text-gray-400 text-[15px] leading-relaxed">Send a support request through our shared channel.</p>
-            </div>
-            <div className="glass-card rounded-[14px] p-6 hover:bg-white/10 transition-colors">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF58D5] to-[#4E6EFF] font-bold text-[13px] tracking-widest uppercase block mb-2">02</span>
-              <h3 className="text-white font-bold text-[18px] mb-2">Review</h3>
-              <p className="text-gray-400 text-[15px] leading-relaxed">We assess the scope, timeline, and impact of the change.</p>
-            </div>
-            <div className="glass-card rounded-[14px] p-6 hover:bg-white/10 transition-colors">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF58D5] to-[#4E6EFF] font-bold text-[13px] tracking-widest uppercase block mb-2">03</span>
-              <h3 className="text-white font-bold text-[18px] mb-2">Deliver</h3>
-              <p className="text-gray-400 text-[15px] leading-relaxed">Changes are safely made, tested, and confirmed with you.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageSection
+        number="05"
+        badge={websiteCareProcess.eyebrow}
+        headline={websiteCareProcess.headline}
+        id="website-care-process-heading"
+        tone="studio"
+      >
+        <ul
+          className="m-0 grid list-none grid-cols-1 gap-5 p-0 sm:grid-cols-2 lg:grid-cols-4 md:gap-7"
+          role="list"
+        >
+          {websiteCareProcess.steps.map((step, index) => (
+            <Reveal key={step.number} as="li" delayMs={60 + index * 70}>
+              <article className="flex h-full flex-col gap-4 border border-white/12 p-6 lg:p-8">
+                <span className="text-3xl font-bold text-accent">{step.number}</span>
+                <h3 className="m-0 text-xl font-bold tracking-tight text-white md:text-2xl">
+                  {step.title}
+                </h3>
+                <p className="m-0 text-base leading-relaxed text-white/70">{step.description}</p>
+              </article>
+            </Reveal>
+          ))}
+        </ul>
+      </PageSection>
 
-      <CTABanner
-        dark
-        headline="Your website, maintained and up to date."
-        primaryCta={{ label: "Request a Health Check", href: "/health-check" }}
-        secondaryCta={{ label: "View Plans", href: "/plans" }}
+      <PageSection
+        number="06"
+        badge="Related services"
+        headline="Other Peerprise services that often sit alongside website care."
+        id="website-care-related-heading"
+        tone="gray"
+      >
+        <ul
+          className="m-0 grid list-none grid-cols-1 gap-5 p-0 md:grid-cols-3 md:gap-7"
+          role="list"
+        >
+          {relatedServices.map((service, index) => (
+            <Reveal key={service.id} as="li" delayMs={60 + index * 70}>
+              <Link href={service.href} className="group flex h-full flex-col justify-between gap-6 bg-white p-6 lg:p-8">
+                <div className="flex flex-col gap-3">
+                  <h3 className="m-0 text-xl font-bold tracking-tight md:text-2xl">
+                    {service.approvedLabel}
+                  </h3>
+                  <p className="m-0 text-base text-[#1f2a2e]/70">{service.navDescription}</p>
+                </div>
+                <span className="inline-flex items-center text-[15px] font-bold text-[#1f2a2e]">
+                  {service.linkLabel}
+                  <span className="ml-2 transition-transform group-hover:translate-x-1" aria-hidden="true">
+                    →
+                  </span>
+                </span>
+              </Link>
+            </Reveal>
+          ))}
+        </ul>
+      </PageSection>
+
+      <FAQ
+        items={websiteCareFaqs}
+        eyebrow="Common questions"
+        headline="Website care questions"
+        variant="light"
+        number="07"
       />
 
-      <FAQ items={pageFaqs} />
+      <CTASection
+        headline={websiteCareFinalCta.headline}
+        subtext={websiteCareFinalCta.copy}
+        primaryCta={websiteCareFinalCta.primaryCta}
+        secondaryCta={websiteCareFinalCta.secondaryCta}
+        variant="dark"
+        id="website-care-final-cta"
+        number="08"
+      />
     </>
   );
 }

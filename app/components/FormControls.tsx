@@ -250,17 +250,14 @@ export function FormConsent({ children, variant = "dark" }: ConsentProps) {
   );
 }
 
-/** Honeypot — must remain visually and accessibly hidden. */
+/** Honeypot — visually and accessibly hidden; not announced to assistive technology. */
 export function FormHoneypot() {
   return (
-    <input
-      type="text"
-      name="_hp"
-      autoComplete="off"
-      tabIndex={-1}
-      aria-hidden="true"
-      className="absolute opacity-0 pointer-events-none h-0 w-0 overflow-hidden"
-      style={{ position: "absolute", left: "-9999px" }}
-    />
+    <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden opacity-0">
+      <label>
+        Leave blank
+        <input type="text" name="_hp" autoComplete="off" tabIndex={-1} />
+      </label>
+    </div>
   );
 }

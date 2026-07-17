@@ -95,6 +95,10 @@ function renderMarkdown(markdown: string, headings: BlogHeading[]): string {
 }
 
 function toMeta(data: Record<string, FrontmatterValue>, slug: string): BlogPostMeta {
+  const rawCategory = String(data.category ?? "");
+  const readingRaw = data.readingTime ?? data.reading_time;
+  const readingTime = readingRaw ? String(readingRaw) : undefined;
+
   return {
     slug: String(data.slug ?? slug),
     title: String(data.title ?? slug),
@@ -104,8 +108,9 @@ function toMeta(data: Record<string, FrontmatterValue>, slug: string): BlogPostM
       ? String(data.updatedAt ?? data.updated_date)
       : undefined,
     author: String(data.author ?? author.name),
-    category: String(data.category) as BlogCategory,
-    readingTime: String(data.readingTime ?? data.reading_time ?? "5 min read"),
+    // Preserve frontmatter as written; index filters only expose approved categories.
+    category: rawCategory as BlogCategory,
+    readingTime,
     featuredImage: data.featuredImage || data.featured_image
       ? String(data.featuredImage ?? data.featured_image)
       : undefined,
@@ -190,7 +195,7 @@ export function getRelatedPosts(slug: string, category: string, limit = 3): Blog
     .slice(0, limit);
 }
 
+/** Only returns a post marked featured in frontmatter — no popularity fallback. */
 export function getFeaturedPost(): BlogPostMeta | null {
-  const posts = getAllPosts();
-  return posts.find((post) => post.featured) ?? posts[0] ?? null;
+  return getAllPosts().find((post) => post.featured) ?? null;
 }

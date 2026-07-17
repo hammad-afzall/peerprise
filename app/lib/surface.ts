@@ -1,6 +1,6 @@
 /**
- * Shared light / dark section surface helpers for Stage 3 components.
- * Colours derive from Prompt 1 tokens (hero palette + light neutrals).
+ * Shared light / dark section surface helpers.
+ * Dark surfaces follow the Studiova-inspired black / lime system.
  */
 
 export type SurfaceVariant = "dark" | "light";
@@ -16,12 +16,12 @@ export const surface = {
     sectionElevated: "section-dark-elevated",
     eyebrow: "text-on-dark-muted",
     heading: "text-white",
-    body: "text-on-dark-muted",
-    bodyStrong: "text-on-dark-subtle",
+    body: "text-on-dark-subtle",
+    bodyStrong: "text-on-dark",
     muted: "text-on-dark-muted",
     border: "border-white/10",
-    card: "glass-card",
-    cardHover: "hover:bg-white/10",
+    card: "card-dark",
+    cardHover: "hover:border-white/20",
     divide: "divide-white/10",
     link: "text-accent hover:text-accent-secondary",
     secondaryBtn: "btn-secondary",

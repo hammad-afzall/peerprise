@@ -38,13 +38,13 @@ export default function SectionHeader({
       )}
       <Tag
         id={id}
-        className={`type-h2 tracking-tight max-w-[720px] ${s.heading} ${center ? "mx-auto" : ""}`}
+        className={`type-h2 tracking-tight max-w-[840px] ${s.heading} ${center ? "mx-auto" : ""}`}
       >
         {headline}
       </Tag>
       {subheadline && (
         <p
-          className={`mt-3 sm:mt-4 type-body-lg max-w-[600px] ${s.body} ${center ? "mx-auto" : ""}`}
+          className={`mt-3 sm:mt-4 type-body-lg max-w-[720px] ${s.body} ${center ? "mx-auto" : ""}`}
         >
           {subheadline}
         </p>

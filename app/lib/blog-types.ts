@@ -8,7 +8,8 @@ export type BlogPostMeta = {
   updatedAt?: string;
   author: string;
   category: BlogCategory;
-  readingTime: string;
+  /** Present only when frontmatter provides a reliable value — never invent. */
+  readingTime?: string;
   featuredImage?: string;
   featured?: boolean;
 };

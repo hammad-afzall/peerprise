@@ -13,6 +13,7 @@ export const ctaLabels = {
   viewSelectedWork: "View Selected Work",
   viewManagedPlans: "View Managed Plans",
   exploreCustomSolutions: "Explore Custom Solutions",
+  discussEngineeringRequirement: "Discuss an Engineering Requirement",
   readArticle: "Read article",
 } as const;
 
@@ -27,11 +28,6 @@ export const ctas = {
     label: ctaLabels.requestDigitalReview,
     href: "/digital-review",
   },
-  /** Legacy route kept until Prompt 15 redirect lands. */
-  requestDigitalReviewLegacy: {
-    label: ctaLabels.requestDigitalReview,
-    href: "/health-check",
-  },
   exploreServices: {
     label: ctaLabels.exploreServices,
     href: "/services",
@@ -42,11 +38,11 @@ export const ctas = {
   },
   discussSoftware: {
     label: ctaLabels.discussSoftware,
-    href: "/contact?service=Custom%20Software",
+    href: "/contact?service=Custom%20software",
   },
   discussPartnership: {
     label: ctaLabels.discussPartnership,
-    href: "/contact?service=Engineering%20Partnerships",
+    href: "/contact?service=Engineering%20partnership",
   },
   viewSelectedWork: {
     label: ctaLabels.viewSelectedWork,
@@ -60,14 +56,19 @@ export const ctas = {
     label: ctaLabels.exploreCustomSolutions,
     href: "/custom-software-solutions",
   },
+  /** Services Overview — Engineering services section CTA (Section 6). */
+  discussEngineeringRequirement: {
+    label: ctaLabels.discussEngineeringRequirement,
+    href: "/contact",
+  },
 } as const;
 
-/** Blog article end CTA — preserved for existing Insights articles. */
+/** Insights article end CTA — approved labels and routes. */
 export const blogArticleCta = {
   headline: "Need help improving your website or digital operations?",
-  primary: { label: "Explore Our Services", href: "/#services" },
-  secondary: { label: "Contact Peerprise", href: "/contact" },
+  primary: ctas.exploreServices,
+  secondary: ctas.startConversation,
 } as const;
 
 export const customSoftwareContactHref =
-  "/contact?service=Custom%20Software%20Solutions";
+  "/contact?service=Custom%20software";
