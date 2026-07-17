@@ -1,0 +1,15 @@
+ERR	0	<urlopen error Tunnel connection failed: 403 Forbidden>	https://studiova.vercel.app/
+ERR	0	<urlopen error Tunnel connection failed: 403 Forbidden>	https://studiova.vercel.app/about
+ERR	0	<urlopen error Tunnel connection failed: 403 Forbidden>	https://studiova.vercel.app/projects
+ERR	0	<urlopen error Tunnel connection failed: 403 Forbidden>	https://studiova.vercel.app/projects/amberbottle
+ERR	0	<urlopen error Tunnel connection failed: 403 Forbidden>	https://studiova.vercel.app/projects/biotrack-lims
+ERR	0	<urlopen error Tunnel connection failed: 403 Forbidden>	https://studiova.vercel.app/projects/digitalmagazine
+ERR	0	<urlopen error Tunnel connection failed: 403 Forbidden>	https://studiova.vercel.app/projects/pixelforge
+ERR	0	<urlopen error Tunnel connection failed: 403 Forbidden>	https://studiova.vercel.app/projects/snapclear
+ERR	0	<urlopen error Tunnel connection failed: 403 Forbidden>	https://studiova.vercel.app/projects/transfermax
+ERR	0	<urlopen error Tunnel connection failed: 403 Forbidden>	https://studiova.vercel.app/blog/a-campaign-that-connects
+ERR	0	<urlopen error Tunnel connection failed: 403 Forbidden>	https://studiova.vercel.app/blog/an-breaking-boundaries-our-latest-brand-redesign
+ERR	0	<urlopen error Tunnel connection failed: 403 Forbidden>	https://studiova.vercel.app/blog/recognized-for-design
+ERR	0	<urlopen error Tunnel connection failed: 403 Forbidden>	https://studiova.vercel.app/privacy-policy
+ERR	0	<urlopen error Tunnel connection failed: 403 Forbidden>	https://studiova.vercel.app/terms-and-conditions
+ERR	0	<urlopen error Tunnel connection failed: 403 Forbidden>	https://studiova.vercel.app/not-found

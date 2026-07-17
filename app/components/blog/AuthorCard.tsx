@@ -8,12 +8,13 @@ type Props = {
 export default function AuthorCard({ compact = false }: Props) {
   return (
     <div
-      className={`flex items-start gap-4 rounded-[16px] border border-[#C7D2FE] bg-[#EEF2FF] ${
-        compact ? "p-4 sm:p-5" : "p-5 sm:p-6 lg:p-7"
-      }`}
+      className={[
+        "flex items-start gap-4 bg-[#f4f8fa]",
+        compact ? "p-4 sm:p-5" : "p-5 sm:p-6 lg:p-7",
+      ].join(" ")}
     >
       <div
-        className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[14px] border border-[#E5E7EB] bg-white"
+        className="flex h-14 w-14 shrink-0 items-center justify-center bg-white"
         aria-hidden="true"
       >
         <Image
@@ -25,10 +26,10 @@ export default function AuthorCard({ compact = false }: Props) {
         />
       </div>
       <div className="min-w-0">
-        <p className="font-semibold text-[#0B1220] text-[16px] sm:text-[17px]">{author.name}</p>
-        <p className="text-[14px] sm:text-[15px] mt-1 text-[#374151]">{author.role}</p>
+        <p className="text-[16px] font-semibold text-[#1f2a2e] sm:text-[17px]">{author.name}</p>
+        <p className="mt-1 text-[14px] text-[#1f2a2e]/70 sm:text-[15px]">{author.role}</p>
         {!compact ? (
-          <p className="text-[14px] sm:text-[15px] mt-2.5 leading-relaxed text-[#4B5563]">
+          <p className="mt-2.5 text-[14px] leading-relaxed text-[#1f2a2e]/65 sm:text-[15px]">
             {author.bio}
           </p>
         ) : null}

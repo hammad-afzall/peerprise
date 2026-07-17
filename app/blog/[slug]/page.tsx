@@ -102,9 +102,9 @@ export default async function BlogArticlePage({ params }: Props) {
           <div className="grid grid-cols-1 items-end gap-10 lg:grid-cols-[minmax(0,1fr)_440px] lg:gap-14">
             <div className="min-w-0 max-w-[820px]">
               <nav aria-label="Breadcrumb" className="mb-6">
-                <ol className="flex flex-wrap items-center gap-2 text-[13px] text-white/50">
+                <ol className="m-0 flex list-none flex-wrap items-center gap-2 p-0 text-[13px] text-white/50">
                   <li>
-                    <Link href="/blog" className="transition-colors hover:text-white">
+                    <Link href="/blog" className="transition-colors hover:text-accent">
                       Insights
                     </Link>
                   </li>
@@ -112,9 +112,19 @@ export default async function BlogArticlePage({ params }: Props) {
                   <li className="max-w-[min(100%,28rem)] truncate text-white/70">{post.title}</li>
                 </ol>
               </nav>
-              <span className="mb-6 inline-flex h-9 items-center rounded-full bg-accent px-4 py-1.5 text-sm font-medium text-[#1f2a2e]">
-                {post.category}
-              </span>
+              <div className="mb-6 flex items-center gap-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/icons/primary-leaf.svg"
+                  alt=""
+                  width={22}
+                  height={22}
+                  className="animate-spin [animation-duration:6s]"
+                />
+                <span className="inline-flex h-9 items-center rounded-full bg-accent px-4 py-1.5 text-sm font-medium text-[#1f2a2e]">
+                  {post.category}
+                </span>
+              </div>
               <h1 className="mb-6 text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-6xl">
                 {post.title}
               </h1>
@@ -145,8 +155,6 @@ export default async function BlogArticlePage({ params }: Props) {
           <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[minmax(0,1fr)_260px] lg:gap-10">
             <div className="min-w-0">
               <div className="bg-white px-5 py-8 sm:px-10 sm:py-11 lg:px-16 lg:py-14">
-                <TableOfContents headings={post.headings} variant="inline" tone="light" />
-
                 <div
                   id="article-body"
                   className="article-prose max-w-[780px]"

@@ -61,12 +61,12 @@ export default function TableOfContents({
 
   const list = (
     <ol
-      className={`relative flex flex-col gap-0.5 border-l pl-0 ${
-        isDark ? "border-white/15" : "border-[#E5E7EB]"
+      className={`relative m-0 flex list-none flex-col gap-0.5 border-l p-0 ${
+        isDark ? "border-white/15" : "border-black/10"
       }`}
     >
       <span
-        className="absolute left-0 top-0 w-[2px] bg-[#6366F1] transition-[height] duration-200 ease-out motion-reduce:transition-none"
+        className="absolute left-0 top-0 w-[2px] bg-accent transition-[height] duration-200 ease-out motion-reduce:transition-none"
         style={{ height: `${Math.max(12, progress)}%` }}
         aria-hidden="true"
       />
@@ -77,19 +77,17 @@ export default function TableOfContents({
             <a
               href={`#${heading.id}`}
               onClick={() => setOpen(false)}
-              className={`block border-l-2 -ml-px rounded-r-md py-2 text-[15px] leading-snug outline-none transition-colors duration-200 motion-reduce:transition-none focus-visible:bg-[#6366F1]/15 focus-visible:text-[#6366F1] ${
-                heading.level === 3 ? "pl-7" : "pl-4"
-              } ${
+              className={[
+                "block border-l-2 -ml-px py-2 text-[15px] leading-snug outline-none transition-colors duration-200",
+                heading.level === 3 ? "pl-7" : "pl-4",
                 active
-                  ? "border-[#6366F1] font-semibold " +
-                    (isDark
-                      ? "bg-white/10 text-white"
-                      : "bg-[#EEF2FF] text-[#0B1220]")
-                  : "border-transparent " +
-                    (isDark
-                      ? "text-gray-400 hover:text-white hover:bg-white/5"
-                      : "text-[#4B5563] hover:text-[#0B1220] hover:bg-[#F3F4F6]")
-              }`}
+                  ? isDark
+                    ? "border-accent bg-white/10 font-semibold text-white"
+                    : "border-accent bg-accent/20 font-semibold text-[#1f2a2e]"
+                  : isDark
+                    ? "border-transparent text-white/50 hover:bg-white/5 hover:text-white"
+                    : "border-transparent text-[#1f2a2e]/60 hover:bg-[#f4f8fa] hover:text-[#1f2a2e]",
+              ].join(" ")}
             >
               {heading.text}
             </a>
@@ -103,13 +101,13 @@ export default function TableOfContents({
     return (
       <nav
         aria-label="Table of contents"
-        className={`hidden lg:block p-5 ${
-          isDark ? "border border-white/10 bg-[#111A2B]/80" : "bg-[#f4f8fa]"
+        className={`hidden p-5 lg:block ${
+          isDark ? "border border-white/10 bg-black/40" : "bg-[#f4f8fa]"
         }`}
       >
         <p
-          className={`text-[12px] font-semibold uppercase tracking-[0.1em] mb-4 ${
-            isDark ? "text-gray-400" : "text-[#5B6472]"
+          className={`mb-4 text-[12px] font-semibold uppercase tracking-[0.1em] ${
+            isDark ? "text-white/50" : "text-[#1f2a2e]/50"
           }`}
         >
           On this page
@@ -120,17 +118,17 @@ export default function TableOfContents({
   }
 
   return (
-    <div className="lg:hidden mb-8">
+    <div className="mb-8 lg:hidden">
       <button
         type="button"
-        className="flex w-full items-center justify-between rounded-[12px] border border-[#E5E7EB] bg-white px-4 py-3 text-left text-[15px] font-semibold text-[#0B1220] outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-[#6366F1]/40"
+        className="flex w-full items-center justify-between border border-black/10 bg-white px-4 py-3 text-left text-[15px] font-semibold text-[#1f2a2e] outline-none transition-colors focus-visible:ring-2 focus-visible:ring-accent"
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((value) => !value)}
       >
         <span>On this page</span>
         <svg
-          className={`h-4 w-4 text-[#5B6472] transition-transform duration-200 motion-reduce:transition-none ${
+          className={`h-4 w-4 text-[#1f2a2e]/60 transition-transform duration-200 ${
             open ? "rotate-180" : ""
           }`}
           viewBox="0 0 20 20"
@@ -149,7 +147,7 @@ export default function TableOfContents({
       <div
         id={panelId}
         hidden={!open}
-        className="mt-3 rounded-[12px] border border-[#E5E7EB] bg-white p-4"
+        className="mt-3 border border-black/10 bg-white p-4"
       >
         <nav aria-label="Table of contents">{list}</nav>
       </div>

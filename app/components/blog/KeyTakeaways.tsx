@@ -7,26 +7,25 @@ export default function KeyTakeaways({ items }: Props) {
 
   return (
     <section
-      className="rounded-[14px] border border-[#C7D2FE] bg-[#EEF2FF] p-5 sm:p-6"
+      className="bg-accent p-5 sm:p-6 lg:p-8"
       aria-labelledby="key-takeaways-heading"
     >
-      <h2
-        id="key-takeaways-heading"
-        className="text-[20px] sm:text-[22px] font-bold text-[#0B1220] mb-4"
-      >
+      <p className="mb-4 inline-flex bg-[#1f2a2e] px-3 py-1.5 text-[12px] font-extrabold uppercase tracking-[0.04em] text-accent">
+        Key takeaways
+      </p>
+      <h2 id="key-takeaways-heading" className="sr-only">
         Key takeaways
       </h2>
-      <ul className="flex flex-col gap-3.5">
+      <div className="flex flex-col gap-4">
         {items.map((item) => (
-          <li key={item} className="flex gap-3 text-[16px] sm:text-[16.5px] leading-relaxed text-[#1F2937]">
-            <span
-              className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#6366F1]"
-              aria-hidden="true"
-            />
-            <span>{item}</span>
-          </li>
+          <p
+            key={item}
+            className="m-0 text-[17px] font-semibold leading-relaxed text-[#1f2a2e] sm:text-[18px]"
+          >
+            {item}
+          </p>
         ))}
-      </ul>
+      </div>
     </section>
   );
 }

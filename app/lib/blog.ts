@@ -1,7 +1,7 @@
 import "server-only";
 import fs from "fs";
 import path from "path";
-import { marked } from "marked";
+import { parseArticleMarkdown } from "./article-markdown";
 import { author } from "./author";
 import type { BlogCategory } from "./blog-categories";
 import type { BlogHeading, BlogPost, BlogPostMeta } from "./blog-types";
@@ -81,17 +81,13 @@ function extractHeadings(markdown: string): BlogHeading[] {
 function renderMarkdown(markdown: string, headings: BlogHeading[]): string {
   let headingIndex = 0;
 
-  const renderer = new marked.Renderer();
-  renderer.heading = ({ text, depth }) => {
+  return parseArticleMarkdown(markdown, (text, depth) => {
     const plain = text.replace(/<[^>]+>/g, "");
     const heading = headings[headingIndex];
     headingIndex += 1;
     const id = heading?.id ?? slugifyHeading(plain);
     return `<h${depth} id="${id}">${text}</h${depth}>`;
-  };
-
-  marked.setOptions({ gfm: true, breaks: false });
-  return marked.parse(markdown, { renderer }) as string;
+  });
 }
 
 function toMeta(data: Record<string, FrontmatterValue>, slug: string): BlogPostMeta {

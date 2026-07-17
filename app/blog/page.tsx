@@ -36,8 +36,9 @@ export default function BlogPage() {
 
       <PageSection
         number="01"
-        badge="Recent news"
-        headline={insightsPage.headline}
+        badge="Resources"
+        headline={insightsPage.recentHeading}
+        intro={insightsPage.headline}
         id="insights-index-heading"
         tone="white"
       >

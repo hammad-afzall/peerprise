@@ -1,4 +1,4 @@
-import { marked } from "marked";
+import { parseArticleInline, parseArticleMarkdown } from "./article-markdown";
 
 export type EditorialDirective =
   | "takeaway"
@@ -50,11 +50,11 @@ function escapeHtml(value: string): string {
 }
 
 function inlineMarkdown(text: string): string {
-  return marked.parseInline(text.trim(), { gfm: true }) as string;
+  return parseArticleInline(text);
 }
 
 function blockMarkdown(text: string): string {
-  return marked.parse(text.trim(), { gfm: true }) as string;
+  return parseArticleMarkdown(text.trim());
 }
 
 function parseListItems(body: string): string[] {
@@ -81,7 +81,7 @@ function renderCallout(type: keyof typeof LABELS, body: string): string {
   return `<aside class="article-callout article-callout--${type}" role="note">
   <div class="article-callout__header">
     ${CALLOUT_ICONS[type]}
-    <p class="article-callout__label">${LABELS[type]}</p>
+    <span class="article-callout__label">${LABELS[type]}</span>
   </div>
   <div class="article-callout__body">${blockMarkdown(body)}</div>
 </aside>`;
@@ -89,24 +89,14 @@ function renderCallout(type: keyof typeof LABELS, body: string): string {
 
 function renderSteps(body: string): string {
   const items = parseListItems(body);
-  const lis = items
-    .map(
-      (item, index) =>
-        `<li class="article-steps__item"><span class="article-steps__num" aria-hidden="true">${index + 1}</span><div class="article-steps__text">${inlineMarkdown(item)}</div></li>`,
-    )
+  return items
+    .map((item, index) => `<p>${index + 1}. ${inlineMarkdown(item)}</p>`)
     .join("\n");
-  return `<ol class="article-steps">${lis}</ol>`;
 }
 
 function renderChecklist(body: string): string {
   const items = parseListItems(body);
-  const lis = items
-    .map(
-      (item) =>
-        `<li class="article-checklist__item"><span class="article-checklist__box" aria-hidden="true"></span><span>${inlineMarkdown(item)}</span></li>`,
-    )
-    .join("\n");
-  return `<ul class="article-checklist" role="list">${lis}</ul>`;
+  return items.map((item) => `<p>${inlineMarkdown(item)}</p>`).join("\n");
 }
 
 function renderQuote(body: string): string {

@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import ArticleCard from "../components/blog/ArticleCard";
+import Reveal from "../components/Reveal";
 import { blogCategories } from "../lib/blog-categories";
 import type { BlogPostMeta } from "../lib/blog-types";
 import { insightsPage } from "../lib/insights";
@@ -39,8 +40,12 @@ export default function BlogIndexClient({ posts, featured }: Props) {
 
   return (
     <div>
-      <div className="mb-10 flex flex-col gap-4">
-        <div role="group" aria-label="Filter articles by category" className="flex flex-wrap gap-2">
+      <div className="mb-10 flex flex-col gap-5 lg:mb-14 lg:flex-row lg:items-center lg:justify-between">
+        <div
+          role="group"
+          aria-label="Filter articles by category"
+          className="flex max-w-full gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
           {["All", ...blogCategories].map((item) => {
             const active = category === item;
             return (
@@ -50,10 +55,10 @@ export default function BlogIndexClient({ posts, featured }: Props) {
                 onClick={() => setCategory(item)}
                 aria-pressed={active}
                 className={[
-                  "h-10 min-h-10 px-4 text-[13px] font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus",
+                  "h-10 shrink-0 rounded-full px-4 text-[13px] font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus",
                   active
-                    ? "bg-[#1f2a2e] text-white"
-                    : "border border-black/10 bg-white text-[#1f2a2e]/70 hover:border-black/30",
+                    ? "bg-accent text-[#1f2a2e]"
+                    : "border border-black/10 bg-white text-[#1f2a2e]/70 hover:border-[#1f2a2e]/30 hover:text-[#1f2a2e]",
                 ].join(" ")}
               >
                 {item}
@@ -61,14 +66,15 @@ export default function BlogIndexClient({ posts, featured }: Props) {
             );
           })}
         </div>
-        <label className="relative block max-w-md">
+
+        <label className="relative block w-full max-w-sm shrink-0">
           <span className="sr-only">Search articles</span>
           <input
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search articles"
-            className="h-11 w-full border border-black/10 bg-white px-4 text-[#1f2a2e] placeholder:text-[#1f2a2e]/40 outline-none transition-colors focus:border-accent"
+            className="h-11 w-full rounded-full border border-black/10 bg-white px-5 text-[#1f2a2e] placeholder:text-[#1f2a2e]/40 outline-none transition-colors focus:border-accent"
           />
         </label>
       </div>
@@ -76,9 +82,15 @@ export default function BlogIndexClient({ posts, featured }: Props) {
       {filtered.length === 0 ? (
         <p className="text-base text-[#1f2a2e]/60">{emptyMessage}</p>
       ) : (
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3 md:gap-7">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4 md:gap-7">
           {filtered.map((post, index) => (
-            <ArticleCard key={post.slug} post={post} featured={index === 0} />
+            <Reveal
+              key={post.slug}
+              className={index === 0 ? "sm:col-span-2 xl:col-span-2" : ""}
+              delayMs={40 + index * 60}
+            >
+              <ArticleCard post={post} featured={index === 0} index={index} />
+            </Reveal>
           ))}
         </div>
       )}

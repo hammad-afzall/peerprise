@@ -45,7 +45,7 @@ export default function ReadingProgress() {
       aria-valuenow={Math.round(progress)}
     >
       <div
-        className="h-full origin-left bg-[#6366F1] transition-[width] duration-200 ease-out motion-reduce:transition-none"
+        className="h-full origin-left bg-accent transition-[width] duration-200 ease-out motion-reduce:transition-none"
         style={{ width: `${progress}%` }}
       />
     </div>
