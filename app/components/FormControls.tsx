@@ -4,7 +4,7 @@ import type { SurfaceVariant } from "../lib/surface";
 type FieldVariant = SurfaceVariant;
 
 const labelClass = (variant: FieldVariant) =>
-  `text-[14px] font-semibold ${variant === "dark" ? "text-on-dark-subtle" : "text-ink-secondary"}`;
+  `text-[14px] font-semibold ${variant === "dark" ? "text-on-dark-subtle" : "text-ink-secondary dark:text-white/85"}`;
 
 const controlClass = (variant: FieldVariant) =>
   [
@@ -12,7 +12,7 @@ const controlClass = (variant: FieldVariant) =>
     "focus:border-accent focus:ring-1 focus:ring-accent",
     variant === "dark"
       ? "border-white/10 bg-white/5 text-white placeholder:text-gray-500"
-      : "border-border bg-surface text-ink placeholder:text-muted",
+      : "border-border bg-surface text-ink placeholder:text-muted dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-white/40",
   ].join(" ");
 
 const textareaClass = (variant: FieldVariant) =>
@@ -48,7 +48,7 @@ export function FormField({
         {label}
         {required && <span aria-hidden="true"> *</span>}
         {optional && !required && (
-          <span className={`font-normal ${variant === "dark" ? "text-on-dark-muted" : "text-muted"}`}>
+          <span className={`font-normal ${variant === "dark" ? "text-on-dark-muted" : "text-muted dark:text-white/50"}`}>
             {" "}
             (optional)
           </span>
@@ -56,7 +56,7 @@ export function FormField({
       </label>
       {children}
       {hint && !error && (
-        <p id={hintId} className={`type-small ${variant === "dark" ? "text-on-dark-muted" : "text-muted"}`}>
+        <p id={hintId} className={`type-small ${variant === "dark" ? "text-on-dark-muted" : "text-muted dark:text-white/50"}`}>
           {hint}
         </p>
       )}
@@ -243,7 +243,7 @@ type ConsentProps = {
 export function FormConsent({ children, variant = "dark" }: ConsentProps) {
   return (
     <p
-      className={`type-small leading-relaxed m-0 ${variant === "dark" ? "text-on-dark-muted" : "text-muted-strong"}`}
+      className={`type-small leading-relaxed m-0 ${variant === "dark" ? "text-on-dark-muted" : "text-muted-strong dark:text-white/60"}`}
     >
       {children}
     </p>

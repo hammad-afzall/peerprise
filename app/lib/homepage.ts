@@ -17,6 +17,27 @@ export const homepageHero = {
   secondaryCta: ctas.exploreServices,
 } as const;
 
+export const homepageStats = {
+  eyebrow: "Stats & facts",
+  headline: "Dependable digital support you can trust.",
+  intro:
+    "Peerprise combines managed day-to-day support with genuine software engineering experience, so routine work stays handled and technical work always has a clear route.",
+  stats: [
+    {
+      value: "7+",
+      label: "Years of professional software engineering experience",
+    },
+    {
+      value: "5",
+      label: "Service lines managed by one accountable team",
+    },
+    {
+      value: "7+",
+      label: "Industries supported, from SaaS and e-commerce to healthcare",
+    },
+  ],
+} as const;
+
 export const homepageProblems = {
   eyebrow: "Clear ownership",
   headline: "One accountable team for the work that usually falls between providers.",
@@ -86,7 +107,7 @@ export const homepageAudienceSection = {
 } as const;
 
 export const homepageEngineering = {
-  eyebrow: "Engineering at the core",
+  eyebrow: "Why choose us",
   headline: "Everyday support backed by real software engineering experience.",
   copy: [
     "Peerprise is led by software engineers with seven years of professional experience across web applications, backend systems, mobile products, cloud infrastructure, integrations, payments, AI-enabled workflows and production support.",
@@ -105,7 +126,7 @@ export const homepageEngineering = {
 } as const;
 
 export const homepageExperience = {
-  eyebrow: "Selected team experience",
+  eyebrow: "Featured work",
   headline: "Experience solving complex product and operational problems.",
   cases: [
     {
@@ -185,6 +206,66 @@ export const homepagePlansTeaser = {
 export const homepageTestimonials = {
   eyebrow: "Client experiences",
   headline: "Trusted for thoughtful engineering and dependable delivery.",
+} as const;
+
+export const homepageTeam = {
+  eyebrow: "Our team",
+  headline: "Meet the people behind the delivery.",
+  intro:
+    "Support specialists keep recurring work organised. Engineers handle technical depth. Together they give every engagement a clear route from day-to-day requests to complex delivery.",
+  members: [
+    {
+      title: "Support specialists",
+      role: "Operations & publishing",
+      description:
+        "Coordinate recurring requests, website content, publishing workflows, documentation and client communication.",
+      tone: "lime" as const,
+    },
+    {
+      title: "Software engineers",
+      role: "Build & integrations",
+      description:
+        "Handle integrations, custom development, architecture, production issues and technical escalation.",
+      tone: "dark" as const,
+    },
+    {
+      title: "Technical leadership",
+      role: "Architecture & quality",
+      description:
+        "Seven years of professional experience across full-stack products, backend systems, cloud, mobile and production support.",
+      tone: "light" as const,
+    },
+    {
+      title: "Engineering network",
+      role: "Specialist capacity",
+      description:
+        "Complementary experience across modern web technologies, APIs, infrastructure, databases and application delivery.",
+      tone: "mid" as const,
+    },
+  ],
+} as const;
+
+export const homepageCapabilitiesStrip = {
+  label: "Capability across the systems businesses rely on",
+} as const;
+
+export const homepageInsights = {
+  eyebrow: "Insights",
+  headline: "Recent guidance from the Peerprise team.",
+  intro:
+    "Practical articles on websites, software and digital operations — drawn from maintaining, building and improving the systems businesses rely on.",
+} as const;
+
+export const homepageContact = {
+  eyebrow: "Get in touch",
+  headline: "Tell us what you need help with.",
+  intro:
+    "Whether you need ongoing digital support, a custom software solution or additional engineering capacity — share the situation and the outcome you want.",
+  points: [
+    "Managed digital presence",
+    "Custom software",
+    "Engineering partnerships",
+  ],
 } as const;
 
 export const homepagePartnership = {

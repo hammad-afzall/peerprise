@@ -46,7 +46,7 @@ export default function PlanComparison({ variant = "dark", className = "" }: Pro
       <div
         className={[
           "hidden lg:block w-full rounded-[var(--radius-lg)] border",
-          isDark ? "border-white/10 bg-white/5" : "border-border bg-surface",
+          isDark ? "border-white/10 bg-white/5" : "border-border bg-surface dark:bg-white/5",
         ].join(" ")}
       >
         <table className="w-full text-left border-collapse">

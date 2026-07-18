@@ -32,6 +32,7 @@ export default function BlogPage() {
         headline="Insights"
         subtext={insightsPage.supporting}
         size="display"
+        backgroundImage="/blog.jpg"
       />
 
       <PageSection

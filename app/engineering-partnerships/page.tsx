@@ -53,11 +53,20 @@ export default function EngineeringPartnershipsPage() {
               <article
                 className={[
                   "flex h-full flex-col gap-4 p-6 lg:p-8",
-                  index % 2 === 0 ? "bg-accent" : "bg-white",
+                  index % 2 === 0
+                    ? "bg-accent text-[#1f2a2e]"
+                    : "bg-white dark:bg-[#273338] dark:text-white",
                 ].join(" ")}
               >
                 <h3 className="m-0 text-xl font-bold md:text-2xl">{item.title}</h3>
-                <p className="m-0 text-base leading-relaxed text-[#1f2a2e]/80 md:text-lg">
+                <p
+                  className={[
+                    "m-0 text-base leading-relaxed md:text-lg",
+                    index % 2 === 0
+                      ? "text-[#1f2a2e]/80"
+                      : "text-[#1f2a2e]/80 dark:text-white/80",
+                  ].join(" ")}
+                >
                   {item.description}
                 </p>
               </article>
@@ -100,9 +109,9 @@ export default function EngineeringPartnershipsPage() {
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-7">
           {engineeringPartnershipsCapabilityGroups.map((group, groupIndex) => (
             <Reveal key={group[0]} delayMs={60 + groupIndex * 80}>
-              <ul className="m-0 flex h-full list-none flex-col gap-3 bg-[#f4f8fa] p-6 lg:p-8" role="list">
+              <ul className="m-0 flex h-full list-none flex-col gap-3 bg-[#f4f8fa] p-6 lg:p-8 dark:bg-[#1f2a2e]" role="list">
                 {group.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-base text-[#1f2a2e]/80">
+                  <li key={item} className="flex items-start gap-3 text-base text-[#1f2a2e]/80 dark:text-white/80">
                     <span
                       className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
                       aria-hidden="true"
@@ -155,10 +164,10 @@ export default function EngineeringPartnershipsPage() {
         >
           {engineeringPartnershipsPrinciples.items.map((item, index) => (
             <Reveal key={item} as="li" delayMs={30 + index * 30}>
-              <div className="flex items-start gap-3 bg-white p-5">
+              <div className="flex items-start gap-3 bg-white p-5 dark:bg-[#273338]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/icons/right-check.svg" alt="" width={18} height={18} className="mt-1 shrink-0" />
-                <span className="text-base font-medium text-[#1f2a2e]">{item}</span>
+                <span className="text-base font-medium text-[#1f2a2e] dark:text-white">{item}</span>
               </div>
             </Reveal>
           ))}

@@ -48,13 +48,19 @@ export default function DigitalReviewForm({ className = "" }: Props) {
           message={digitalReviewSuccessMessage}
           variant="light"
         />
-        <p className="mt-6 type-body text-[#1f2a2e]/70 m-0">
+        <p className="mt-6 type-body text-[#1f2a2e]/70 m-0 dark:text-white/70">
           You can also{" "}
-          <Link href={ctas.exploreServices.href} className="font-bold text-[#1f2a2e] hover:text-[#1f2a2e]/70">
+          <Link
+            href={ctas.exploreServices.href}
+            className="font-bold text-[#1f2a2e] hover:text-[#1f2a2e]/70 dark:text-white dark:hover:text-white/70"
+          >
             {ctas.exploreServices.label}
           </Link>{" "}
           or{" "}
-          <Link href="/" className="font-bold text-[#1f2a2e] hover:text-[#1f2a2e]/70">
+          <Link
+            href="/"
+            className="font-bold text-[#1f2a2e] hover:text-[#1f2a2e]/70 dark:text-white dark:hover:text-white/70"
+          >
             return to the homepage
           </Link>
           .
@@ -154,9 +160,9 @@ export default function DigitalReviewForm({ className = "" }: Props) {
       />
 
       <fieldset className="m-0 p-0 border-0">
-        <legend className="text-[14px] font-semibold text-[#1f2a2e]/70 mb-3">
+        <legend className="text-[14px] font-semibold text-[#1f2a2e]/70 mb-3 dark:text-white/70">
           What do you currently need help with?{" "}
-          <span className="font-normal text-[#1f2a2e]/50">(optional)</span>
+          <span className="font-normal text-[#1f2a2e]/50 dark:text-white/50">(optional)</span>
         </legend>
         <div
           id={needGroupId}
@@ -170,7 +176,7 @@ export default function DigitalReviewForm({ className = "" }: Props) {
               <label
                 key={option}
                 htmlFor={optionId}
-                className="flex items-center gap-3 min-h-[var(--target-min)] border border-black/10 bg-black/[0.02] px-3.5 py-2.5 cursor-pointer has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-focus has-[:checked]:border-accent has-[:checked]:bg-accent/10"
+                className="flex items-center gap-3 min-h-[var(--target-min)] border border-black/10 bg-black/[0.02] px-3.5 py-2.5 cursor-pointer has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-focus has-[:checked]:border-accent has-[:checked]:bg-accent/10 dark:border-white/10 dark:bg-white/5"
               >
                 <input
                   id={optionId}
@@ -180,7 +186,7 @@ export default function DigitalReviewForm({ className = "" }: Props) {
                   defaultChecked={state.values?.service === option}
                   className="h-4 w-4 accent-[var(--color-accent)] shrink-0"
                 />
-                <span className="type-small text-[#1f2a2e]">{option}</span>
+                <span className="type-small text-[#1f2a2e] dark:text-white">{option}</span>
               </label>
             );
           })}
@@ -204,7 +210,7 @@ export default function DigitalReviewForm({ className = "" }: Props) {
         variant="light"
       />
 
-      <p className="type-small text-[#1f2a2e]/60 m-0 border border-black/10 bg-black/[0.02] px-4 py-3">
+      <p className="type-small text-[#1f2a2e]/60 m-0 border border-black/10 bg-black/[0.02] px-4 py-3 dark:border-white/10 dark:bg-white/5 dark:text-white/60">
         {digitalReviewCredentialNote}
       </p>
 

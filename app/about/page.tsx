@@ -45,10 +45,11 @@ export default function AboutPage() {
         primaryCta={ctas.startConversation}
         secondaryCta={ctas.exploreServices}
         size="display"
+        backgroundImage="/about-us.jpg"
       />
 
       {/* Intro — Studiova “Studiova.” block → Peerprise. */}
-      <section className="section-padding bg-white text-[#1f2a2e]" aria-labelledby="about-intro">
+      <section className="section-padding bg-white text-[#1f2a2e] dark:bg-[#273338] dark:text-white" aria-labelledby="about-intro">
         <div className="site-container">
           <Reveal>
             <h2
@@ -60,12 +61,12 @@ export default function AboutPage() {
           </Reveal>
           <div className="mt-8 grid max-w-4xl grid-cols-1 gap-6 md:mt-12 md:grid-cols-2 md:gap-10">
             <Reveal delayMs={80}>
-              <p className="m-0 text-lg leading-relaxed text-[#1f2a2e]/80">
+              <p className="m-0 text-lg leading-relaxed text-[#1f2a2e]/80 dark:text-white/80">
                 {aboutWhyExists.problem}
               </p>
             </Reveal>
             <Reveal delayMs={140}>
-              <p className="m-0 text-lg leading-relaxed text-[#1f2a2e]/80">
+              <p className="m-0 text-lg leading-relaxed text-[#1f2a2e]/80 dark:text-white/80">
                 {aboutWhyExists.response}
               </p>
             </Reveal>
@@ -76,7 +77,7 @@ export default function AboutPage() {
       {/* Stats-style strip from where we work */}
       <section
         aria-labelledby="about-where-heading"
-        className="section-padding bg-[#f4f8fa] text-[#1f2a2e]"
+        className="section-padding bg-[#f4f8fa] text-[#1f2a2e] dark:bg-[#1f2a2e] dark:text-white"
       >
         <div className="site-container">
           <div className="mb-14 flex flex-col items-start gap-8 xl:mb-20 xl:flex-row">
@@ -90,7 +91,7 @@ export default function AboutPage() {
               >
                 {aboutWhereWeWork.headline}
               </h2>
-              <p className="m-0 max-w-2xl text-lg text-[#1f2a2e]/70">{aboutWhereWeWork.copy}</p>
+              <p className="m-0 max-w-2xl text-lg text-[#1f2a2e]/70 dark:text-white/70">{aboutWhereWeWork.copy}</p>
             </Reveal>
           </div>
           <ul
@@ -102,7 +103,9 @@ export default function AboutPage() {
                 <article
                   className={[
                     "flex h-full min-h-[160px] flex-col justify-end gap-4 p-6 lg:p-8",
-                    index === 0 ? "bg-accent" : "bg-white",
+                    index === 0
+                      ? "bg-accent text-[#1f2a2e]"
+                      : "bg-white dark:bg-[#273338] dark:text-white",
                   ].join(" ")}
                 >
                   <h3 className="m-0 text-xl font-bold tracking-tight md:text-2xl">{point}</h3>
@@ -118,7 +121,7 @@ export default function AboutPage() {
       {/* Team structure */}
       <section
         aria-labelledby="about-team-heading"
-        className="section-padding bg-white text-[#1f2a2e]"
+        className="section-padding bg-white text-[#1f2a2e] dark:bg-[#273338] dark:text-white"
       >
         <div className="site-container">
           <div className="mb-14 flex flex-col items-start gap-8 xl:mb-20 xl:flex-row">
@@ -132,7 +135,7 @@ export default function AboutPage() {
               >
                 {aboutTeamStructure.headline}
               </h2>
-              <p className="m-0 max-w-2xl text-lg text-[#1f2a2e]/70">
+              <p className="m-0 max-w-2xl text-lg text-[#1f2a2e]/70 dark:text-white/70">
                 {aboutTeamStructure.intro}
               </p>
             </Reveal>
@@ -143,20 +146,20 @@ export default function AboutPage() {
             role="list"
           >
             <Reveal as="li" delayMs={80}>
-              <article className="flex h-full flex-col gap-6 bg-[#f4f8fa] p-6 lg:p-10">
-                <p className="m-0 text-sm font-semibold uppercase tracking-wide text-[#1f2a2e]/50">
+              <article className="flex h-full flex-col gap-6 bg-[#f4f8fa] p-6 lg:p-10 dark:bg-[#1f2a2e]">
+                <p className="m-0 text-sm font-semibold uppercase tracking-wide text-[#1f2a2e]/50 dark:text-white/50">
                   Recurring work
                 </p>
                 <h3 className="m-0 text-2xl font-bold md:text-3xl">
                   {aboutTeamStructure.support.title}
                 </h3>
-                <p className="m-0 text-lg text-[#1f2a2e]/70">
+                <p className="m-0 text-lg text-[#1f2a2e]/70 dark:text-white/70">
                   {aboutTeamStructure.support.description}
                 </p>
               </article>
             </Reveal>
             <Reveal as="li" delayMs={140}>
-              <article className="flex h-full flex-col gap-6 bg-[#1f2a2e] p-6 text-white lg:p-10">
+              <article className="flex h-full flex-col gap-6 bg-[#1f2a2e] p-6 text-white lg:p-10 dark:bg-black/30">
                 <p className="m-0 text-sm font-semibold uppercase tracking-wide text-accent">
                   Technical depth
                 </p>
@@ -170,7 +173,7 @@ export default function AboutPage() {
             </Reveal>
           </ul>
           <Reveal delayMs={160}>
-            <p className="mt-8 m-0 max-w-2xl text-lg text-[#1f2a2e]/70">
+            <p className="mt-8 m-0 max-w-2xl text-lg text-[#1f2a2e]/70 dark:text-white/70">
               {aboutTeamStructure.closing}
             </p>
           </Reveal>
@@ -180,7 +183,7 @@ export default function AboutPage() {
       {/* Technical leadership */}
       <section
         aria-labelledby="about-leadership-heading"
-        className="section-padding bg-[#f4f8fa] text-[#1f2a2e]"
+        className="section-padding bg-[#f4f8fa] text-[#1f2a2e] dark:bg-[#1f2a2e] dark:text-white"
       >
         <div className="site-container">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
@@ -195,10 +198,10 @@ export default function AboutPage() {
                 >
                   {aboutTechnicalLeadership.headline}
                 </h2>
-                <p className="m-0 text-lg text-[#1f2a2e]/70">
+                <p className="m-0 text-lg text-[#1f2a2e]/70 dark:text-white/70">
                   {aboutTechnicalLeadership.leadership}
                 </p>
-                <p className="m-0 text-lg text-[#1f2a2e]/70">
+                <p className="m-0 text-lg text-[#1f2a2e]/70 dark:text-white/70">
                   {aboutTechnicalLeadership.network}
                 </p>
                 <div className="mt-2 flex flex-col gap-3 sm:flex-row">
@@ -211,7 +214,7 @@ export default function AboutPage() {
             <div className="lg:col-span-7">
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-7">
                 <Reveal delayMs={100}>
-                  <article className="bg-accent p-6 lg:p-8">
+                  <article className="bg-accent p-6 text-[#1f2a2e] lg:p-8">
                     <p className="mb-4 text-sm font-bold uppercase tracking-wide text-[#1f2a2e]/60">
                       Leadership experience
                     </p>
@@ -227,8 +230,8 @@ export default function AboutPage() {
                   </article>
                 </Reveal>
                 <Reveal delayMs={160}>
-                  <article className="bg-white p-6 lg:p-8">
-                    <p className="mb-4 text-sm font-bold uppercase tracking-wide text-[#1f2a2e]/50">
+                  <article className="bg-white p-6 lg:p-8 dark:bg-[#273338]">
+                    <p className="mb-4 text-sm font-bold uppercase tracking-wide text-[#1f2a2e]/50 dark:text-white/50">
                       Engineering network
                     </p>
                     <ul className="m-0 flex list-none flex-col gap-3 p-0">

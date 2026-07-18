@@ -18,7 +18,9 @@ export default function Hero() {
           loop
           playsInline
           preload="metadata"
+          poster="/media/hero-poster.jpg"
         >
+          <source src="/media/hero-atmosphere.webm" type="video/webm" />
           <source src="/media/hero-atmosphere.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/50" />

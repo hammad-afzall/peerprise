@@ -43,10 +43,10 @@ export default function DigitalReviewPage() {
         >
           {digitalReviewAreas.items.map((item, index) => (
             <Reveal key={item} as="li" delayMs={40 + index * 40}>
-              <div className="flex items-start gap-3 bg-white p-5">
+              <div className="flex items-start gap-3 bg-white p-5 dark:bg-[#273338]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/icons/right-check.svg" alt="" width={18} height={18} className="mt-1 shrink-0" />
-                <span className="text-base font-medium text-[#1f2a2e]">{item}</span>
+                <span className="text-base font-medium text-[#1f2a2e] dark:text-white">{item}</span>
               </div>
             </Reveal>
           ))}
@@ -66,12 +66,12 @@ export default function DigitalReviewPage() {
             <ul className="m-0 flex list-none flex-col gap-3 p-0" role="list">
               {digitalReviewDeliverables.items.map((item, index) => (
                 <Reveal key={item} as="li" delayMs={40 + index * 50}>
-                  <div className="flex items-start gap-3 bg-[#f4f8fa] p-4">
+                  <div className="flex items-start gap-3 bg-[#f4f8fa] p-4 dark:bg-[#1f2a2e]">
                     <span
                       className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
                       aria-hidden="true"
                     />
-                    <span className="text-base text-[#1f2a2e]/80">{item}</span>
+                    <span className="text-base text-[#1f2a2e]/80 dark:text-white/80">{item}</span>
                   </div>
                 </Reveal>
               ))}
@@ -97,7 +97,7 @@ export default function DigitalReviewPage() {
         >
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
             <Reveal className="lg:col-span-8">
-              <div className="bg-white p-6 sm:p-8 lg:p-12">
+              <div className="bg-white p-6 sm:p-8 lg:p-12 dark:bg-[#273338]">
                 <DigitalReviewForm />
               </div>
             </Reveal>

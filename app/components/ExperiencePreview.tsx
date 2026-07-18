@@ -20,7 +20,7 @@ export default function ExperiencePreview() {
       <div className="site-container">
         <div className="mb-14 flex flex-col items-start gap-8 xl:mb-24 xl:flex-row">
           <Reveal>
-            <SectionLabel number="06" badge={homepageExperience.eyebrow} />
+            <SectionLabel number="02" badge={homepageExperience.eyebrow} />
           </Reveal>
           <Reveal delayMs={80} className="flex flex-col gap-5">
             <h2

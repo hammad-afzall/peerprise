@@ -54,10 +54,10 @@ export default function SocialPresenceSupportPage() {
         >
           {socialPresenceIncluded.items.map((item, index) => (
             <Reveal key={item} as="li" delayMs={30 + index * 30}>
-              <div className="flex items-start gap-3 bg-white p-5">
+              <div className="flex items-start gap-3 bg-white p-5 dark:bg-[#273338]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/icons/right-check.svg" alt="" width={18} height={18} className="mt-1 shrink-0" />
-                <span className="text-base font-medium text-[#1f2a2e]">{item}</span>
+                <span className="text-base font-medium text-[#1f2a2e] dark:text-white">{item}</span>
               </div>
             </Reveal>
           ))}
@@ -100,7 +100,7 @@ export default function SocialPresenceSupportPage() {
         tone="white"
       >
         <Reveal>
-          <p className="m-0 max-w-[820px] text-xl leading-relaxed text-[#1f2a2e]/80 md:text-2xl">
+          <p className="m-0 max-w-[820px] text-xl leading-relaxed text-[#1f2a2e]/80 md:text-2xl dark:text-white/80">
             {socialPresenceClientResponsibilities.copy}
           </p>
         </Reveal>
@@ -119,12 +119,12 @@ export default function SocialPresenceSupportPage() {
         >
           {socialPresenceProcess.steps.map((step, index) => (
             <Reveal key={step.number} as="li" delayMs={50 + index * 60}>
-              <article className="flex h-full flex-col gap-3 bg-white p-5 lg:p-6">
+              <article className="flex h-full flex-col gap-3 bg-white p-5 lg:p-6 dark:bg-[#273338]">
                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-accent text-sm font-bold text-[#1f2a2e]">
                   {step.number}
                 </span>
                 <h3 className="m-0 text-lg font-bold tracking-tight">{step.title}</h3>
-                <p className="m-0 text-sm leading-relaxed text-[#1f2a2e]/70">{step.description}</p>
+                <p className="m-0 text-sm leading-relaxed text-[#1f2a2e]/70 dark:text-white/70">{step.description}</p>
               </article>
             </Reveal>
           ))}
@@ -144,14 +144,14 @@ export default function SocialPresenceSupportPage() {
         >
           {relatedServices.map((service, index) => (
             <Reveal key={service.id} as="li" delayMs={60 + index * 70}>
-              <Link href={service.href} className="group flex h-full flex-col justify-between gap-6 bg-[#f4f8fa] p-6 lg:p-8">
+              <Link href={service.href} className="group flex h-full flex-col justify-between gap-6 bg-[#f4f8fa] p-6 lg:p-8 dark:bg-[#1f2a2e]">
                 <div className="flex flex-col gap-3">
                   <h3 className="m-0 text-xl font-bold tracking-tight md:text-2xl">
                     {service.approvedLabel}
                   </h3>
-                  <p className="m-0 text-base text-[#1f2a2e]/70">{service.navDescription}</p>
+                  <p className="m-0 text-base text-[#1f2a2e]/70 dark:text-white/70">{service.navDescription}</p>
                 </div>
-                <span className="inline-flex items-center text-[15px] font-bold text-[#1f2a2e]">
+                <span className="inline-flex items-center text-[15px] font-bold text-[#1f2a2e] dark:text-white">
                   {service.linkLabel}
                   <span className="ml-2 transition-transform group-hover:translate-x-1" aria-hidden="true">
                     →

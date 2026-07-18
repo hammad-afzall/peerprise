@@ -54,16 +54,19 @@ export default function ContactForm({ defaultEnquiry, className = "" }: Props) {
           message={state.message ?? contactSuccessMessage}
           variant="light"
         />
-        <p className="mt-6 type-body text-[#1f2a2e]/70 m-0">
+        <p className="mt-6 type-body text-[#1f2a2e]/70 m-0 dark:text-white/70">
           You can also{" "}
           <Link
             href={ctas.exploreServices.href}
-            className="font-bold text-[#1f2a2e] hover:text-[#1f2a2e]/70"
+            className="font-bold text-[#1f2a2e] hover:text-[#1f2a2e]/70 dark:text-white dark:hover:text-white/70"
           >
             {ctas.exploreServices.label}
           </Link>{" "}
           or{" "}
-          <Link href="/" className="font-bold text-[#1f2a2e] hover:text-[#1f2a2e]/70">
+          <Link
+            href="/"
+            className="font-bold text-[#1f2a2e] hover:text-[#1f2a2e]/70 dark:text-white dark:hover:text-white/70"
+          >
             return to the homepage
           </Link>
           .

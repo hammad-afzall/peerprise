@@ -37,9 +37,10 @@ export default function SelectedWorkPage() {
         primaryCta={ctas.discussSoftware}
         secondaryCta={ctas.discussPartnership}
         size="display"
+        backgroundImage="/work.jpg"
       />
 
-      <section className="bg-[#f4f8fa] py-10 md:py-14" aria-labelledby="work-disclosure-heading">
+      <section className="bg-[#f4f8fa] py-10 md:py-14 dark:bg-[#1f2a2e]" aria-labelledby="work-disclosure-heading">
         <div className="site-container max-w-[880px]">
           <h2 id="work-disclosure-heading" className="sr-only">
             Selected team experience disclosure
@@ -65,7 +66,9 @@ export default function SelectedWorkPage() {
               <article
                 className={[
                   "group flex h-full flex-col overflow-hidden",
-                  index === 0 ? "bg-[#1f2a2e] text-white sm:col-span-2 xl:col-span-2" : "bg-[#f4f8fa] text-[#1f2a2e]",
+                  index === 0
+                    ? "bg-[#1f2a2e] text-white sm:col-span-2 xl:col-span-2 dark:bg-[#1f2a2e]"
+                    : "bg-[#f4f8fa] text-[#1f2a2e] dark:bg-[#1f2a2e] dark:text-white",
                 ].join(" ")}
               >
                 <div
@@ -79,7 +82,7 @@ export default function SelectedWorkPage() {
                   <span
                     className={[
                       "text-5xl font-bold opacity-30 md:text-6xl",
-                      index === 0 ? "text-white" : "text-[#1f2a2e]",
+                      index === 0 ? "text-white" : "text-[#1f2a2e] dark:text-white",
                     ].join(" ")}
                   >
                     {String(index + 1).padStart(2, "0")}
@@ -92,7 +95,7 @@ export default function SelectedWorkPage() {
                   <p
                     className={[
                       "m-0 text-base leading-relaxed md:text-lg",
-                      index === 0 ? "text-white/70" : "text-[#1f2a2e]/70",
+                      index === 0 ? "text-white/70" : "text-[#1f2a2e]/70 dark:text-white/70",
                     ].join(" ")}
                   >
                     {study.context}
@@ -121,10 +124,10 @@ export default function SelectedWorkPage() {
         >
           {workCapabilitySummary.map((item, index) => (
             <Reveal key={item} as="li" delayMs={40 + index * 40}>
-              <div className="flex items-start gap-3 bg-white p-5">
+              <div className="flex items-start gap-3 bg-white p-5 dark:bg-[#273338]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/icons/right-check.svg" alt="" width={18} height={18} className="mt-1 shrink-0" />
-                <span className="text-base font-medium text-[#1f2a2e]">{item}</span>
+                <span className="text-base font-medium text-[#1f2a2e] dark:text-white">{item}</span>
               </div>
             </Reveal>
           ))}

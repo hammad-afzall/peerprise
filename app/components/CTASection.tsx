@@ -39,7 +39,7 @@ export default function CTASection({
       aria-labelledby={id}
       className={[
         "section-padding relative overflow-hidden",
-        isDark ? "bg-[#1f2a2e]" : "bg-[#f4f8fa] text-[#1f2a2e]",
+        isDark ? "bg-[#1f2a2e]" : "bg-[#f4f8fa] text-[#1f2a2e] dark:bg-[#1f2a2e] dark:text-white",
         className,
       ].join(" ")}
     >
@@ -56,7 +56,7 @@ export default function CTASection({
             id={id}
             className={[
               "m-0 text-4xl font-bold leading-tight tracking-tight md:text-5xl",
-              isDark ? "text-white" : "text-[#1f2a2e]",
+              isDark ? "text-white" : "text-[#1f2a2e] dark:text-white",
             ].join(" ")}
           >
             {headline}
@@ -65,7 +65,7 @@ export default function CTASection({
             <p
               className={[
                 "mx-auto mt-5 max-w-2xl text-lg",
-                isDark ? "text-white/70" : "text-[#1f2a2e]/70",
+                isDark ? "text-white/70" : "text-[#1f2a2e]/70 dark:text-white/70",
               ].join(" ")}
             >
               {subtext}
@@ -94,7 +94,7 @@ export default function CTASection({
             <p
               className={[
                 "mt-6 text-sm",
-                isDark ? "text-white/50" : "text-[#1f2a2e]/60",
+                isDark ? "text-white/50" : "text-[#1f2a2e]/60 dark:text-white/60",
               ].join(" ")}
             >
               {note}

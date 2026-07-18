@@ -1,48 +1,43 @@
 import Hero from "./components/Hero";
-import ProblemSection from "./components/ProblemSection";
+import StatsIntro from "./components/StatsIntro";
+import WorkCarousel from "./components/WorkCarousel";
 import HomepageServices from "./components/HomepageServices";
-import ServiceModel from "./components/ServiceModel";
-import AudienceSection from "./components/AudienceSection";
 import TechnicalCredibility from "./components/TechnicalCredibility";
-import ExperiencePreview from "./components/ExperiencePreview";
-import HowItWorks from "./components/HowItWorks";
-import PricingPreview from "./components/PricingPreview";
 import ClientReviews from "./components/ClientReviews";
-import PartnershipCallout from "./components/PartnershipCallout";
+import HomepageTeam from "./components/HomepageTeam";
+import PricingPreview from "./components/PricingPreview";
+import CapabilityStrip from "./components/CapabilityStrip";
 import FAQ from "./components/FAQ";
-import CTASection from "./components/CTASection";
-import { homepageFaqs, homepageFinalCta } from "./lib/homepage";
+import HomepageInsights from "./components/HomepageInsights";
+import HomepageContact from "./components/HomepageContact";
+import { homepageFaqs } from "./lib/homepage";
 
+/**
+ * Homepage — full Studiova section flow with Peerprise content:
+ * 01 Stats · 02 Featured work · 03 Services · 04 Why choose us · 05 Testimonials
+ * 06 Team · 07 Pricing · 08 FAQ · 09 Insights · 10 Contact
+ */
 export default function Home() {
   return (
     <>
       <Hero />
-      <ProblemSection />
+      <StatsIntro />
+      <WorkCarousel />
       <HomepageServices />
-      <ServiceModel />
-      <AudienceSection />
       <TechnicalCredibility />
-      <ExperiencePreview />
-      <HowItWorks />
-      <PricingPreview />
       <ClientReviews />
-      <PartnershipCallout />
+      <HomepageTeam />
+      <PricingPreview />
+      <CapabilityStrip />
       <FAQ
         items={homepageFaqs}
-        eyebrow="FAQs"
+        eyebrow="Common questions"
         headline="Frequently asked questions"
+        number="08"
         variant="light"
-        number="11"
       />
-      <CTASection
-        headline={homepageFinalCta.headline}
-        subtext={homepageFinalCta.copy}
-        primaryCta={homepageFinalCta.primaryCta}
-        secondaryCta={homepageFinalCta.secondaryCta}
-        variant="dark"
-        id="final-cta-heading"
-        number="12"
-      />
+      <HomepageInsights />
+      <HomepageContact />
     </>
   );
 }

@@ -82,11 +82,20 @@ export default function WebsiteCarePage() {
               <article
                 className={[
                   "flex h-full flex-col gap-4 p-6 lg:p-8",
-                  index % 2 === 0 ? "bg-accent" : "bg-[#f4f8fa]",
+                  index % 2 === 0
+                    ? "bg-accent text-[#1f2a2e]"
+                    : "bg-[#f4f8fa] dark:bg-[#1f2a2e] dark:text-white",
                 ].join(" ")}
               >
                 <h3 className="m-0 text-xl font-bold md:text-2xl">{item.title}</h3>
-                <p className="m-0 text-base leading-relaxed text-[#1f2a2e]/80 md:text-lg">
+                <p
+                  className={[
+                    "m-0 text-base leading-relaxed md:text-lg",
+                    index % 2 === 0
+                      ? "text-[#1f2a2e]/80"
+                      : "text-[#1f2a2e]/80 dark:text-white/80",
+                  ].join(" ")}
+                >
                   {item.description}
                 </p>
               </article>
@@ -103,7 +112,7 @@ export default function WebsiteCarePage() {
         tone="gray"
       >
         <Reveal>
-          <p className="m-0 max-w-[820px] text-xl leading-relaxed text-[#1f2a2e]/80 md:text-2xl">
+          <p className="m-0 max-w-[820px] text-xl leading-relaxed text-[#1f2a2e]/80 md:text-2xl dark:text-white/80">
             {websiteCarePlatforms.copy}
           </p>
         </Reveal>
@@ -118,7 +127,7 @@ export default function WebsiteCarePage() {
         tone="white"
       >
         <Reveal delayMs={100}>
-          <article className="bg-[#f4f8fa] p-6 lg:p-10">
+          <article className="bg-[#f4f8fa] p-6 lg:p-10 dark:bg-[#1f2a2e]">
             <h3 className="m-0 mb-5 text-xl font-bold tracking-tight md:text-2xl">
               {websiteCareScope.separatelyHeadline}
             </h3>
@@ -127,7 +136,7 @@ export default function WebsiteCarePage() {
               role="list"
             >
               {websiteCareScope.exclusions.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-base text-[#1f2a2e]/70">
+                <li key={item} className="flex items-start gap-3 text-base text-[#1f2a2e]/70 dark:text-white/70">
                   <span
                     className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
                     aria-hidden="true"
@@ -178,14 +187,14 @@ export default function WebsiteCarePage() {
         >
           {relatedServices.map((service, index) => (
             <Reveal key={service.id} as="li" delayMs={60 + index * 70}>
-              <Link href={service.href} className="group flex h-full flex-col justify-between gap-6 bg-white p-6 lg:p-8">
+              <Link href={service.href} className="group flex h-full flex-col justify-between gap-6 bg-white p-6 lg:p-8 dark:bg-[#273338]">
                 <div className="flex flex-col gap-3">
                   <h3 className="m-0 text-xl font-bold tracking-tight md:text-2xl">
                     {service.approvedLabel}
                   </h3>
-                  <p className="m-0 text-base text-[#1f2a2e]/70">{service.navDescription}</p>
+                  <p className="m-0 text-base text-[#1f2a2e]/70 dark:text-white/70">{service.navDescription}</p>
                 </div>
-                <span className="inline-flex items-center text-[15px] font-bold text-[#1f2a2e]">
+                <span className="inline-flex items-center text-[15px] font-bold text-[#1f2a2e] dark:text-white">
                   {service.linkLabel}
                   <span className="ml-2 transition-transform group-hover:translate-x-1" aria-hidden="true">
                     →

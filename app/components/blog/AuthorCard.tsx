@@ -9,7 +9,7 @@ export default function AuthorCard({ compact = false }: Props) {
   return (
     <div
       className={[
-        "flex items-start gap-4 bg-[#f4f8fa]",
+        "flex items-start gap-4 bg-[#f4f8fa] dark:bg-white/5",
         compact ? "p-4 sm:p-5" : "p-5 sm:p-6 lg:p-7",
       ].join(" ")}
     >
@@ -26,10 +26,10 @@ export default function AuthorCard({ compact = false }: Props) {
         />
       </div>
       <div className="min-w-0">
-        <p className="text-[16px] font-semibold text-[#1f2a2e] sm:text-[17px]">{author.name}</p>
-        <p className="mt-1 text-[14px] text-[#1f2a2e]/70 sm:text-[15px]">{author.role}</p>
+        <p className="text-[16px] font-semibold text-[#1f2a2e] sm:text-[17px] dark:text-white">{author.name}</p>
+        <p className="mt-1 text-[14px] text-[#1f2a2e]/70 sm:text-[15px] dark:text-white/70">{author.role}</p>
         {!compact ? (
-          <p className="mt-2.5 text-[14px] leading-relaxed text-[#1f2a2e]/65 sm:text-[15px]">
+          <p className="mt-2.5 text-[14px] leading-relaxed text-[#1f2a2e]/65 sm:text-[15px] dark:text-white/65">
             {author.bio}
           </p>
         ) : null}

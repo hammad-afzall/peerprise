@@ -28,7 +28,7 @@ export default function ServiceModel({
   return (
     <section
       aria-labelledby={id}
-      className={`section-padding bg-[#f4f8fa] text-[#1f2a2e] ${className}`}
+      className={`section-padding bg-[#f4f8fa] text-[#1f2a2e] dark:bg-[#1f2a2e] dark:text-white ${className}`}
     >
       <div className="site-container">
         <div className="mb-14 flex flex-col items-start gap-8 xl:mb-24 xl:flex-row">
@@ -48,14 +48,14 @@ export default function ServiceModel({
         <ol className="m-0 grid list-none grid-cols-1 gap-5 p-0 md:grid-cols-2 xl:grid-cols-4 md:gap-7">
           {stages.map((stage, index) => (
             <Reveal key={stage.title} as="li" delayMs={80 + index * 80}>
-              <article className="flex h-full flex-col gap-6 bg-white p-6 lg:p-8">
+              <article className="flex h-full flex-col gap-6 bg-white p-6 lg:p-8 dark:bg-[#273338]">
                 <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent text-sm font-bold text-[#1f2a2e]">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <h3 className="m-0 text-xl font-bold tracking-tight md:text-2xl">
                   {stage.title}
                 </h3>
-                <p className="m-0 flex-1 text-base leading-relaxed text-[#1f2a2e]/70 md:text-lg">
+                <p className="m-0 flex-1 text-base leading-relaxed text-[#1f2a2e]/70 md:text-lg dark:text-white/70">
                   {stage.description}
                 </p>
               </article>

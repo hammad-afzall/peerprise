@@ -51,17 +51,23 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+/** Applies stored theme before paint to avoid a light-mode flash. */
+const themeInitScript = `(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme: dark)").matches)){document.documentElement.classList.add("dark")}}catch(e){}})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={manrope.variable}>
-      <body className={`${manrope.className} bg-white text-[#1f2a2e] min-h-screen flex flex-col overflow-x-hidden w-full`}>
+    <html lang="en" className={manrope.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body className={`${manrope.className} bg-white text-[#1f2a2e] dark:bg-[#0a0a0a] dark:text-white min-h-screen flex flex-col [overflow-x:clip] w-full`}>
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
         <Header />
-        <main id="main-content" className="w-full overflow-x-hidden" tabIndex={-1}>
+        <main id="main-content" className="w-full [overflow-x:clip]" tabIndex={-1}>
           {children}
         </main>
         <Footer />

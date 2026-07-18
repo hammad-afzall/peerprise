@@ -26,7 +26,7 @@ export default function FAQ({
   headline = "Frequently asked questions",
   variant = "light",
   className = "",
-  number = "11",
+  number = "08",
 }: Props) {
   const displayItems = items ?? (showAll ? faqs : faqs.slice(0, 6));
   const isDark = variant === "dark";
@@ -37,7 +37,9 @@ export default function FAQ({
       aria-labelledby="faq-heading"
       className={[
         "section-padding border-t",
-        isDark ? "bg-[#1f2a2e] border-white/5" : "bg-white border-black/5 text-[#1f2a2e]",
+        isDark
+          ? "bg-[#1f2a2e] border-white/5"
+          : "bg-white border-black/5 text-[#1f2a2e] dark:bg-[#273338] dark:border-white/5 dark:text-white",
         className,
       ].join(" ")}
     >
@@ -53,7 +55,7 @@ export default function FAQ({
               id="faq-heading"
               className={[
                 "mt-8 m-0 max-w-3xl text-4xl font-bold leading-tight tracking-tight md:text-5xl",
-                isDark ? "text-white" : "text-[#1f2a2e]",
+                isDark ? "text-white" : "text-[#1f2a2e] dark:text-white",
               ].join(" ")}
             >
               {headline}

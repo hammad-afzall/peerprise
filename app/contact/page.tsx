@@ -67,7 +67,7 @@ export default async function ContactPage({ searchParams }: Props) {
                   "Custom software",
                   "Engineering partnerships",
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-base text-[#1f2a2e]/80">
+                  <li key={item} className="flex items-center gap-3 text-base text-[#1f2a2e]/80 dark:text-white/80">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src="/icons/right-check.svg" alt="" width={18} height={18} />
                     {item}
@@ -77,7 +77,7 @@ export default async function ContactPage({ searchParams }: Props) {
             </div>
           </Reveal>
           <Reveal className="lg:col-span-8" delayMs={100}>
-            <div className="bg-white p-6 sm:p-8 lg:p-12">
+            <div className="bg-white p-6 sm:p-8 lg:p-12 dark:bg-[#273338]">
               <ContactForm defaultEnquiry={defaultEnquiry} />
             </div>
           </Reveal>

@@ -23,7 +23,7 @@ export default function TagList({ tags, variant = "light", className = "" }: Pro
               "inline-flex items-center min-h-8 px-3 py-1 rounded-full type-small font-semibold transition-colors",
               isDark
                 ? "bg-transparent text-white border border-white/20 hover:bg-accent hover:text-[#1f2a2e] hover:border-accent"
-                : "bg-transparent text-[#1f2a2e] border border-[#1f2a2e]/20 hover:bg-accent hover:border-accent",
+                : "bg-transparent text-[#1f2a2e] border border-[#1f2a2e]/20 hover:bg-accent hover:border-accent dark:text-white dark:border-white/20 dark:hover:text-[#1f2a2e]",
             ].join(" ")}
           >
             {tag}

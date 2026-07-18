@@ -50,9 +50,9 @@ export default function CustomSoftwareSolutionsPage() {
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-7">
           {customSoftwareBuildGroups.map((group, groupIndex) => (
             <Reveal key={group[0]} delayMs={60 + groupIndex * 80}>
-              <ul className="m-0 flex h-full list-none flex-col gap-3 bg-white p-6 lg:p-8" role="list">
+              <ul className="m-0 flex h-full list-none flex-col gap-3 bg-white p-6 lg:p-8 dark:bg-[#1f2a2e]" role="list">
                 {group.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-base text-[#1f2a2e]/80">
+                  <li key={item} className="flex items-start gap-3 text-base text-[#1f2a2e]/80 dark:text-white/80">
                     <span
                       className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
                       aria-hidden="true"
@@ -110,9 +110,9 @@ export default function CustomSoftwareSolutionsPage() {
         >
           {customSoftwareCapabilities.items.map((item, index) => (
             <Reveal key={item.title} as="li" delayMs={50 + index * 50}>
-              <article className="flex h-full flex-col gap-3 bg-[#f4f8fa] p-6">
+              <article className="flex h-full flex-col gap-3 bg-[#f4f8fa] p-6 dark:bg-[#1f2a2e]">
                 <h3 className="m-0 text-lg font-bold tracking-tight">{item.title}</h3>
-                <p className="m-0 text-sm leading-relaxed text-[#1f2a2e]/70">{item.description}</p>
+                <p className="m-0 text-sm leading-relaxed text-[#1f2a2e]/70 dark:text-white/70">{item.description}</p>
               </article>
             </Reveal>
           ))}
@@ -132,14 +132,14 @@ export default function CustomSoftwareSolutionsPage() {
         >
           {customSoftwareProcess.steps.map((step, index) => (
             <Reveal key={step.number} as="li" delayMs={60 + index * 60}>
-              <article className="flex h-full flex-col gap-4 bg-white p-6 lg:p-8">
+              <article className="flex h-full flex-col gap-4 bg-white p-6 lg:p-8 dark:bg-[#273338]">
                 <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent text-sm font-bold text-[#1f2a2e]">
                   {step.number}
                 </span>
                 <h3 className="m-0 text-xl font-bold tracking-tight md:text-2xl">
                   {step.title}
                 </h3>
-                <p className="m-0 text-base leading-relaxed text-[#1f2a2e]/70">
+                <p className="m-0 text-base leading-relaxed text-[#1f2a2e]/70 dark:text-white/70">
                   {step.description}
                 </p>
               </article>
@@ -198,12 +198,12 @@ export default function CustomSoftwareSolutionsPage() {
             >
               {customSoftwareEstimate.items.map((item, index) => (
                 <Reveal key={item} as="li" delayMs={30 + index * 30}>
-                  <div className="flex items-start gap-3 bg-[#f4f8fa] p-4">
+                  <div className="flex items-start gap-3 bg-[#f4f8fa] p-4 dark:bg-[#1f2a2e]">
                     <span
                       className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
                       aria-hidden="true"
                     />
-                    <span className="text-base text-[#1f2a2e]/80">{item}</span>
+                    <span className="text-base text-[#1f2a2e]/80 dark:text-white/80">{item}</span>
                   </div>
                 </Reveal>
               ))}

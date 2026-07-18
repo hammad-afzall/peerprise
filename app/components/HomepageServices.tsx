@@ -1,47 +1,74 @@
+"use client";
+
+import { useRef, useState, type MouseEvent, type FocusEvent } from "react";
 import Link from "next/link";
 import SectionLabel from "./SectionLabel";
 import ArrowButton from "./ArrowButton";
 import Reveal from "./Reveal";
 import { homepageServices } from "../lib/services";
 import { homepageServicesSection } from "../lib/homepage";
-import { audienceItems } from "../lib/audience";
 import { ctas } from "../lib/ctas";
 
 const managed = homepageServices.filter((s) => s.category === "managed");
 const customSoftware = homepageServices.find((s) => s.id === "custom-software");
-const smallBusiness = audienceItems.find((a) => a.id === "small-businesses");
-const growing = audienceItems.find((a) => a.id === "growing-companies");
+
+const rows = [
+  ...managed.map((s) => ({
+    title: s.approvedLabel,
+    description: s.homepageDescription,
+    href: s.href,
+  })),
+  customSoftware
+    ? {
+        title: customSoftware.approvedLabel,
+        description: customSoftware.homepageDescription,
+        href: customSoftware.href,
+      }
+    : null,
+].filter(Boolean) as { title: string; description: string; href: string }[];
+
+/** Media wash per active row — swaps like Studiova's service image. */
+const ROW_MEDIA = [
+  "radial-gradient(circle at 30% 20%, rgba(193,255,114,0.45), transparent 55%), linear-gradient(160deg, #273338, #0a0a0a)",
+  "radial-gradient(circle at 70% 30%, rgba(193,255,114,0.35), transparent 50%), linear-gradient(200deg, #365564, #10171a)",
+  "radial-gradient(circle at 40% 80%, rgba(193,255,114,0.4), transparent 55%), linear-gradient(140deg, #1f2a2e, #000)",
+  "radial-gradient(circle at 80% 70%, rgba(193,255,114,0.5), transparent 60%), linear-gradient(180deg, #273338, #1f2a2e)",
+];
 
 /**
- * Services — Studiova dark list-row pattern with Peerprise service content.
+ * What Peerprise does — exact Studiova section 03: teal-charcoal surface,
+ * absolute left media that slides to the hovered row (translateY -40%),
+ * and divider rows where only the active row renders its description.
  */
 export default function HomepageServices() {
-  const rows = [
-    ...managed.map((s) => ({
-      title: s.approvedLabel,
-      description: s.homepageDescription,
-      href: s.href,
-    })),
-    customSoftware
-      ? {
-          title: customSoftware.approvedLabel,
-          description: customSoftware.homepageDescription,
-          href: customSoftware.href,
-        }
-      : null,
-  ].filter(Boolean) as { title: string; description: string; href: string }[];
+  const [active, setActive] = useState(0);
+  const [mediaTop, setMediaTop] = useState(0);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  function activateRow(
+    index: number,
+    event: MouseEvent<HTMLAnchorElement> | FocusEvent<HTMLAnchorElement>,
+  ) {
+    setActive(index);
+    const wrap = contentRef.current;
+    if (!wrap) return;
+    const rowTop =
+      event.currentTarget.getBoundingClientRect().top -
+      wrap.getBoundingClientRect().top;
+    setMediaTop(Math.max(0, Math.round(rowTop)));
+  }
 
   return (
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="section-padding bg-[#1f2a2e]"
+      className="section-padding bg-[#1f2a2e] text-white"
     >
       <div className="site-container flex flex-col gap-16 md:gap-24">
         <div className="flex flex-col items-start gap-8 xl:flex-row">
           <Reveal>
             <SectionLabel
-              number="02"
+              number="03"
               badge={homepageServicesSection.eyebrow}
               tone="dark"
             />
@@ -49,78 +76,85 @@ export default function HomepageServices() {
           <Reveal delayMs={80} className="flex flex-col gap-5">
             <h2
               id="services-heading"
-              className="m-0 max-w-3xl text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl"
+              className="m-0 max-w-3xl text-4xl font-bold leading-tight tracking-tight md:text-5xl"
             >
               {homepageServicesSection.headline}
             </h2>
-            <p className="m-0 max-w-2xl text-lg text-white/70">
+            <p className="m-0 max-w-2xl text-base text-white/70 md:text-lg">
               {homepageServicesSection.intro}
             </p>
           </Reveal>
         </div>
 
-        <div className="flex flex-col gap-10 md:flex-row 2xl:gap-56">
-          <Reveal className="relative w-full md:max-w-sm">
-            <div className="relative h-80 overflow-hidden bg-black/30 md:sticky md:top-32">
-              <div
-                className="absolute inset-0 opacity-80"
-                style={{
-                  background:
-                    "radial-gradient(circle at 30% 20%, rgba(193,255,114,0.35), transparent 55%), linear-gradient(160deg, #273338, #0a0a0a)",
-                }}
-                aria-hidden="true"
-              />
-              <p className="absolute bottom-6 left-6 right-6 m-0 text-2xl font-bold text-white">
-                Managed support + engineering delivery
-              </p>
+        <div
+          ref={contentRef}
+          className="relative flex flex-col gap-10 md:flex-row 2xl:gap-56"
+        >
+          <div className="relative w-full md:max-w-sm md:shrink-0">
+            <div
+              className="relative z-10 h-72 w-full transition-all duration-300 md:absolute md:h-80 md:-translate-y-[40%]"
+              style={{ top: mediaTop }}
+            >
+              <div className="relative h-full overflow-hidden">
+                {rows.map((row, index) => (
+                  <div
+                    key={row.href}
+                    className={[
+                      "absolute inset-0 transition-opacity duration-500",
+                      index === active ? "opacity-100" : "opacity-0",
+                    ].join(" ")}
+                    aria-hidden="true"
+                  >
+                    <div
+                      className="absolute inset-0"
+                      style={{ background: ROW_MEDIA[index % ROW_MEDIA.length] }}
+                    />
+                    <div
+                      className="absolute inset-0 opacity-25"
+                      style={{
+                        backgroundImage:
+                          "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.4) 0 2px, transparent 3px), radial-gradient(circle at 80% 70%, rgba(0,0,0,0.14) 0 1px, transparent 2px)",
+                        backgroundSize: "48px 48px, 32px 32px",
+                      }}
+                    />
+                    <p className="absolute bottom-6 left-6 right-6 m-0 text-xl font-bold text-white">
+                      {row.title}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
-          </Reveal>
+          </div>
 
-          <div className="flex w-full flex-col gap-0">
-            {rows.map((row, index) => (
-              <Reveal key={row.href} delayMs={60 + index * 70}>
-                <Link
-                  href={row.href}
-                  className="group block border-t border-white/12 py-6 xl:py-10"
-                >
-                  <div className="flex flex-col justify-between gap-4 xl:flex-row xl:items-end">
-                    <div className="max-w-2xl">
-                      <h3 className="m-0 text-[28px] font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-accent md:text-4xl">
-                        {row.title}
-                      </h3>
-                      <p className="mt-3 m-0 max-w-xl text-base text-white/70 md:text-lg">
+          <div className="flex w-full flex-col gap-16">
+            <div className="flex flex-col">
+              {rows.map((row, index) => {
+                const isActive = index === active;
+                return (
+                  <Link
+                    key={row.href}
+                    href={row.href}
+                    onMouseEnter={(event) => activateRow(index, event)}
+                    onFocus={(event) => activateRow(index, event)}
+                    className="group flex flex-col items-start justify-between gap-3 border-t border-white/12 py-6 last:border-b xl:flex-row xl:items-center xl:gap-10 xl:py-10"
+                  >
+                    <h3 className="m-0 text-2xl font-bold tracking-tight text-white md:text-3xl">
+                      {row.title}
+                    </h3>
+                    {isActive && (
+                      <p className="m-0 max-w-md flex-1 text-sm text-white/70 transition-all duration-300 md:text-base xl:text-right">
                         {row.description}
                       </p>
-                    </div>
-                    <span
-                      className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent text-[#1f2a2e] transition-transform duration-500 group-hover:rotate-45"
-                      aria-hidden="true"
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M7 7h10v10" />
-                        <path d="M7 17 17 7" />
-                      </svg>
-                    </span>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
+                    )}
+                  </Link>
+                );
+              })}
+            </div>
 
-            <Reveal delayMs={200} className="border-t border-white/12 pt-10">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                <ArrowButton href={ctas.exploreServices.href}>
-                  {ctas.exploreServices.label}
-                </ArrowButton>
-                {growing && (
-                  <p className="m-0 max-w-md text-base text-white/60">{growing.description}</p>
-                )}
-              </div>
-              {smallBusiness && (
-                <p className="mt-6 m-0 text-base text-white/70">
-                  <span className="font-semibold text-white">{smallBusiness.title}. </span>
-                  {smallBusiness.description}
-                </p>
-              )}
+            <Reveal delayMs={120}>
+              <ArrowButton href={ctas.exploreServices.href}>
+                {ctas.exploreServices.label}
+              </ArrowButton>
             </Reveal>
           </div>
         </div>

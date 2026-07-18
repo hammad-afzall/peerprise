@@ -82,11 +82,20 @@ export default function DigitalOperationsPage() {
               <article
                 className={[
                   "flex h-full flex-col gap-4 p-6 lg:p-8",
-                  index % 2 === 0 ? "bg-accent" : "bg-[#f4f8fa]",
+                  index % 2 === 0
+                    ? "bg-accent text-[#1f2a2e]"
+                    : "bg-[#f4f8fa] dark:bg-[#1f2a2e] dark:text-white",
                 ].join(" ")}
               >
                 <h3 className="m-0 text-xl font-bold md:text-2xl">{item.title}</h3>
-                <p className="m-0 text-base leading-relaxed text-[#1f2a2e]/80 md:text-lg">
+                <p
+                  className={[
+                    "m-0 text-base leading-relaxed md:text-lg",
+                    index % 2 === 0
+                      ? "text-[#1f2a2e]/80"
+                      : "text-[#1f2a2e]/80 dark:text-white/80",
+                  ].join(" ")}
+                >
                   {item.description}
                 </p>
               </article>
@@ -105,17 +114,17 @@ export default function DigitalOperationsPage() {
       >
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
           <Reveal>
-            <article className="flex h-full flex-col gap-3 bg-white p-6 lg:p-8">
+            <article className="flex h-full flex-col gap-3 bg-white p-6 lg:p-8 dark:bg-[#273338]">
               <h3 className="m-0 text-xl font-bold tracking-tight md:text-2xl">
                 Not included in Digital Operations
               </h3>
-              <p className="m-0 text-base leading-relaxed text-[#1f2a2e]/70 md:text-lg">
+              <p className="m-0 text-base leading-relaxed text-[#1f2a2e]/70 md:text-lg dark:text-white/70">
                 {digitalOperationsBoundaries.exclusion}
               </p>
             </article>
           </Reveal>
           <Reveal delayMs={80}>
-            <div className="flex h-full flex-col justify-between gap-5 bg-[#1f2a2e] p-6 lg:p-8">
+            <div className="flex h-full flex-col justify-between gap-5 bg-[#1f2a2e] p-6 lg:p-8 dark:bg-black/30">
               <p className="m-0 text-base leading-relaxed text-white/70 md:text-lg">
                 If an operational problem cannot be solved reliably through configuration or a
                 contained integration, Peerprise can scope a custom software solution.
@@ -166,14 +175,14 @@ export default function DigitalOperationsPage() {
         >
           {relatedServices.map((service, index) => (
             <Reveal key={service.id} as="li" delayMs={60 + index * 70}>
-              <Link href={service.href} className="group flex h-full flex-col justify-between gap-6 bg-[#f4f8fa] p-6 lg:p-8">
+              <Link href={service.href} className="group flex h-full flex-col justify-between gap-6 bg-[#f4f8fa] p-6 lg:p-8 dark:bg-[#1f2a2e]">
                 <div className="flex flex-col gap-3">
                   <h3 className="m-0 text-xl font-bold tracking-tight md:text-2xl">
                     {service.approvedLabel}
                   </h3>
-                  <p className="m-0 text-base text-[#1f2a2e]/70">{service.navDescription}</p>
+                  <p className="m-0 text-base text-[#1f2a2e]/70 dark:text-white/70">{service.navDescription}</p>
                 </div>
-                <span className="inline-flex items-center text-[15px] font-bold text-[#1f2a2e]">
+                <span className="inline-flex items-center text-[15px] font-bold text-[#1f2a2e] dark:text-white">
                   {service.linkLabel}
                   <span className="ml-2 transition-transform group-hover:translate-x-1" aria-hidden="true">
                     →

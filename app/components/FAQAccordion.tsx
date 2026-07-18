@@ -35,7 +35,14 @@ export default function FAQAccordion({
   }
 
   return (
-    <div className={`divide-y ${s.divide} ${className || "max-w-[760px] mx-auto"}`}>
+    <div
+      className={[
+        "divide-y",
+        s.divide,
+        isDark ? "" : "dark:divide-white/10",
+        className || "max-w-[760px] mx-auto",
+      ].join(" ")}
+    >
       {items.map((faq) => {
         const open = isOpen(faq.id);
         const buttonId = `${baseId}-btn-${faq.id}`;
@@ -56,7 +63,9 @@ export default function FAQAccordion({
                   className={[
                     "text-[17px] sm:text-[18px] md:text-[20px] font-bold pr-2 leading-snug transition-colors duration-[var(--duration-base)]",
                     s.heading,
-                    isDark ? "group-hover:text-accent" : "group-hover:text-[#1f2a2e]",
+                    isDark
+                      ? "group-hover:text-accent"
+                      : "group-hover:text-[#1f2a2e] dark:text-white dark:group-hover:text-accent",
                   ].join(" ")}
                 >
                   {faq.question}
@@ -68,7 +77,7 @@ export default function FAQAccordion({
                       ? "bg-accent border-accent text-[#1f2a2e] faq-icon-open"
                       : isDark
                         ? "bg-white/10 border-white/20 text-white"
-                        : "bg-[#f4f8fa] border-black/10 text-[#1f2a2e]",
+                        : "bg-[#f4f8fa] border-black/10 text-[#1f2a2e] dark:bg-white/10 dark:border-white/20 dark:text-white",
                   ].join(" ")}
                   aria-hidden="true"
                 >
@@ -92,7 +101,7 @@ export default function FAQAccordion({
             >
               <div className="faq-panel-inner">
                 <p
-                  className={`type-body leading-relaxed pr-2 sm:pr-12 pb-6 sm:pb-8 ${isDark ? "text-on-dark-subtle" : "text-ink-secondary"}`}
+                  className={`type-body leading-relaxed pr-2 sm:pr-12 pb-6 sm:pb-8 ${isDark ? "text-on-dark-subtle" : "text-ink-secondary dark:text-white/75"}`}
                 >
                   {faq.answer}
                 </p>

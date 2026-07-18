@@ -4,6 +4,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
+import ThemeToggle from "./ThemeToggle";
 import {
   CONTACT_EMAIL,
   headerCta,
@@ -125,11 +126,11 @@ export default function Header() {
           >
             <Logo
               variant={sticky ? "dark" : "light"}
-              className="h-9 w-auto sm:h-10 transition-opacity duration-200"
+              className="h-10 w-auto sm:h-12 transition-opacity duration-200"
             />
           </Link>
 
-          <div className="relative z-10 flex items-center gap-4 sm:gap-7">
+          <div className="relative z-10 flex items-center gap-2 sm:gap-5">
             <Link
               href={headerCta.href}
               className={[
@@ -141,6 +142,8 @@ export default function Header() {
             >
               {headerCta.label}
             </Link>
+
+            <ThemeToggle sticky={sticky} />
 
             <button
               ref={buttonRef}

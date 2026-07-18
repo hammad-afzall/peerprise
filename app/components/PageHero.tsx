@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ArrowButton from "./ArrowButton";
 import type { LinkCTA } from "../lib/surface";
 import type { ReactNode } from "react";
@@ -17,6 +18,8 @@ type Props = {
   secondaryCta?: LinkCTA;
   children?: ReactNode;
   className?: string;
+  /** Full-bleed background image behind the hero content (dimmed like the homepage video). */
+  backgroundImage?: string;
   tone?: "black" | "studio";
   /**
    * display — huge brand-scale title (Studiova interior)
@@ -38,6 +41,7 @@ export default function PageHero({
   secondaryCta,
   children,
   className = "",
+  backgroundImage,
   tone = "black",
   size = "display",
 }: Props) {
@@ -66,6 +70,19 @@ export default function PageHero({
         className,
       ].join(" ")}
     >
+      {backgroundImage && (
+        <div className="absolute inset-0" aria-hidden="true">
+          <Image
+            src={backgroundImage}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-55"
+          />
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
+      )}
       <div className="site-container relative z-10">
         <div className="max-w-[1100px]">
           {lead && (

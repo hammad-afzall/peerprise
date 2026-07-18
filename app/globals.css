@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Class-based dark mode — toggled by adding .dark to <html> (Studiova pattern). */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /*
   Peerprise design tokens — Studiova-inspired system
   Black field + lime accent (#c1ff72), adapted for Peerprise content.
@@ -112,14 +115,16 @@
 
 @layer base {
   html {
-    @apply antialiased overflow-x-hidden;
+    @apply antialiased;
+    overflow-x: clip;
     font-size: 16px;
     line-height: 1.65;
     scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-dark-bg text-on-dark overflow-x-hidden;
+    @apply bg-dark-bg text-on-dark;
+    overflow-x: clip;
     font-family: var(--font-sans);
     min-width: 0;
   }
@@ -1123,6 +1128,157 @@
       transform: rotate(90deg);
       align-self: center;
     }
+  }
+
+  /*
+    —— Dark-mode remaps for light-surface tokens ——
+    Shared components (ProcessSteps, PlanComparison, forms, cards) style their
+    light variant with these tokens; remapping them here gives every page dark
+    support without touching each call site. :where() keeps specificity equal
+    to the original utility so explicit dark: classes still apply.
+  */
+  .text-ink:where(.dark, .dark *),
+  .text-ink-secondary:where(.dark, .dark *) {
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .text-muted:where(.dark, .dark *) {
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .text-muted-strong:where(.dark, .dark *) {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .bg-canvas:where(.dark, .dark *) {
+    background-color: rgba(255, 255, 255, 0.06);
+  }
+
+  .border-border:where(.dark, .dark *),
+  .border-border-light:where(.dark, .dark *),
+  .border-border-strong:where(.dark, .dark *) {
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .divide-border:where(.dark, .dark *) > :not(:last-child) {
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .card-light:where(.dark, .dark *) {
+    background: #273338;
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: none;
+  }
+
+  .btn-secondary-light:where(.dark, .dark *) {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .btn-secondary-light:where(.dark, .dark *):hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .section-light:where(.dark, .dark *) {
+    background: #1f2a2e;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .section-surface:where(.dark, .dark *) {
+    background: #273338;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  /* —— Article prose dark-mode overrides (article card sits on #273338) —— */
+  .dark .article-prose,
+  .dark .article-prose p,
+  .dark .article-prose h2,
+  .dark .article-prose h3,
+  .dark .article-prose strong {
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .dark .article-prose a,
+  .dark .article-prose a:hover {
+    color: #fff;
+  }
+
+  .dark .article-prose blockquote:not(.article-pullquote) {
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .dark .article-prose hr {
+    border-top-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .dark .article-prose code {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .dark .article-prose pre {
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .dark .article-callout {
+    background: rgba(255, 255, 255, 0.05);
+    border-left-color: #c1ff72;
+  }
+
+  .dark .article-callout__body {
+    color: rgba(255, 255, 255, 0.88);
+  }
+
+  .dark .article-callout--takeaway {
+    background: #c1ff72;
+  }
+
+  .dark .article-callout--takeaway .article-callout__body {
+    color: #1f2a2e;
+  }
+
+  .dark .article-callout--tip,
+  .dark .article-callout--mistake,
+  .dark .article-callout--security {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .dark .article-callout--tip .article-callout__body,
+  .dark .article-callout--mistake .article-callout__body,
+  .dark .article-callout--security .article-callout__body {
+    color: rgba(255, 255, 255, 0.88);
+  }
+
+  .dark .article-callout--tech {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .dark .article-pullquote p {
+    color: #fff;
+  }
+
+  .dark .article-steps__item,
+  .dark .article-checklist__item,
+  .dark .article-workflow {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .dark .article-steps__text,
+  .dark .article-checklist__item {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .dark .article-workflow__caption {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .dark .article-workflow__step > span:first-child {
+    color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(193, 255, 114, 0.35);
   }
 
   @media (prefers-reduced-motion: reduce) {

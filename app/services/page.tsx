@@ -33,6 +33,7 @@ export default function ServicesPage() {
         subtext={servicesOverviewHero.supporting}
         primaryCta={servicesOverviewHero.primaryCta}
         size="display"
+        backgroundImage="/services.jpg"
       />
 
       <PageSection
@@ -96,7 +97,9 @@ export default function ServicesPage() {
                 <article
                   className={[
                     "flex h-full flex-col gap-6 p-6 lg:p-10 transition-transform duration-500 group-hover:-translate-y-1",
-                    index === 0 ? "bg-accent text-[#1f2a2e]" : "bg-white text-[#1f2a2e]",
+                    index === 0
+                      ? "bg-accent text-[#1f2a2e]"
+                      : "bg-white text-[#1f2a2e] dark:bg-[#273338] dark:text-white",
                   ].join(" ")}
                 >
                   <h3 className="m-0 text-2xl font-bold tracking-tight md:text-3xl">
@@ -105,7 +108,9 @@ export default function ServicesPage() {
                   <p
                     className={[
                       "m-0 flex-1 text-base leading-relaxed md:text-lg",
-                      index === 0 ? "text-[#1f2a2e]/80" : "text-[#1f2a2e]/70",
+                      index === 0
+                        ? "text-[#1f2a2e]/80"
+                        : "text-[#1f2a2e]/70 dark:text-white/70",
                     ].join(" ")}
                   >
                     {service.description}

@@ -62,7 +62,7 @@ export default function TableOfContents({
   const list = (
     <ol
       className={`relative m-0 flex list-none flex-col gap-0.5 border-l p-0 ${
-        isDark ? "border-white/15" : "border-black/10"
+        isDark ? "border-white/15" : "border-black/10 dark:border-white/15"
       }`}
     >
       <span
@@ -83,10 +83,10 @@ export default function TableOfContents({
                 active
                   ? isDark
                     ? "border-accent bg-white/10 font-semibold text-white"
-                    : "border-accent bg-accent/20 font-semibold text-[#1f2a2e]"
+                    : "border-accent bg-accent/20 font-semibold text-[#1f2a2e] dark:bg-white/10 dark:text-white"
                   : isDark
                     ? "border-transparent text-white/50 hover:bg-white/5 hover:text-white"
-                    : "border-transparent text-[#1f2a2e]/60 hover:bg-[#f4f8fa] hover:text-[#1f2a2e]",
+                    : "border-transparent text-[#1f2a2e]/60 hover:bg-[#f4f8fa] hover:text-[#1f2a2e] dark:text-white/50 dark:hover:bg-white/5 dark:hover:text-white",
               ].join(" ")}
             >
               {heading.text}
@@ -102,12 +102,12 @@ export default function TableOfContents({
       <nav
         aria-label="Table of contents"
         className={`hidden p-5 lg:block ${
-          isDark ? "border border-white/10 bg-black/40" : "bg-[#f4f8fa]"
+          isDark ? "border border-white/10 bg-black/40" : "bg-[#f4f8fa] dark:bg-[#273338]"
         }`}
       >
         <p
           className={`mb-4 text-[12px] font-semibold uppercase tracking-[0.1em] ${
-            isDark ? "text-white/50" : "text-[#1f2a2e]/50"
+            isDark ? "text-white/50" : "text-[#1f2a2e]/50 dark:text-white/50"
           }`}
         >
           On this page
@@ -121,14 +121,14 @@ export default function TableOfContents({
     <div className="mb-8 lg:hidden">
       <button
         type="button"
-        className="flex w-full items-center justify-between border border-black/10 bg-white px-4 py-3 text-left text-[15px] font-semibold text-[#1f2a2e] outline-none transition-colors focus-visible:ring-2 focus-visible:ring-accent"
+        className="flex w-full items-center justify-between border border-black/10 bg-white px-4 py-3 text-left text-[15px] font-semibold text-[#1f2a2e] outline-none transition-colors focus-visible:ring-2 focus-visible:ring-accent dark:border-white/10 dark:bg-[#273338] dark:text-white"
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((value) => !value)}
       >
         <span>On this page</span>
         <svg
-          className={`h-4 w-4 text-[#1f2a2e]/60 transition-transform duration-200 ${
+          className={`h-4 w-4 text-[#1f2a2e]/60 transition-transform duration-200 dark:text-white/60 ${
             open ? "rotate-180" : ""
           }`}
           viewBox="0 0 20 20"
@@ -147,7 +147,7 @@ export default function TableOfContents({
       <div
         id={panelId}
         hidden={!open}
-        className="mt-3 border border-black/10 bg-white p-4"
+        className="mt-3 border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-[#273338]"
       >
         <nav aria-label="Table of contents">{list}</nav>
       </div>

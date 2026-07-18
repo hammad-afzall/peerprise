@@ -34,6 +34,7 @@ export default function PlansPage() {
         subtext={plansPageHero.supporting}
         primaryCta={ctas.requestDigitalReview}
         size="display"
+        backgroundImage="/plan.jpg"
       />
 
       <PageSection
@@ -50,7 +51,7 @@ export default function PlansPage() {
         >
           {plans.map((plan, index) => (
             <Reveal key={plan.id} as="li" delayMs={80 + index * 90}>
-              <article className="flex h-full flex-col gap-10 bg-white p-5 sm:p-8 xl:p-12">
+              <article className="flex h-full flex-col gap-10 bg-white p-5 sm:p-8 xl:p-12 dark:bg-[#273338]">
                 <div className="flex flex-col gap-4">
                   <div className="flex flex-wrap items-center gap-3">
                     <h3 className="m-0 text-xl font-bold md:text-2xl">{plan.name}</h3>
@@ -62,16 +63,16 @@ export default function PlansPage() {
                   </div>
                   <p className="m-0 text-3xl font-bold tracking-tight md:text-4xl">
                     {plan.price}
-                    <span className="ml-2 text-base font-medium text-[#1f2a2e]/60">
+                    <span className="ml-2 text-base font-medium text-[#1f2a2e]/60 dark:text-white/60">
                       {plan.period}
                     </span>
                   </p>
-                  <p className="m-0 text-base text-[#1f2a2e]/70 md:text-lg">
+                  <p className="m-0 text-base text-[#1f2a2e]/70 md:text-lg dark:text-white/70">
                     {plan.description}
                   </p>
                 </div>
 
-                <div className="border-t border-black/10 pt-8">
+                <div className="border-t border-black/10 pt-8 dark:border-white/12">
                   <p className="mb-4 text-base font-bold">What&apos;s included</p>
                   <ul className="m-0 flex list-none flex-col gap-3 p-0">
                     {plan.features.map((feature) => (
@@ -80,7 +81,7 @@ export default function PlansPage() {
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img src="/icons/right-check.svg" alt="" width={14} height={14} />
                         </span>
-                        <span className="text-base text-[#1f2a2e]/80">{feature}</span>
+                        <span className="text-base text-[#1f2a2e]/80 dark:text-white/80">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -102,7 +103,7 @@ export default function PlansPage() {
         id="plans-compare-heading"
         tone="white"
       >
-        <div className="overflow-hidden bg-[#f4f8fa]">
+        <div className="overflow-hidden bg-[#f4f8fa] dark:bg-[#1f2a2e]">
           <PlanComparison variant="light" />
         </div>
       </PageSection>
@@ -123,11 +124,20 @@ export default function PlansPage() {
               <article
                 className={[
                   "flex h-full flex-col gap-4 p-6 lg:p-8",
-                  index % 2 === 0 ? "bg-accent" : "bg-white",
+                  index % 2 === 0
+                    ? "bg-accent text-[#1f2a2e]"
+                    : "bg-white dark:bg-[#273338] dark:text-white",
                 ].join(" ")}
               >
                 <h3 className="m-0 text-xl font-bold md:text-2xl">{item.title}</h3>
-                <p className="m-0 text-base leading-relaxed text-[#1f2a2e]/80 md:text-lg">
+                <p
+                  className={[
+                    "m-0 text-base leading-relaxed md:text-lg",
+                    index % 2 === 0
+                      ? "text-[#1f2a2e]/80"
+                      : "text-[#1f2a2e]/80 dark:text-white/80",
+                  ].join(" ")}
+                >
                   {item.description}
                 </p>
               </article>

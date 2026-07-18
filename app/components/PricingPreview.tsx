@@ -11,21 +11,23 @@ export default function PricingPreview() {
   return (
     <section
       aria-labelledby="plans-teaser-heading"
-      className="section-padding bg-[#f4f8fa] text-[#1f2a2e]"
+      className="section-padding bg-[#f4f8fa] text-[#1f2a2e] dark:bg-[#1f2a2e] dark:text-white"
     >
       <div className="site-container">
-        <div className="mb-14 flex flex-col items-start gap-8 xl:mb-24 xl:flex-row">
-          <Reveal>
-            <SectionLabel number="08" badge={homepagePlansTeaser.eyebrow} />
-          </Reveal>
-          <Reveal delayMs={80} className="flex flex-col gap-5">
+        <div className="mb-14 grid grid-cols-1 gap-8 xl:mb-20 xl:grid-cols-12 xl:gap-14">
+          <div className="xl:col-span-4">
+            <Reveal>
+              <SectionLabel number="07" badge={homepagePlansTeaser.eyebrow} />
+            </Reveal>
+          </div>
+          <Reveal delayMs={80} className="flex flex-col gap-5 xl:col-span-8">
             <h2
               id="plans-teaser-heading"
               className="m-0 max-w-3xl text-4xl font-bold leading-tight tracking-tight md:text-5xl"
             >
               {homepagePlansTeaser.headline}
             </h2>
-            <p className="m-0 max-w-2xl text-lg text-[#1f2a2e]/70">
+            <p className="m-0 max-w-2xl text-lg text-[#1f2a2e]/70 dark:text-white/70">
               {homepagePlansTeaser.copy}
             </p>
           </Reveal>
@@ -37,28 +39,28 @@ export default function PricingPreview() {
         >
           {plans.map((plan, index) => (
             <Reveal key={plan.id} as="li" delayMs={80 + index * 90}>
-              <article className="flex h-full flex-col gap-10 bg-white p-5 sm:p-8 xl:p-12">
+              <article className="flex h-full flex-col gap-10 bg-white p-5 sm:p-8 xl:p-12 dark:bg-[#273338]">
                 <div className="flex flex-col gap-4">
                   <div className="flex flex-wrap items-center gap-3">
                     <h3 className="m-0 text-xl font-bold md:text-2xl">{plan.name}</h3>
                     {plan.badge && (
-                      <span className="rounded-full bg-[#1f2a2e] px-3 py-1 text-sm font-medium text-white">
+                      <span className="rounded-full bg-[#1f2a2e] px-3 py-1 text-sm font-medium text-white dark:bg-accent dark:text-[#1f2a2e]">
                         {plan.badge}
                       </span>
                     )}
                   </div>
                   <p className="m-0 text-3xl font-bold tracking-tight md:text-4xl">
                     {plan.price}
-                    <span className="ml-2 text-base font-medium text-[#1f2a2e]/60">
+                    <span className="ml-2 text-base font-medium text-[#1f2a2e]/60 dark:text-white/60">
                       {plan.period}
                     </span>
                   </p>
-                  <p className="m-0 text-base text-[#1f2a2e]/70 md:text-lg">
+                  <p className="m-0 text-base text-[#1f2a2e]/70 md:text-lg dark:text-white/70">
                     {plan.description}
                   </p>
                 </div>
 
-                <div className="border-t border-black/10 pt-8">
+                <div className="border-t border-black/10 pt-8 dark:border-white/12">
                   <p className="mb-4 text-base font-bold">What&apos;s included</p>
                   <ul className="m-0 flex list-none flex-col gap-3 p-0">
                     {plan.features.slice(0, 6).map((feature) => (
@@ -72,7 +74,7 @@ export default function PricingPreview() {
                             height={14}
                           />
                         </span>
-                        <span className="text-base text-[#1f2a2e]/80">{feature}</span>
+                        <span className="text-base text-[#1f2a2e]/80 dark:text-white/80">{feature}</span>
                       </li>
                     ))}
                   </ul>

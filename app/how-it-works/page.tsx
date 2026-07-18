@@ -32,6 +32,7 @@ export default function HowWeWorkPage() {
         subtext={howWeWorkHero.supporting}
         primaryCta={ctas.startConversation}
         size="standard"
+        backgroundImage="/how-it-works.jpg"
       />
 
       <PageSection
@@ -49,13 +50,13 @@ export default function HowWeWorkPage() {
             <Reveal key={route.id} as="li" delayMs={60 + index * 70}>
               <a
                 href={route.href}
-                className="group flex h-full flex-col justify-between gap-6 bg-white p-6 lg:p-8"
+                className="group flex h-full flex-col justify-between gap-6 bg-white p-6 lg:p-8 dark:bg-[#1f2a2e]"
               >
                 <div className="flex flex-col gap-3">
                   <h3 className="m-0 text-2xl font-bold tracking-tight md:text-3xl">
                     {route.title}
                   </h3>
-                  <p className="m-0 text-base leading-relaxed text-[#1f2a2e]/70 md:text-lg">
+                  <p className="m-0 text-base leading-relaxed text-[#1f2a2e]/70 md:text-lg dark:text-white/70">
                     {route.description}
                   </p>
                 </div>
@@ -116,14 +117,14 @@ export default function HowWeWorkPage() {
         >
           {howWeWorkSoftwareProcess.steps.map((step, index) => (
             <Reveal key={step.number} as="li" delayMs={60 + index * 60}>
-              <article className="flex h-full flex-col gap-4 bg-white p-6 lg:p-8">
+              <article className="flex h-full flex-col gap-4 bg-white p-6 lg:p-8 dark:bg-[#273338]">
                 <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent text-sm font-bold text-[#1f2a2e]">
                   {step.number}
                 </span>
                 <h3 className="m-0 text-xl font-bold tracking-tight md:text-2xl">
                   {step.title}
                 </h3>
-                <p className="m-0 text-base leading-relaxed text-[#1f2a2e]/70 md:text-lg">
+                <p className="m-0 text-base leading-relaxed text-[#1f2a2e]/70 md:text-lg dark:text-white/70">
                   {step.description}
                 </p>
               </article>
@@ -173,11 +174,20 @@ export default function HowWeWorkPage() {
               <article
                 className={[
                   "flex h-full flex-col gap-3 p-6 lg:p-8",
-                  index % 2 === 0 ? "bg-accent" : "bg-[#f4f8fa]",
+                  index % 2 === 0
+                    ? "bg-accent text-[#1f2a2e]"
+                    : "bg-[#f4f8fa] dark:bg-[#1f2a2e] dark:text-white",
                 ].join(" ")}
               >
                 <h3 className="m-0 text-xl font-bold md:text-2xl">{item.title}</h3>
-                <p className="m-0 text-base leading-relaxed text-[#1f2a2e]/80 md:text-lg">
+                <p
+                  className={[
+                    "m-0 text-base leading-relaxed md:text-lg",
+                    index % 2 === 0
+                      ? "text-[#1f2a2e]/80"
+                      : "text-[#1f2a2e]/80 dark:text-white/80",
+                  ].join(" ")}
+                >
                   {item.description}
                 </p>
               </article>

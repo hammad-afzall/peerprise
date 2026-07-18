@@ -27,7 +27,7 @@ export default function DisclosureNote({
         "rounded-[var(--radius-card)] p-5 sm:p-6 border-l-4",
         isDark
           ? "glass-card border-l-accent"
-          : "bg-surface border border-border border-l-accent shadow-sm",
+          : "bg-surface border border-border border-l-accent shadow-sm dark:bg-white/5 dark:border-white/10 dark:border-l-accent dark:shadow-none",
         className,
       ].join(" ")}
       role="note"
@@ -35,7 +35,11 @@ export default function DisclosureNote({
       {label && (
         <p className={`type-eyebrow mb-2 ${isDark ? "text-accent" : "text-accent"}`}>{label}</p>
       )}
-      <p className={`type-body m-0 ${s.bodyStrong}`}>{children}</p>
+      <p
+        className={`type-body m-0 ${s.bodyStrong} ${isDark ? "" : "dark:text-white/85"}`}
+      >
+        {children}
+      </p>
     </aside>
   );
 }

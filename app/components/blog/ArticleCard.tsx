@@ -20,11 +20,11 @@ function mediaTone(slug: string, featured: boolean) {
     };
   }
   const tones = [
-    { shell: "bg-[#f4f8fa] text-[#1f2a2e]", media: "from-accent to-[#d4ff8f]", pattern: "opacity-25" },
-    { shell: "bg-[#f4f8fa] text-[#1f2a2e]", media: "from-[#1f2a2e] to-[#365564]", pattern: "opacity-20" },
-    { shell: "bg-[#f4f8fa] text-[#1f2a2e]", media: "from-accent/90 via-[#f4f8fa] to-white", pattern: "opacity-30" },
-    { shell: "bg-white text-[#1f2a2e]", media: "from-[#273338] via-[#1f2a2e] to-black", pattern: "opacity-25" },
-    { shell: "bg-[#f4f8fa] text-[#1f2a2e]", media: "from-accent/60 to-[#1f2a2e]/20", pattern: "opacity-35" },
+    { shell: "bg-[#f4f8fa] text-[#1f2a2e] dark:bg-[#273338] dark:text-white", media: "from-accent to-[#d4ff8f]", pattern: "opacity-25" },
+    { shell: "bg-[#f4f8fa] text-[#1f2a2e] dark:bg-[#273338] dark:text-white", media: "from-[#1f2a2e] to-[#365564]", pattern: "opacity-20" },
+    { shell: "bg-[#f4f8fa] text-[#1f2a2e] dark:bg-[#273338] dark:text-white", media: "from-accent/90 via-[#f4f8fa] to-white", pattern: "opacity-30" },
+    { shell: "bg-white text-[#1f2a2e] dark:bg-[#273338] dark:text-white", media: "from-[#273338] via-[#1f2a2e] to-black", pattern: "opacity-25" },
+    { shell: "bg-[#f4f8fa] text-[#1f2a2e] dark:bg-[#273338] dark:text-white", media: "from-accent/60 to-[#1f2a2e]/20", pattern: "opacity-35" },
   ];
   return tones[hash];
 }
@@ -93,7 +93,7 @@ export default function ArticleCard({ post, featured = false, index = 0 }: Props
               dateTime={post.publishedAt}
               className={[
                 "text-base",
-                featured ? "text-white/60" : "text-[#1f2a2e]/55",
+                featured ? "text-white/60" : "text-[#1f2a2e]/55 dark:text-white/55",
               ].join(" ")}
             >
               {formatBlogDate(post.publishedAt)}
@@ -106,7 +106,7 @@ export default function ArticleCard({ post, featured = false, index = 0 }: Props
               "m-0 font-bold tracking-tight transition-colors",
               featured
                 ? "text-2xl sm:text-3xl lg:text-4xl group-hover/card:text-accent"
-                : "text-xl sm:text-2xl group-hover/card:text-[#1f2a2e]",
+                : "text-xl sm:text-2xl group-hover/card:text-[#1f2a2e] dark:group-hover/card:text-accent",
             ].join(" ")}
           >
             {post.title}
@@ -116,7 +116,7 @@ export default function ArticleCard({ post, featured = false, index = 0 }: Props
             <p
               className={[
                 "m-0 flex-1 text-base leading-relaxed",
-                featured ? "text-white/70 sm:text-lg" : "text-[#1f2a2e]/70",
+                featured ? "text-white/70 sm:text-lg" : "text-[#1f2a2e]/70 dark:text-white/70",
               ].join(" ")}
             >
               {post.description}
@@ -126,7 +126,7 @@ export default function ArticleCard({ post, featured = false, index = 0 }: Props
           <span
             className={[
               "mt-2 inline-flex items-center text-[15px] font-bold",
-              featured ? "text-accent" : "text-[#1f2a2e]",
+              featured ? "text-accent" : "text-[#1f2a2e] dark:text-accent",
             ].join(" ")}
           >
             {ctaLabels.readArticle}

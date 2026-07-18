@@ -14,9 +14,9 @@ type Props = {
 };
 
 const toneClass = {
-  white: "bg-white text-[#1f2a2e]",
-  light: "bg-white text-[#1f2a2e]",
-  gray: "bg-[#f4f8fa] text-[#1f2a2e]",
+  white: "bg-white text-[#1f2a2e] dark:bg-[#273338] dark:text-white",
+  light: "bg-white text-[#1f2a2e] dark:bg-[#273338] dark:text-white",
+  gray: "bg-[#f4f8fa] text-[#1f2a2e] dark:bg-[#1f2a2e] dark:text-white",
   studio: "bg-[#1f2a2e] text-white",
 } as const;
 
@@ -54,7 +54,7 @@ export default function PageSection({
               id={id}
               className={[
                 "m-0 max-w-3xl text-4xl font-bold leading-tight tracking-tight md:text-5xl",
-                isDark ? "text-white" : "text-[#1f2a2e]",
+                isDark ? "text-white" : "text-[#1f2a2e] dark:text-white",
               ].join(" ")}
             >
               {headline}
@@ -63,7 +63,7 @@ export default function PageSection({
               <p
                 className={[
                   "m-0 max-w-2xl text-lg",
-                  isDark ? "text-white/70" : "text-[#1f2a2e]/70",
+                  isDark ? "text-white/70" : "text-[#1f2a2e]/70 dark:text-white/70",
                 ].join(" ")}
               >
                 {intro}

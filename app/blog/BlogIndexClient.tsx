@@ -58,7 +58,7 @@ export default function BlogIndexClient({ posts, featured }: Props) {
                   "h-10 shrink-0 rounded-full px-4 text-[13px] font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus",
                   active
                     ? "bg-accent text-[#1f2a2e]"
-                    : "border border-black/10 bg-white text-[#1f2a2e]/70 hover:border-[#1f2a2e]/30 hover:text-[#1f2a2e]",
+                    : "border border-black/10 bg-white text-[#1f2a2e]/70 hover:border-[#1f2a2e]/30 hover:text-[#1f2a2e] dark:border-white/15 dark:bg-white/5 dark:text-white/70 dark:hover:border-white/40 dark:hover:text-white",
                 ].join(" ")}
               >
                 {item}
@@ -74,13 +74,13 @@ export default function BlogIndexClient({ posts, featured }: Props) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search articles"
-            className="h-11 w-full rounded-full border border-black/10 bg-white px-5 text-[#1f2a2e] placeholder:text-[#1f2a2e]/40 outline-none transition-colors focus:border-accent"
+            className="h-11 w-full rounded-full border border-black/10 bg-white px-5 text-[#1f2a2e] placeholder:text-[#1f2a2e]/40 outline-none transition-colors focus:border-accent dark:border-white/15 dark:bg-white/5 dark:text-white dark:placeholder:text-white/40"
           />
         </label>
       </div>
 
       {filtered.length === 0 ? (
-        <p className="text-base text-[#1f2a2e]/60">{emptyMessage}</p>
+        <p className="text-base text-[#1f2a2e]/60 dark:text-white/60">{emptyMessage}</p>
       ) : (
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4 md:gap-7">
           {filtered.map((post, index) => (

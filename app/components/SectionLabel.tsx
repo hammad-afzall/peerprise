@@ -30,16 +30,16 @@ export default function SectionLabel({
       <span
         className={[
           "h-px w-16 shrink-0",
-          isDark ? "bg-white/12" : "bg-black/12",
+          isDark ? "bg-white/12" : "bg-black/12 dark:bg-white/12",
         ].join(" ")}
         aria-hidden="true"
       />
       <span
         className={[
-          "inline-flex h-9 items-center rounded-full px-4 py-1.5 text-base font-medium",
+          "inline-flex h-9 items-center whitespace-nowrap rounded-full px-4 py-1.5 text-base font-medium",
           isDark
             ? "bg-white text-[#1f2a2e]"
-            : "bg-[#1f2a2e] text-white",
+            : "bg-[#1f2a2e] text-white dark:bg-white dark:text-[#1f2a2e]",
         ].join(" ")}
       >
         {badge}

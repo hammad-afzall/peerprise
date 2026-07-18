@@ -150,11 +150,11 @@ export default async function BlogArticlePage({ params }: Props) {
         </div>
       </header>
 
-      <div className="bg-[#f4f8fa]">
+      <div className="bg-[#f4f8fa] dark:bg-[#1f2a2e]">
         <div className="site-container py-14 sm:py-20">
           <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[minmax(0,1fr)_260px] lg:gap-10">
             <div className="min-w-0">
-              <div className="bg-white px-5 py-8 sm:px-10 sm:py-11 lg:px-16 lg:py-14">
+              <div className="bg-white px-5 py-8 sm:px-10 sm:py-11 lg:px-16 lg:py-14 dark:bg-[#273338]">
                 <div
                   id="article-body"
                   className="article-prose max-w-[780px]"
@@ -163,7 +163,7 @@ export default async function BlogArticlePage({ params }: Props) {
 
                 <div className="mt-12 flex flex-col gap-10 sm:mt-14 sm:gap-12">
                   <KeyTakeaways items={post.keyTakeaways} />
-                  <div className="border-t border-black/10 pt-8 sm:pt-10">
+                  <div className="border-t border-black/10 pt-8 sm:pt-10 dark:border-white/10">
                     <AuthorCard />
                   </div>
                   <ShareLinks title={post.title} url={canonicalUrl} />

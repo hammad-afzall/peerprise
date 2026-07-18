@@ -28,7 +28,7 @@ export default function ShareLinks({ title, url }: Props) {
 
   return (
     <div className="flex flex-wrap items-center gap-3">
-      <span className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#1f2a2e]/50">
+      <span className="text-[13px] font-semibold uppercase tracking-[0.08em] text-[#1f2a2e]/50 dark:text-white/50">
         Share
       </span>
       {links.map((link) => (
@@ -37,7 +37,7 @@ export default function ShareLinks({ title, url }: Props) {
           href={link.href}
           target={link.label === "Email" ? undefined : "_blank"}
           rel={link.label === "Email" ? undefined : "noopener noreferrer"}
-          className="rounded-full border border-black/10 px-3 py-1.5 text-[14px] font-medium text-[#1f2a2e] transition-colors hover:border-accent hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          className="rounded-full border border-black/10 px-3 py-1.5 text-[14px] font-medium text-[#1f2a2e] transition-colors hover:border-accent hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent dark:border-white/20 dark:text-white dark:hover:text-[#1f2a2e]"
         >
           {link.label}
         </a>
