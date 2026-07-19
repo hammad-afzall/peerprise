@@ -80,7 +80,7 @@ export default function WorkCarousel() {
                 className="!w-[280px] sm:!w-[320px] lg:!w-[360px]"
               >
                 <Link
-                  href="/work"
+                  href={`/work/${cs.id}`}
                   className="group/slide block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
                 >
                   <div className="relative h-[220px] overflow-hidden sm:h-[250px] lg:h-[280px]">

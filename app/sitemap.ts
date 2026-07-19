@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { getAllPosts } from "./lib/blog";
 import { services } from "./lib/services";
+import { workCaseStudies } from "./lib/work";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://peerprise.com";
@@ -30,5 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...pages, ...posts];
+  const caseStudies = workCaseStudies.map((study) => ({
+    url: `${base}/work/${study.id}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
+
+  return [...pages, ...posts, ...caseStudies];
 }

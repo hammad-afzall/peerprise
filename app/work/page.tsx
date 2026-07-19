@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageHero from "../components/PageHero";
 import PageSection from "../components/PageSection";
 import DisclosureNote from "../components/DisclosureNote";
@@ -63,9 +64,10 @@ export default function SelectedWorkPage() {
         >
           {allStudies.map((study, index) => (
             <Reveal key={study.id} as="li" delayMs={60 + index * 70}>
-              <article
+              <Link
+                href={`/work/${study.id}`}
                 className={[
-                  "group flex h-full flex-col overflow-hidden",
+                  "group flex h-full flex-col overflow-hidden transition-transform duration-300 hover:-translate-y-1",
                   index === 0
                     ? "bg-[#1f2a2e] text-white sm:col-span-2 xl:col-span-2 dark:bg-[#1f2a2e]"
                     : "bg-[#f4f8fa] text-[#1f2a2e] dark:bg-[#1f2a2e] dark:text-white",
@@ -76,7 +78,7 @@ export default function SelectedWorkPage() {
                     "relative flex min-h-[180px] items-end overflow-hidden p-6 lg:min-h-[220px] lg:p-8",
                     index === 0
                       ? "bg-gradient-to-br from-accent/30 via-[#1f2a2e] to-black"
-                      : "bg-gradient-to-br from-accent/40 via-[#f4f8fa] to-white",
+                      : "bg-gradient-to-br from-accent/40 via-[#f4f8fa] to-white dark:from-accent/30 dark:via-[#1f2a2e] dark:to-black",
                   ].join(" ")}
                 >
                   <span
@@ -104,8 +106,18 @@ export default function SelectedWorkPage() {
                     tags={[...study.tags]}
                     variant={index === 0 ? "dark" : "light"}
                   />
+                  <span
+                    className={[
+                      "mt-auto pt-1 text-sm font-semibold transition-colors",
+                      index === 0
+                        ? "text-accent"
+                        : "text-[#1f2a2e] group-hover:text-[#5a8a2a] dark:text-accent",
+                    ].join(" ")}
+                  >
+                    View case study →
+                  </span>
                 </div>
-              </article>
+              </Link>
             </Reveal>
           ))}
         </ul>

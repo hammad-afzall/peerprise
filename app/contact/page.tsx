@@ -37,6 +37,7 @@ export default async function ContactPage({ searchParams }: Props) {
         headline="Contact"
         subtext={contactHero.supporting}
         size="display"
+        backgroundImage="/contact.jpg"
       />
 
       <PageSection

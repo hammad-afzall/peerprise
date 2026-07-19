@@ -41,21 +41,21 @@ export default function ServicesPage() {
         badge={servicesOverviewManaged.eyebrow}
         headline={servicesOverviewManaged.headline}
         id="managed-services-heading"
-        tone="studio"
+        tone="white"
       >
         <div className="flex flex-col">
           {servicesOverviewManaged.services.map((service, index) => (
             <Reveal key={service.id} delayMs={60 + index * 70}>
               <Link
                 href={service.href}
-                className="group block border-t border-white/12 py-6 xl:py-10"
+                className="group block border-t border-[#1f2a2e]/12 py-6 xl:py-10 dark:border-white/12"
               >
                 <div className="flex flex-col justify-between gap-4 xl:flex-row xl:items-end">
                   <div className="max-w-2xl">
-                    <h3 className="m-0 text-[28px] font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-accent md:text-4xl">
+                    <h3 className="m-0 text-[28px] font-bold tracking-tight text-[#1f2a2e] transition-colors duration-300 group-hover:text-[#5a8a2a] md:text-4xl dark:text-white dark:group-hover:text-accent">
                       {service.approvedLabel}
                     </h3>
-                    <p className="mt-3 m-0 max-w-xl text-base text-white/70 md:text-lg">
+                    <p className="mt-3 m-0 max-w-xl text-base text-[#1f2a2e]/70 md:text-lg dark:text-white/70">
                       {service.description}
                     </p>
                   </div>
@@ -72,7 +72,7 @@ export default function ServicesPage() {
               </Link>
             </Reveal>
           ))}
-          <Reveal delayMs={200} className="border-t border-white/12 pt-10">
+          <Reveal delayMs={200} className="border-t border-[#1f2a2e]/12 pt-10 dark:border-white/12">
             <ArrowButton href={servicesOverviewManaged.cta.href}>
               {servicesOverviewManaged.cta.label}
             </ArrowButton>
